@@ -25,16 +25,21 @@
 int main(int argc, char *argv[])
 {
     banner();
-    testTogether();
+    debugging();
     bye();
     return 0;
 }
 
+void callback(void *arg)
+{
+	cout<<"callback called"<<endl;
+}
 
 
 void debugging()
 {
    SquareState myguy(0,0);
+   myguy.registerCallback(&callback);
    myguy.mark('1');
    cout<<myguy<<endl; 
 }

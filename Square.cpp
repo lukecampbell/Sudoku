@@ -7,6 +7,11 @@
 //   INCLUDES AND MACROS   //
 #include "Square.hpp"
 
+static void
+doNothing(void *)
+{
+	return;
+}
 
 //   END INCLUDES AND MACROS  //
 
@@ -20,7 +25,7 @@ Square::Square(int row, int col)
     square_value = '-';
     square_bitmap=0x3FE;
     square_count=9;
-
+    onChange = &doNothing;
 }
 
 //-----------------------------------------------------------------------------
@@ -33,7 +38,7 @@ Square::Square()
     square_value = '-';
     square_bitmap=0x3FE;
     square_count=9;
-
+    onChange = &doNothing;
 }
 //-----------------------------------------------------------------------------
 // Square()
@@ -46,6 +51,7 @@ Square::Square(const Square& copy)
 	square_count = copy.square_count;
 	square_bitmap = copy.square_bitmap;
 	square_clusters = copy.square_clusters; // deep copy
+	onChange = &doNothing;
 }
 
 
@@ -98,7 +104,10 @@ ostream& Square::print(ostream& out) const
 void Square::mark(char value)
 {
     if(value=='-')
+    {
         square_value='-';
+        onChange(this);
+    }
     //------------------------------------------------
     // Check to see if we are allowed to set it
     //------------------------------------------------
@@ -112,6 +121,7 @@ void Square::mark(char value)
     		return;
     	}
     	square_value = value;
+    	onChange(this);
     	//------------------------------------------------
     	// Shoop it!
     	//------------------------------------------------
@@ -188,15 +198,27 @@ char Square::getValue() const
 {
 	return square_value;
 }
-
+//-----------------------------------------------------------------------------
+// getRow()
+// Returns the row of the current square
 int
 Square::getRow() const
 {
 	return square_row;
 }
-
+//-----------------------------------------------------------------------------
+// getCol()
+// Returns the column of the current square
 int
 Square::getCol() const
 {
 	return square_col;
+}
+//-----------------------------------------------------------------------------
+// registerCallback()
+// registers a callback for a change in the square's value
+void
+Square::registerCallback(eventHandler handler)
+{
+	onChange = handler;
 }

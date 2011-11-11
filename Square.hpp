@@ -23,6 +23,10 @@ using namespace std;
 class Cluster;
 
 
+// This is an event handler callback for the interface
+typedef void (*eventHandler)(void *);
+
+
 //-----------------------------------------------------------------------------
 // Square identifies a square unit on a sudoku board.  It maintains
 // the row, column and value maintained within the square.
@@ -33,10 +37,13 @@ class Square
     short int     square_count;        // Possibility Count
     unsigned short int square_bitmap;  // Bit map for used values
 
+    eventHandler onChange;             // Callback that will be called when
+									   // the value changes
 
   private:
     vector<Cluster *> square_clusters; // The cluster that the square belongs to
-    unsigned int  square_row;          // The current row and column for which this
+    unsigned int  square_row;          // The current row and column for which
+                                       // this
     unsigned int  square_col;          // square resides
   public:
     Square(int row, int col);   // Initializes the Square with the specified
@@ -49,11 +56,16 @@ class Square
     virtual void mark(char value);      // Store the value in the square
     virtual void turnOff(int n);        // Eliminate a possibility
     virtual void addCluster(Cluster *cluster);  // adds a cluster
-    virtual ostream& print(ostream &) const;  // Prints the formatted text to the ostream
+    virtual ostream& print(ostream &) const;  // Prints the formatted text to
+											  // the ostream
     virtual void operator=(const Square& copy);
-    virtual char getValue() const;            // Gets the current value of square
-    int getRow() const;
-    int getCol() const;
+    virtual char getValue() const;            // Gets the current value of s
+                                              // quare
+    virtual void registerCallback(eventHandler);  // Registers a callback
+											// for the onChange callback
+    int getRow() const;		// returns the row of this Square
+    int getCol() const;		// returns the column of this Square
+
 
 };
 inline ostream& operator<<(ostream & out, Square &square)

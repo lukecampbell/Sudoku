@@ -1,9 +1,12 @@
 CC=g++
-CPPFLAGS=-g -Wall -ggdb -ansi 
+CPPFLAGS=-g -Wall -ggdb -ansi -O0
 LIBS=
 OBJECTS=Sudoku.o Square.o tools.o Board.o Cluster.o Tests.o SquareState.o
 
-all: Sudoku
+all: Sudoku libsudoku.a
+
+libsudoku.a: Square.o tools.o Board.o Cluster.o Tests.o SquareState.o
+	ar cr libsudoku.a Square.o tools.o Board.o Cluster.o Tests.o SquareState.o
 
 Sudoku: $(OBJECTS)
 	$(CC) -o Sudoku $(OBJECTS)
@@ -14,3 +17,4 @@ $(OBJECTS): %.o: %.cpp
 clean: 
 	rm -rf *.o
 	rm -rf Sudoku
+	rm -rf *.a
