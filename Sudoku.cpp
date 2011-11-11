@@ -38,7 +38,7 @@ void callback(void *arg)
 
 void debugging()
 {
-   SquareState myguy(0,0);
+   Square myguy(0,0);
    myguy.registerCallback(&callback);
    myguy.mark('1');
    cout<<myguy<<endl; 

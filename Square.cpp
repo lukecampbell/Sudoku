@@ -19,39 +19,33 @@ doNothing(void *)
 // Square()
 // Constructor that only has debugging purposes as of yet
 Square::Square(int row, int col)
+:SquareState()
 {
     square_row = row;
     square_col = col;
-    square_value = '-';
-    square_bitmap=0x3FE;
-    square_count=9;
-    onChange = &doNothing;
+    registerCallback(&doNothing);
 }
 
 //-----------------------------------------------------------------------------
 // Square()
 // Default constructor
 Square::Square()
+:SquareState()
 {
     square_row = 0;
     square_col = 0;
-    square_value = '-';
-    square_bitmap=0x3FE;
-    square_count=9;
-    onChange = &doNothing;
+    registerCallback(&doNothing);
 }
 //-----------------------------------------------------------------------------
 // Square()
 // Copy Constructor
 Square::Square(const Square& copy)
+:SquareState(copy)
 {
-	square_value = copy.square_value;
 	square_row = copy.square_row;
 	square_col = copy.square_col;
-	square_count = copy.square_count;
-	square_bitmap = copy.square_bitmap;
 	square_clusters = copy.square_clusters; // deep copy
-	onChange = &doNothing;
+	registerCallback(&doNothing);
 }
 
 
@@ -76,24 +70,12 @@ Square::~Square()
 // returns a reference to an ostream with the formatted text
 ostream& Square::print(ostream& out) const
 {
-    string possibilities;
-    // Traverse the bitmap for possibilities make a string
-    for(int k=1;k<=9;k++)
-    {
-        unsigned short int bit = (square_bitmap >> k) & 0x01;    // Determine if the
-                 //bit in the kth position is true (available) or
-                 //false (unavailable)
-        if(bit==0)
-            possibilities+=' '; // it's false so it's a space i.e. unavailable
-        else
-            possibilities+=k+'0'; // it's true so it's the value is available
 
-    }
     out<<"Square ["<<square_row<<","<<square_col<<"]: "
-            <<square_value
+            <<state_value
             <<" Possibilities: ("
-            <<square_count<<") "
-            <<possibilities;
+            <<state_count<<") "
+            <<possibilitiesString();
     return out;
 }
 //-----------------------------------------------------------------------------
@@ -103,61 +85,19 @@ ostream& Square::print(ostream& out) const
 // no return
 void Square::mark(char value)
 {
-    if(value=='-')
-    {
-        square_value='-';
-        onChange(this);
-    }
-    //------------------------------------------------
-    // Check to see if we are allowed to set it
-    //------------------------------------------------
-    else if(value>='1' && value<='9')
-    {
-    	unsigned short int mask = 0x01 << (value - '0');
-    	if( (square_bitmap & mask) == 0)
-    	{
-    		cerr<<*this<<endl
-    		    <<"Cannot set to "<<value<<": Illegal mark"<<endl;
-    		return;
-    	}
-    	square_value = value;
-    	onChange(this);
-    	//------------------------------------------------
-    	// Shoop it!
-    	//------------------------------------------------
-    	vector<Cluster *>::iterator it;
-    	for(it = square_clusters.begin();it<square_clusters.end();it++)
-    			(*it)->shoop(this,value);
-    }
-    else
-    		cerr<<" Attempted to set an illegal value";
-    	// TODO: Throw an exception for illegal mark
+	SquareState::mark(value);
+	//------------------------------------------------
+	// Shoop it!
+	//------------------------------------------------
+	if(value>='1' && value<='9')
+	{
+		vector<Cluster *>::iterator it;
+		for(it = square_clusters.begin();it<square_clusters.end();it++)
+				(*it)->shoop(this,value);
+	}
 
-
-    return;
 }
-//-----------------------------------------------------------------------------
-// turnOff()
-// Eliminate a possibility for the square
-// int n - The value of the determinant to be eliminated
-// no returns
-void Square::turnOff(int n)
-{
-    unsigned short int mask;
-    //------------------------------------------------
-    // Check bounds
-    //------------------------------------------------
-    if(n<1 || n>9)  // TODO throw exception
-        return; // the value is not acceptable
-    mask = 0x01<<n;
-    if((mask & square_bitmap)!=0)
-    {
-    	square_bitmap = square_bitmap & ~mask;
 
-    	if(square_count>0)
-    		square_count--;
-    }
-}
 
 //-----------------------------------------------------------------------------
 // addCluster()
@@ -182,22 +122,14 @@ void Square::addCluster(Cluster *cluster)
 // Copy Constructor
 void Square::operator =(const Square& copy)
 {
-	square_value = copy.square_value;
+	SquareState::operator=(copy);
 	square_row = copy.square_row;
 	square_col = copy.square_col;
-	square_count = copy.square_count;
-	square_bitmap = copy.square_bitmap;
+
 	square_clusters = copy.square_clusters; // deep copy
 
 }
 
-//-----------------------------------------------------------------------------
-// getValue()
-// Returns the value of Square
-char Square::getValue() const
-{
-	return square_value;
-}
 //-----------------------------------------------------------------------------
 // getRow()
 // Returns the row of the current square
@@ -213,12 +145,4 @@ int
 Square::getCol() const
 {
 	return square_col;
-}
-//-----------------------------------------------------------------------------
-// registerCallback()
-// registers a callback for a change in the square's value
-void
-Square::registerCallback(eventHandler handler)
-{
-	onChange = handler;
 }

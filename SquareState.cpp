@@ -9,7 +9,6 @@
 // SquareState()
 //
 SquareState::SquareState()
-:Square()
 {
 	state_value = '-';
 	state_bitmap=0x3FE;
@@ -19,22 +18,14 @@ SquareState::SquareState()
 //-----------------------------------------------------------------------------
 // SquareState(const Square &copy)
 //
-SquareState::SquareState(const Square &copy)
-:Square(copy)
+SquareState::SquareState(const SquareState &copy)
 {
-	state_value = square_value;
-	state_bitmap = square_value;
-	state_count = square_count;
+	state_value = copy.state_value;
+	state_bitmap = copy.state_bitmap;
+	state_count = copy.state_count;
 }
 
 
-SquareState::SquareState(int row, int col)
-:Square(row,col)
-{
-	state_value ='-';
-	state_bitmap = 0x3FE;
-	state_count = 9;
-}
 
 SquareState::~SquareState()
 {
@@ -44,25 +35,58 @@ SquareState::~SquareState()
 void
 SquareState::mark(char value)
 {
-	Square::mark(value);
-	state_value = square_value;
-	state_bitmap = square_bitmap;
-	state_count = square_count;
+    if(value=='-')
+    {
+        state_value='-';
+        state_callback(this);
+    }
+    //------------------------------------------------
+    // Check to see if we are allowed to set it
+    //------------------------------------------------
+    else if(value>='1' && value<='9')
+    {
+    	unsigned short int mask = 0x01 << (value - '0');
+    	if( (state_bitmap & mask) == 0)
+    	{
+    		cerr<<*this<<endl
+    		    <<"Cannot set to "<<value<<": Illegal mark"<<endl;
+    		return;
+    	}
+    	state_value = value;
+    	state_callback(this);
+
+    }
+    else
+    		cerr<<" Attempted to set an illegal value";
+    	// TODO: Throw an exception for illegal mark
+
+
+    return;
 
 }
 
 void
 SquareState::turnOff(int n)
 {
-	Square::turnOff(n);
-	state_value = square_value;
-	state_bitmap = square_value;
-	state_count = square_count;
+    unsigned short int mask;
+    //------------------------------------------------
+    // Check bounds
+    //------------------------------------------------
+    if(n<1 || n>9)  // TODO throw exception
+        return; // the value is not acceptable
+    mask = 0x01<<n;
+    if((mask & state_bitmap)!=0)
+    {
+    	state_bitmap = state_bitmap & ~mask;
+
+    	if(state_count>0)
+    		state_count--;
+    }
 
 }
 
-ostream&
-SquareState::print(ostream &out) const
+string
+SquareState::possibilitiesString() const
 {
 	string possibilities;
 	for(int k=1;k<=9;k++)
@@ -73,21 +97,41 @@ SquareState::print(ostream &out) const
 		else
 			possibilities+=k+'0';
 	}
-	out<<"SquareState: ["<<getRow()<<","<<getCol()<<"]: "
-		<<state_value
-		<<" Possibilities: ("
-		<<state_count<<") "
-		<<possibilities;
+	return possibilities;
+}
+
+ostream&
+SquareState::print(ostream &out) const
+{
+	out<<"SquareState: "
+	   <<state_value<<" ("<<state_count<<")"
+	   <<possibilitiesString()<<endl;
 
 	return out;
 }
 
 void
-SquareState::operator=(const Square &copy)
+SquareState::operator=(const SquareState &copy)
 {
-	Square::operator=(copy);
-	state_value = square_value;
-	state_bitmap = square_value;
-	state_count = square_count;
+	state_value = copy.state_value;
+	state_bitmap= copy.state_bitmap;
+	state_count = copy.state_count;
 }
 
+char
+SquareState::getValue() const
+{
+	return state_value;
+}
+
+int
+SquareState::getCount() const
+{
+	return state_count;
+}
+
+void
+SquareState::registerCallback(eventHandler callback)
+{
+	state_callback = callback;
+}

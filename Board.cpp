@@ -27,7 +27,7 @@ Board::Board()
 
 		for(int k=0;k<9;k++)
 			for(int x=0;x<9;x++)
-				board[9*k+x] = new SquareState(k,x);
+				board[9*k+x] = new Square(k,x);
 
 		// What the above is really doing is this:
 		// board[9*k + x].operator=( &Square(k,x))
@@ -124,7 +124,7 @@ Board::Board(const char *filename)
 
 		for(int k=0;k<9;k++)
 			for(int x=0;x<9;x++)
-				board[9*k+x] = new SquareState(k,x);
+				board[9*k+x] = new Square(k,x);
 
 		// What the above is really doing is this:
 		// board[9*k + x].operator=( &Square(k,x))
