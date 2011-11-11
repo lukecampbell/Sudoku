@@ -16,17 +16,15 @@
 // END MACROS
 
 
-
 //-----------------------------------------------------------------------------
 // DECLARATIONS
-void testSquare();  // Test the Square class
-void testBoard();   // Test the Board class
+void testSquare(); // Test the Square class
+void testBoard(); // Test the Board class
 void testCluster(); // Test clusters
-void testTogether();  // Test putting everything together
-void debugging();   // Debugging environment for general debugging
+void testTogether(); // Test putting everything together
+void debugging(); // Debugging environment for general debugging
 
 // END DECLARATIONS
-
 
 
 #endif // _SUDOKU_HPP_

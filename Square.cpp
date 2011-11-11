@@ -12,19 +12,18 @@
 //-----------------------------------------------------------------------------
 // Square()
 // Constructor that only has debugging purposes as of yet
-Square::Square(int row, int col)
-:SquareState()
+Square::Square(int row, int col) :
+    SquareState()
 {
     square_row = row;
     square_col = col;
-
 }
 
 //-----------------------------------------------------------------------------
 // Square()
 // Default constructor
-Square::Square()
-:SquareState()
+Square::Square() :
+    SquareState()
 {
     square_row = 0;
     square_col = 0;
@@ -33,16 +32,13 @@ Square::Square()
 //-----------------------------------------------------------------------------
 // Square()
 // Copy Constructor
-Square::Square(const Square& copy)
-:SquareState(copy)
+Square::Square(const Square& copy) :
+    SquareState(copy)
 {
-	square_row = copy.square_row;
-	square_col = copy.square_col;
-	square_clusters = copy.square_clusters; // deep copy
-
+    square_row = copy.square_row;
+    square_col = copy.square_col;
+    square_clusters = copy.square_clusters; // deep copy
 }
-
-
 
 //-----------------------------------------------------------------------------
 // ~Square()
@@ -54,9 +50,6 @@ Square::~Square()
 #endif // __DEBUG__
     //TODO I strongly recommend leaving this to the debuugging only
     //cout<<"Deleting "<<(*this)<<endl;
-
-
-
 }
 //-----------------------------------------------------------------------------
 // print()
@@ -66,11 +59,9 @@ ostream&
 Square::print(ostream& out) const
 {
 
-    out<<"Square ["<<square_row<<","<<square_col<<"]: "
-            <<state_value
-            <<" Possibilities: ("
-            <<state_count<<") "
-            <<possibilitiesString();
+    out << "Square [" << square_row << "," << square_col << "]: "
+            << state_value << " Possibilities: (" << state_count << ") "
+            << possibilitiesString();
     return out;
 }
 //-----------------------------------------------------------------------------
@@ -78,89 +69,77 @@ Square::print(ostream& out) const
 // Store a value in the Square
 // char value - the character to be in the square
 // no return
-bool
-Square::mark(char value)
+bool Square::mark(char value)
 {
-   bool ret = SquareState::mark(value);
-	//------------------------------------------------
-	// Shoop it!
-	//------------------------------------------------
-	if(ret)
-	{
-		vector<Cluster *>::iterator it;
-		for(it = square_clusters.begin();it<square_clusters.end();it++)
-				(*it)->shoop(this,value);
-	}
-   return ret;
-
+    bool ret = SquareState::mark(value);
+    //------------------------------------------------
+    // Shoop it!
+    //------------------------------------------------
+    if (ret)
+    {
+        vector<Cluster *>::iterator it;
+        for (it = square_clusters.begin(); it < square_clusters.end(); it++)
+            (*it)->shoop(this, value);
+    }
+    return ret;
 }
-
 
 //-----------------------------------------------------------------------------
 // addCluster()
 // adds a cluster to the list of clusters that the square belongs to
 // Cluster *cluster - The cluster to be added to the vector of clusters
 // no return
-void
-Square::addCluster(Cluster *cluster)
+void Square::addCluster(Cluster *cluster)
 {
-    if(!cluster)
+    if (!cluster)
     {
         //TODO: Throw an error here for null pointer
         char errmsg[] = "Null pointer\n";
         fatal(errmsg);
     }
-
     square_clusters.push_back(cluster);
-
 }
 
 //-----------------------------------------------------------------------------
 // operator=()
 // Copy Constructor
-void
-Square::operator =(const Square& copy)
+void Square::operator =(const Square& copy)
 {
-	SquareState::operator=(copy);
-	square_row = copy.square_row;
-	square_col = copy.square_col;
+    SquareState::operator=(copy);
+    square_row = copy.square_row;
+    square_col = copy.square_col;
 
-	square_clusters = copy.square_clusters; // deep copy
+    square_clusters = copy.square_clusters; // deep copy
 
 }
-
 
 //-----------------------------------------------------------------------------
 // getRow()
 // Returns the row of the current square
-int
-Square::getRow() const
+int Square::getRow() const
 {
-	return square_row;
+    return square_row;
 }
 //-----------------------------------------------------------------------------
 // getCol()
 // Returns the column of the current square
-int
-Square::getCol() const
+int Square::getCol() const
 {
-	return square_col;
+    return square_col;
 }
 
 //-----------------------------------------------------------------------------
 // getState()
 // Returns the current state of this square
-SquareState
-Square::getState() const
+SquareState Square::getState() const
 {
-	return *this;
+    return *this;
 }
 
 //-----------------------------------------------------------------------------
 // setState()
 // assigns a state to this square
-void
-Square::setState(SquareState &state)
+void Square::setState(SquareState &state)
 {
-	SquareState::operator=(state);
+    SquareState::operator=(state);
 }
