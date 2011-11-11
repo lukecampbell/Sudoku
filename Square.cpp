@@ -7,12 +7,6 @@
 //   INCLUDES AND MACROS   //
 #include "Square.hpp"
 
-static void
-doNothing(void *)
-{
-	return;
-}
-
 //   END INCLUDES AND MACROS  //
 
 //-----------------------------------------------------------------------------
@@ -23,7 +17,7 @@ Square::Square(int row, int col)
 {
     square_row = row;
     square_col = col;
-    registerCallback(&doNothing);
+
 }
 
 //-----------------------------------------------------------------------------
@@ -34,7 +28,7 @@ Square::Square()
 {
     square_row = 0;
     square_col = 0;
-    registerCallback(&doNothing);
+
 }
 //-----------------------------------------------------------------------------
 // Square()
@@ -45,7 +39,7 @@ Square::Square(const Square& copy)
 	square_row = copy.square_row;
 	square_col = copy.square_col;
 	square_clusters = copy.square_clusters; // deep copy
-	registerCallback(&doNothing);
+
 }
 
 
@@ -130,6 +124,12 @@ void Square::operator =(const Square& copy)
 
 }
 
+void
+Square::setState(SquareState &state)
+{
+	SquareState::operator=(state);
+}
+
 //-----------------------------------------------------------------------------
 // getRow()
 // Returns the row of the current square
@@ -145,4 +145,13 @@ int
 Square::getCol() const
 {
 	return square_col;
+}
+
+//-----------------------------------------------------------------------------
+// getState()
+// Returns the current state of this square
+SquareState
+Square::getState() const
+{
+	return *this;
 }

@@ -38,10 +38,12 @@ void callback(void *arg)
 
 void debugging()
 {
-   Square myguy(0,0);
-   myguy.registerCallback(&callback);
-   myguy.mark('1');
-   cout<<myguy<<endl; 
+   Board board;
+   board.printGUI(cout);
+   SquareState test;
+   test.mark('1');
+   board.sub(2,2).setState(test);
+   board.printGUI(cout);
 }
 
 //-----------------------------------------------------------------------------

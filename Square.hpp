@@ -57,10 +57,13 @@ class Square : public SquareState
 											  // the ostream
     virtual void operator=(const Square& copy);
 
+    void setState(SquareState &state);
+
 
     int getRow() const;		// returns the row of this Square
     int getCol() const;		// returns the column of this Square
 
+    SquareState getState() const; // returns the current state of this square
 
 };
 inline ostream& operator<<(ostream & out, Square &square)

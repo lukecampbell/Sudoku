@@ -5,6 +5,12 @@
 
 #include "SquareState.hpp"
 
+static void
+doNothing(void *)
+{
+	return;
+}
+
 //-----------------------------------------------------------------------------
 // SquareState()
 //
@@ -13,6 +19,7 @@ SquareState::SquareState()
 	state_value = '-';
 	state_bitmap=0x3FE;
 	state_count = 9;
+	registerCallback(&doNothing);
 }
 
 //-----------------------------------------------------------------------------
@@ -23,6 +30,7 @@ SquareState::SquareState(const SquareState &copy)
 	state_value = copy.state_value;
 	state_bitmap = copy.state_bitmap;
 	state_count = copy.state_count;
+	registerCallback(&doNothing);
 }
 
 
