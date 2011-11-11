@@ -22,7 +22,7 @@
 class Board
 {
   private:
-    Square     board[81];            // The board
+    Square     *board[81];            // The board
     ifstream   board_reader;         // reader for data
 	Cluster    *board_clusters[27];  // the clusters on the board
 

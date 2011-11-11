@@ -27,7 +27,7 @@ Board::Board()
 
 		for(int k=0;k<9;k++)
 			for(int x=0;x<9;x++)
-				board[9*k+x] = Square(k,x);
+				board[9*k+x] = new SquareState(k,x);
 
 		// What the above is really doing is this:
 		// board[9*k + x].operator=( &Square(k,x))
@@ -40,7 +40,7 @@ Board::Board()
 		{
 
 			for(int x=0;x<9;x++)
-				lineup[x] = &board[9*k + x];
+				lineup[x] = board[9*k + x];
 			board_clusters[k] =new Cluster(CLUSTER_ROW,lineup);
 			allocs++; // keep track of how many we alloc
 
@@ -53,7 +53,7 @@ Board::Board()
 		{
 
 			for(int x=0;x<9;x++)
-				lineup[x] = &board[x*9 + k];
+				lineup[x] = board[x*9 + k];
 			board_clusters[k+9] =new Cluster(CLUSTER_COL,lineup);
 			allocs++; // keep track of how many we alloc
 		}
@@ -68,7 +68,7 @@ Board::Board()
 			{   // Create each box using simple modular arithmetic
 				int row = (x / 3) + (3 * (k/3));
 				int col = (x % 3) + (3 * (k%3));
-				lineup[x] = &board[9 * row + col];
+				lineup[x] = board[9 * row + col];
 			}
 			board_clusters[k+18] = new Cluster(CLUSTER_BOX,lineup);
 			allocs++; // keep track of how many we alloc
@@ -124,7 +124,7 @@ Board::Board(const char *filename)
 
 		for(int k=0;k<9;k++)
 			for(int x=0;x<9;x++)
-				board[9*k+x] = Square(k,x);
+				board[9*k+x] = new SquareState(k,x);
 
 		//------------------------------------------------
 		// Allocate the clusters for each row
@@ -195,6 +195,8 @@ Board::~Board()
 	//------------------------------------------------
 	for(int k=0;k<27;k++)
 		delete board_clusters[k];
+	for(int k=0;k<81;k++)
+		delete board[k];
 
 	cout<<"Board is destroyed"<<endl;
 
@@ -242,7 +244,7 @@ ostream& Board::print(ostream& out)
     {
         for(int k=0;k<9;k++)
         {
-            out<<board[j*9 + k]<<endl;
+            out<<*board[j*9 + k]<<endl;
         }
         out<<endl;
     }
