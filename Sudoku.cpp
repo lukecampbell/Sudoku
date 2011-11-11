@@ -25,7 +25,7 @@
 int main(int argc, char *argv[])
 {
     banner();
-    debugging();
+    testTogether();
     bye();
     return 0;
 }

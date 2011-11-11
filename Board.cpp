@@ -126,6 +126,10 @@ Board::Board(const char *filename)
 			for(int x=0;x<9;x++)
 				board[9*k+x] = new SquareState(k,x);
 
+		// What the above is really doing is this:
+		// board[9*k + x].operator=( &Square(k,x))
+		// we need to do it this way...
+
 		//------------------------------------------------
 		// Allocate the clusters for each row
 		//------------------------------------------------
@@ -133,7 +137,7 @@ Board::Board(const char *filename)
 		{
 
 			for(int x=0;x<9;x++)
-				lineup[x] = &board[9*k + x];
+				lineup[x] = board[9*k + x];
 			board_clusters[k] =new Cluster(CLUSTER_ROW,lineup);
 			allocs++; // keep track of how many we alloc
 
@@ -146,7 +150,7 @@ Board::Board(const char *filename)
 		{
 
 			for(int x=0;x<9;x++)
-				lineup[x] = &board[x*9 + k];
+				lineup[x] = board[x*9 + k];
 			board_clusters[k+9] =new Cluster(CLUSTER_COL,lineup);
 			allocs++; // keep track of how many we alloc
 		}
@@ -161,7 +165,7 @@ Board::Board(const char *filename)
 			{   // Create each box using simple modular arithmetic
 				int row = (x / 3) + (3 * (k/3));
 				int col = (x % 3) + (3 * (k%3));
-				lineup[x] = &board[9 * row + col];
+				lineup[x] = board[9 * row + col];
 			}
 			board_clusters[k+18] = new Cluster(CLUSTER_BOX,lineup);
 			allocs++; // keep track of how many we alloc
@@ -181,7 +185,6 @@ Board::Board(const char *filename)
 
 		fatal(errmsg);
 	}
-
 }
 
 //-----------------------------------------------------------------------------
@@ -226,7 +229,7 @@ Square& Board::sub(int j, int k)
         //exit(1); //TODO Assign error codes
                  //TODO: throw an exception
     }
-    return board[9 * j + k];
+    return *board[9 * j + k];
 }
 
 

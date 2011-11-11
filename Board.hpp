@@ -12,6 +12,7 @@
 #include "Sudoku.hpp"
 #include "Cluster.hpp"
 #include "Square.hpp"
+#include "SquareState.hpp"
 // END INCLUDES AND MACROS //
 
 
