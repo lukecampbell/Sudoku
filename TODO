@@ -1,0 +1,12 @@
+./Board.cpp:37:    {   // TODO add a test to the test plan to test the filename
+./Board.cpp:40:        //exit(1);  //TODO Set standard exit codes for the application
+./Board.cpp:68:{   // TODO Add a test to the testplan for several index checks
+./Board.cpp:73:        //exit(1); // TODO assign error codes
+./Board.cpp:74:                 // TODO: throw an exception
+./Board.cpp:80:        //exit(1); //TODO Assign error codes
+./Board.cpp:81:                 //TODO: throw an exception
+./Cluster.cpp:63:        // TODO: Throw an error here for invalid char
+./Square.cpp:53:    //TODO I strongly recommend leaving this to the debuugging only
+./Square.cpp:103:        return; //TODO Throw exception illegal mark
+./Square.cpp:113:    if(n<1 || n>9)  // TODO throw exception
+./Square.cpp:133:        //TODO: Throw an error here for null pointer

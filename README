@@ -1,0 +1,48 @@
+Sudoku
+Lucas Campbell
+6 Sep 2011
+Project 1
+
+To compile with debugging trace and debugging information enabled use
+  $ ./enable-debug.sh
+
+To turn off debugging
+  $ ./disable-debug.sh
+
+Compiling:
+  $ make
+
+
+Debugging is disabled by default
+
+You should not receive any errors during make
+
+Running: 
+  $ ./Sudoku
+
+List of effective pages:
+  2-Board.pdf
+  Board.cpp
+  Board.hpp
+  disable-debug.sh
+  enable-debug.sh
+  INPUT
+  Makefile
+  NOTES
+  README
+  Square.cpp
+  Square.hpp
+  Sudoku.cpp
+  Sudoku.hpp
+  TESTPLAN
+  TESTPLAN-1.1-Error-Bad-Filename.output
+  TESTPLAN-1.2-Error-Bad-Subscript.output
+  TESTPLAN-1.3-Error-Bad-Subscript.output
+  TESTPLAN-1.4-Error-Bad-Subscript.output
+  TESTPLAN-1.5-Error-Marking-a-letter-in-a-square.output
+  TESTPLAN-2.1-Building-the-board-and-subscripting.output
+  TESTPLAN-3.1-Compounded-The-board-with-square-changes.output
+  TODO
+  tools.cpp
+  tools.hpp
+

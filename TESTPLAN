@@ -1,0 +1,39 @@
+
+First I want to load a preset game using a Sudoku puzzle I found online
+http://dingo.sbs.arizona.edu/~sandiway/sudoku/examples.html
+Arizone Daily Wildcat: Tuesday, Jan 17th 2006 (Easy)
+
+which is as follows:
++-+-+-+-+-+-+-+-+-+
+|-|-|-|2|6|-|7|-|1|
++-+-+-+-+-+-+-+-+-+
+|6|8|-|-|7|-|-|9|-|
++-+-+-+-+-+-+-+-+-+
+|1|9|-|-|-|4|5|-|-|
++-+-+-+-+-+-+-+-+-+
+|8|2|-|1|-|-|-|4|-|
++-+-+-+-+-+-+-+-+-+
+|-|-|4|6|-|2|9|-|-|
++-+-+-+-+-+-+-+-+-+
+|-|5|-|-|-|3|-|2|8|
++-+-+-+-+-+-+-+-+-+
+|-|-|9|3|-|-|-|7|4|
++-+-+-+-+-+-+-+-+-+
+|-|4|-|-|5|-|-|3|6|
++-+-+-+-+-+-+-+-+-+
+|7|-|3|-|1|8|-|-|-|
++-+-+-+-+-+-+-+-+-+
+
+Next I want to try to add a WRONG value to say Square[8,8] (lower right)
+and make sure that the shooping catches that it's not possible.  Secondly,
+I want to try to add the correct value which is Nine to that square.
+
+The code to 'load' the game is in Tests.cpp under testTogether() lines 165-193.
+
+the output and narrative is in TESTPLAN.out.
+
+On a side note it would be VERY simple to implement a simple heuristic solution to these puzzles the pseudo code would be something like:
+start:
+  check every square for only (1) possibility
+  mark the square appropriately
+while(!done && squres remain ) goto start

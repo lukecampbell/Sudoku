@@ -1,0 +1,6 @@
+Debug/
+*.a
+*.o
+sudoku
+*.swp
+.svn/
