@@ -28,28 +28,30 @@ class Cluster;
 // the row, column and value maintained within the square.
 class Square 
 {
-  private:
+  protected:
     char square_value;                 // Identifies the value inside the square
-    unsigned int  square_row;          // The current row and column for which this
-    unsigned int  square_col;          // square resides
     short int     square_count;        // Possibility Count
     unsigned short int square_bitmap;  // Bit map for used values
-    vector<Cluster *> square_clusters; // The cluster that the square belongs to
 
+
+  private:
+    vector<Cluster *> square_clusters; // The cluster that the square belongs to
+    unsigned int  square_row;          // The current row and column for which this
+    unsigned int  square_col;          // square resides
   public:
     Square(int row, int col);   // Initializes the Square with the specified
                                 // two values
     Square(const Square &copy); // Copy Constructor
     Square();                   // Default constructor
-    ~Square();          // Currently used for debugging
+    virtual ~Square();          // Currently used for debugging
 
 
-    void mark(char value);      // Store the value in the square
-    void turnOff(int n);        // Eliminate a possibility
-    void addCluster(Cluster *cluster);  // adds a cluster
-    ostream& print(ostream &) const;  // Prints the formatted text to the ostream
-    void operator=(const Square& copy);
-    char getValue() const;            // Gets the current value of square
+    virtual void mark(char value);      // Store the value in the square
+    virtual void turnOff(int n);        // Eliminate a possibility
+    virtual void addCluster(Cluster *cluster);  // adds a cluster
+    virtual ostream& print(ostream &) const;  // Prints the formatted text to the ostream
+    virtual void operator=(const Square& copy);
+    virtual char getValue() const;            // Gets the current value of square
 
 };
 inline ostream& operator<<(ostream & out, Square &square)

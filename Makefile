@@ -1,7 +1,7 @@
 CC=g++
 CPPFLAGS=-g -Wall -ggdb -ansi 
 LIBS=
-OBJECTS=Sudoku.o Square.o tools.o Board.o Cluster.o Tests.o
+OBJECTS=Sudoku.o Square.o tools.o Board.o Cluster.o Tests.o SquareState.o
 
 all: Sudoku
 
