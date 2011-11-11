@@ -6,3 +6,4 @@ Sudoku
 *.ko
 *.po
 *project
+*.swp
