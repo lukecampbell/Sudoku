@@ -62,7 +62,8 @@ Square::~Square()
 // print()
 // out - an ostream& for the desired output stream
 // returns a reference to an ostream with the formatted text
-ostream& Square::print(ostream& out) const
+ostream&
+Square::print(ostream& out) const
 {
 
     out<<"Square ["<<square_row<<","<<square_col<<"]: "
@@ -77,7 +78,8 @@ ostream& Square::print(ostream& out) const
 // Store a value in the Square
 // char value - the character to be in the square
 // no return
-void Square::mark(char value)
+void
+Square::mark(char value)
 {
 	SquareState::mark(value);
 	//------------------------------------------------
@@ -98,7 +100,8 @@ void Square::mark(char value)
 // adds a cluster to the list of clusters that the square belongs to
 // Cluster *cluster - The cluster to be added to the vector of clusters
 // no return
-void Square::addCluster(Cluster *cluster)
+void
+Square::addCluster(Cluster *cluster)
 {
     if(!cluster)
     {
@@ -114,7 +117,8 @@ void Square::addCluster(Cluster *cluster)
 //-----------------------------------------------------------------------------
 // operator=()
 // Copy Constructor
-void Square::operator =(const Square& copy)
+void
+Square::operator =(const Square& copy)
 {
 	SquareState::operator=(copy);
 	square_row = copy.square_row;
@@ -124,11 +128,6 @@ void Square::operator =(const Square& copy)
 
 }
 
-void
-Square::setState(SquareState &state)
-{
-	SquareState::operator=(state);
-}
 
 //-----------------------------------------------------------------------------
 // getRow()
@@ -154,4 +153,13 @@ SquareState
 Square::getState() const
 {
 	return *this;
+}
+
+//-----------------------------------------------------------------------------
+// setState()
+// assigns a state to this square
+void
+Square::setState(SquareState &state)
+{
+	SquareState::operator=(state);
 }

@@ -4,7 +4,9 @@
 // SquareState.cpp contains the definition for the SquareState class
 
 #include "SquareState.hpp"
-
+//-----------------------------------------------------------------------------
+// doNothing()
+// static function that performs no action, used as a place holder for callbacks
 static void
 doNothing(void *)
 {
@@ -34,12 +36,16 @@ SquareState::SquareState(const SquareState &copy)
 }
 
 
-
+//-----------------------------------------------------------------------------
+// ~SquareState()
+// Destructor
 SquareState::~SquareState()
 {
 
 }
-
+//-----------------------------------------------------------------------------
+// mark()
+// Marks a value into the square
 void
 SquareState::mark(char value)
 {
@@ -72,7 +78,9 @@ SquareState::mark(char value)
     return;
 
 }
-
+//-----------------------------------------------------------------------------
+// turnOff()
+// Removes a possibility from the list of possiblities for this square
 void
 SquareState::turnOff(int n)
 {
@@ -92,7 +100,9 @@ SquareState::turnOff(int n)
     }
 
 }
-
+//-----------------------------------------------------------------------------
+// possibilitiesString()
+// Returns a string of the remaining possibilities for this square
 string
 SquareState::possibilitiesString() const
 {
@@ -107,7 +117,9 @@ SquareState::possibilitiesString() const
 	}
 	return possibilities;
 }
-
+//-----------------------------------------------------------------------------
+// print()
+// Prints the state of this square
 ostream&
 SquareState::print(ostream &out) const
 {
@@ -117,7 +129,9 @@ SquareState::print(ostream &out) const
 
 	return out;
 }
-
+//-----------------------------------------------------------------------------
+// operator=()
+// Copies the state of (copy) into this square
 void
 SquareState::operator=(const SquareState &copy)
 {
@@ -125,19 +139,25 @@ SquareState::operator=(const SquareState &copy)
 	state_bitmap= copy.state_bitmap;
 	state_count = copy.state_count;
 }
-
+//-----------------------------------------------------------------------------
+// getValue()
+// Returns the current character value of this square
 char
 SquareState::getValue() const
 {
 	return state_value;
 }
-
+//-----------------------------------------------------------------------------
+// getCount()
+// Returns the remaining possibilities for this square
 int
 SquareState::getCount() const
 {
 	return state_count;
 }
-
+//-----------------------------------------------------------------------------
+// registerCallback()
+// Registers an event handler for when this square's state changes
 void
 SquareState::registerCallback(eventHandler callback)
 {
