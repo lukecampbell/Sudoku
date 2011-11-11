@@ -47,9 +47,9 @@ class Square
     void mark(char value);      // Store the value in the square
     void turnOff(int n);        // Eliminate a possibility
     void addCluster(Cluster *cluster);  // adds a cluster
-    ostream& print(ostream &);  // Prints the formatted text to the ostream
+    ostream& print(ostream &) const;  // Prints the formatted text to the ostream
     void operator=(const Square& copy);
-    char getValue();            // Gets the current value of square
+    char getValue() const;            // Gets the current value of square
 
 };
 inline ostream& operator<<(ostream & out, Square &square)

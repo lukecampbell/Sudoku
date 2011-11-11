@@ -68,7 +68,7 @@ Square::~Square()
 // print()
 // out - an ostream& for the desired output stream
 // returns a reference to an ostream with the formatted text
-ostream& Square::print(ostream& out)
+ostream& Square::print(ostream& out) const
 {
     string possibilities;
     // Traverse the bitmap for possibilities make a string
@@ -184,7 +184,7 @@ void Square::operator =(const Square& copy)
 //-----------------------------------------------------------------------------
 // getValue()
 // Returns the value of Square
-char Square::getValue()
+char Square::getValue() const
 {
 	return square_value;
 }
