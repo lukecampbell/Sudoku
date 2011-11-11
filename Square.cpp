@@ -78,19 +78,20 @@ Square::print(ostream& out) const
 // Store a value in the Square
 // char value - the character to be in the square
 // no return
-void
+bool
 Square::mark(char value)
 {
-	SquareState::mark(value);
+   bool ret = SquareState::mark(value);
 	//------------------------------------------------
 	// Shoop it!
 	//------------------------------------------------
-	if(value>='1' && value<='9')
+	if(ret)
 	{
 		vector<Cluster *>::iterator it;
 		for(it = square_clusters.begin();it<square_clusters.end();it++)
 				(*it)->shoop(this,value);
 	}
+   return ret;
 
 }
 

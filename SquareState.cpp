@@ -46,7 +46,7 @@ SquareState::~SquareState()
 //-----------------------------------------------------------------------------
 // mark()
 // Marks a value into the square
-void
+bool
 SquareState::mark(char value)
 {
     if(value=='-')
@@ -64,18 +64,21 @@ SquareState::mark(char value)
     	{
     		cerr<<*this<<endl
     		    <<"Cannot set to "<<value<<": Illegal mark"<<endl;
-    		return;
+    		return false;
     	}
     	state_value = value;
     	state_callback(this);
 
     }
     else
+    {
     		cerr<<" Attempted to set an illegal value";
+         return false;
+    }
     	// TODO: Throw an exception for illegal mark
 
 
-    return;
+    return true;
 
 }
 //-----------------------------------------------------------------------------

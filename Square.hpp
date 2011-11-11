@@ -50,7 +50,7 @@ class Square : public SquareState
     virtual ~Square();          // Currently used for debugging
 
 
-    virtual void mark(char value);      // Store the value in the square
+    virtual bool mark(char value);      // Store the value in the square
 
     virtual void addCluster(Cluster *cluster);  // adds a cluster
     virtual ostream& print(ostream &) const;  // Prints the formatted text to

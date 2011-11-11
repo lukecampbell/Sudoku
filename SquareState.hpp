@@ -28,7 +28,7 @@ class SquareState
 
 	virtual ~SquareState();
 
-	virtual void mark(char value);
+	virtual bool mark(char value);
 	virtual void turnOff(int n);
 	string possibilitiesString() const; // A string of the possibilities
 	virtual ostream& print(ostream &) const;
