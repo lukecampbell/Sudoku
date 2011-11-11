@@ -6,14 +6,27 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <iostream>
+#include <stack>
 #include "Board.hpp"
+#include "SquareState.hpp"
+
+using namespace std;
+
+
 
 class Game
 {
 private:
     Board board;
+    ifstream input; // the file loaded which contains the game
+    stack<Frame *> frames;
 
 public:
+    Game();
+    Game(const string &filename);
+    ~Game(); // I do not intend to derive from this class
+
 
 };
 

@@ -117,8 +117,7 @@ string SquareState::possibilitiesString() const
 //-----------------------------------------------------------------------------
 // print()
 // Prints the state of this square
-ostream&
-SquareState::print(ostream &out) const
+ostream& SquareState::print(ostream &out) const
 {
     out << "SquareState: " << state_value << " (" << state_count << ")"
             << possibilitiesString() << endl;

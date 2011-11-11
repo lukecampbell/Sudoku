@@ -286,4 +286,13 @@ ostream& Board::printGUI(ostream& out)
 	    return out;
 }
 
-
+//-----------------------------------------------------------------------------
+// saveState()
+// Saves the current frame
+void Board::saveState(Frame *frame)
+{
+    for(int k=0;k<81;k++)
+    {
+        frame->states[k] = sub(k/9,k%9);
+    }
+}

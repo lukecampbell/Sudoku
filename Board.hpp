@@ -16,6 +16,10 @@
 // END INCLUDES AND MACROS //
 
 
+struct Frame
+{
+    SquareState states[81];
+};
 
 //-----------------------------------------------------------------------------
 // Board class
@@ -37,6 +41,8 @@ class Board
     ostream& print(ostream& out); // Prints the board
 
     ostream& printGUI(ostream& out); // Prints formatted GUI board
+
+    void saveState(Frame *);
 
 };
 inline ostream& operator<<(ostream& out,Board& b)
