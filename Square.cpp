@@ -188,3 +188,15 @@ char Square::getValue() const
 {
 	return square_value;
 }
+
+int
+Square::getRow() const
+{
+	return square_row;
+}
+
+int
+Square::getCol() const
+{
+	return square_col;
+}

@@ -8,6 +8,7 @@
 //   INCLUDES AND MACROS  //
 #include "Sudoku.hpp"
 #include "Board.hpp"
+#include "SquareState.hpp"
 
 #include <sys/types.h>
 #include <regex.h>
@@ -24,19 +25,24 @@
 int main(int argc, char *argv[])
 {
     banner();
-    testTogether();
+    debugging();
     bye();
     return 0;
 }
 
 
 
-
+void debugging()
+{
+   SquareState myguy(0,0);
+   myguy.mark('1');
+   cout<<myguy<<endl; 
+}
 
 //-----------------------------------------------------------------------------
 // debugging()
 // General debugging environment()
-void debugging()
+void boardInterface()
 {
 #ifdef __DEBUG__
     DEBUG_CALL(debugging(),__LINE__);

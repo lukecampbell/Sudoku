@@ -22,9 +22,9 @@ SquareState::SquareState()
 SquareState::SquareState(const Square &copy)
 :Square(copy)
 {
-	state_value = copy.square_value;
-	state_bitmap = copy.square_bitmap;
-	state_count = copy.square_count;
+	state_value = square_value;
+	state_bitmap = square_value;
+	state_count = square_count;
 }
 
 
@@ -46,29 +46,48 @@ SquareState::mark(char value)
 {
 	Square::mark(value);
 	state_value = square_value;
+	state_bitmap = square_bitmap;
+	state_count = square_count;
 
 }
 
 void
 SquareState::turnOff(int n)
 {
+	Square::turnOff(n);
+	state_value = square_value;
+	state_bitmap = square_value;
+	state_count = square_count;
 
 }
 
 ostream&
 SquareState::print(ostream &out) const
 {
+	string possibilities;
+	for(int k=1;k<=9;k++)
+	{
+		unsigned short int bit = (state_bitmap >> k) & 0x01;
+		if(bit==0)
+			possibilities+=' ';
+		else
+			possibilities+=k+'0';
+	}
+	out<<"SquareState: ["<<getRow()<<","<<getCol()<<"]: "
+		<<state_value
+		<<" Possibilities: ("
+		<<state_count<<") "
+		<<possibilities;
+
 	return out;
 }
 
 void
 SquareState::operator=(const Square &copy)
 {
-
+	Square::operator=(copy);
+	state_value = square_value;
+	state_bitmap = square_value;
+	state_count = square_count;
 }
 
-void
-SquareState::operator=(const SquareState& copy)
-{
-
-}

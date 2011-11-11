@@ -52,6 +52,8 @@ class Square
     virtual ostream& print(ostream &) const;  // Prints the formatted text to the ostream
     virtual void operator=(const Square& copy);
     virtual char getValue() const;            // Gets the current value of square
+    int getRow() const;
+    int getCol() const;
 
 };
 inline ostream& operator<<(ostream & out, Square &square)
