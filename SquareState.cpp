@@ -46,7 +46,7 @@ SquareState::~SquareState()
 // Marks a value into the square
 bool SquareState::mark(char value)
 {
-    if (value == '-')
+    if (value == '-' || value == '0')
     {
         state_value = '-';
         state_callback(this);

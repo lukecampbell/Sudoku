@@ -9,6 +9,7 @@
 #include "Sudoku.hpp"
 #include "Board.hpp"
 #include "SquareState.hpp"
+#include "Game.hpp"
 
 #include <sys/types.h>
 #include <regex.h>
@@ -35,12 +36,9 @@ void callback(void *arg)
 
 void debugging()
 {
-    Board board;
-    board.printGUI(cout);
-    SquareState test;
-    test.mark('1');
-    board.sub(2, 2).setState(test);
-    board.printGUI(cout);
+    Game newGame("output.sudoku");
+    newGame.loadGame();
+    cout << newGame << endl;
 }
 
 //-----------------------------------------------------------------------------

@@ -21,13 +21,23 @@ private:
     Board board;
     ifstream input; // the file loaded which contains the game
     stack<Frame *> frames;
+    void pushFrame();
 
 public:
     Game();
     Game(const string &filename);
     ~Game(); // I do not intend to derive from this class
 
+    void loadGame();
+    void saveGame(const string&);
+    ostream& print(ostream &);
+
 
 };
+
+inline ostream& operator<<(ostream &out, Game &game)
+{
+    return game.print(out);
+}
 
 #endif /* GAME_HPP_ */
