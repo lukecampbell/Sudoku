@@ -22,6 +22,7 @@ private:
     ifstream input; // the file loaded which contains the game
     stack<Frame *> frames;
     void pushFrame();
+    void popFrame();
 
 public:
     Game();
@@ -32,6 +33,9 @@ public:
     void saveGame(const string&);
     ostream& print(ostream &);
 
+    void changeSquare();
+    void getSquare();
+    void run();
 
 };
 

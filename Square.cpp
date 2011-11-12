@@ -59,7 +59,7 @@ ostream&
 Square::print(ostream& out) const
 {
 
-    out << "Square [" << square_row << "," << square_col << "]: "
+    out << "Square [" << square_row + 1 << "," << square_col + 1 << "]: "
             << state_value << " Possibilities: (" << state_count << ") "
             << possibilitiesString();
     return out;
@@ -142,4 +142,30 @@ SquareState Square::getState() const
 void Square::setState(SquareState &state)
 {
     SquareState::operator=(state);
+}
+
+//-----------------------------------------------------------------------------
+// makeClusters()
+// Makes the clusters, for use as a library function
+// initiates the relationship between the clusters and the squares
+void Square::makeClusters(Square *squares[81])
+{
+    Square *squareRow[9];
+    Square *squareCol[9];
+    Square *squareBox[9];
+    Cluster *clusters[27];
+    for (int x = 0; x < 9; x++)
+    {
+        for (int y = 0; y < 9; y++)
+        {
+            int row = (y / 3) + (3 * (x / 3));
+            int col = (y % 3) + (3 * (y % 3));
+            squareRow[y] = squares[9 * x + y];
+            squareCol[y] = squares[9 * y + x];
+            squareBox[y] = squares[9 * row + col];
+        }
+        clusters[x] = new Cluster(CLUSTER_ROW, squareRow);
+        clusters[x + 9] = new Cluster(CLUSTER_COL, squareCol);
+        clusters[x + 18] = new Cluster(CLUSTER_BOX, squareBox);
+    }
 }

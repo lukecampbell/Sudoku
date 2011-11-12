@@ -266,15 +266,20 @@ ostream& Board::print(ostream& out)
 // ostream& - The ostream that has been printed is returned
 ostream& Board::printGUI(ostream& out)
 {
+    out<<endl;
+    out<<"   1 2 3 4 5 6 7 8 9"<<endl;
     for (int j = 0; j < 9; j++)
     {
+        out<<"  ";
         for (int k = 0; k < 9; k++)
             out << "+-";
         out << "+" << endl;
+        out<<j+1<<" ";
         for (int k = 0; k < 9; k++)
             out << "|" << this->sub(j, k).getValue();
         out << "|" << endl;
     }
+    out<<"  ";
     for (int k = 0; k < 9; k++)
         out << "+-";
     out << "+" << endl;
