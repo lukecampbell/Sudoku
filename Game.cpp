@@ -54,9 +54,9 @@ void Game::pushFrame()
 void Game::popFrame()
 {
     Frame *frame;
-    if(frames.empty())
+    if (frames.empty())
     {
-        cerr<<"Frame stack is empty"<<endl;
+        cerr << "Frame stack is empty" << endl;
         return;
     }
     frame = frames.top();
@@ -78,7 +78,9 @@ void Game::loadGame()
         frame->states[k].mark(c);
     }
     board.restoreState(frame);
+
     frames.push(frame);
+
 }
 //-----------------------------------------------------------------------------
 // saveGame()
@@ -106,8 +108,7 @@ ostream& Game::print(ostream &out)
 static void printMenu()
 {
     cout << "Enter a choice: " << endl << "\t(1) Print Board" << endl
-            << "\t(2) Go Back" << endl
-            << "\t(3) Change a Square" << endl
+            << "\t(2) Go Back" << endl << "\t(3) Change a Square" << endl
             << "\t(4) Get Square " << endl << "\t(5) Quit " << endl;
 
 }
@@ -184,7 +185,11 @@ void Game::changeSquare()
     }
     cout << "Enter the value: ";
     cin >> val;
+
+    // Push the frame
+
     pushFrame();
-    if(!board.sub(r - '1', c - '1').mark(val))
+    if (!board.sub(r - '1', c - '1').mark(val))
+        // the Mark is illegal and so we go back
         popFrame();
 }

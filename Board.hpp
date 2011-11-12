@@ -44,6 +44,7 @@ public:
     void saveState(Frame *);
     void restoreState(Frame *);
 
+
 };
 inline ostream& operator<<(ostream& out, Board& b)
 {

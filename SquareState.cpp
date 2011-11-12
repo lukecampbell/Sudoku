@@ -53,14 +53,18 @@ bool SquareState::mark(char value)
     }
     //------------------------------------------------
     // Check to see if we are allowed to set it
+    // If we aren't set it anyway and let ppl know
+    // and return false
     //------------------------------------------------
     else if (value >= '1' && value <= '9')
     {
         unsigned short int mask = 0x01 << (value - '0');
         if ((state_bitmap & mask) == 0)
         {
-            cerr << *this << endl << "Cannot set to " << value
-                    << ": Illegal mark" << endl;
+            cerr << "Setting an illegal mark: " << endl << *this << endl
+                    << " is set to " << value;
+            state_value = value;
+            state_callback(this);
             return false;
         }
         state_value = value;

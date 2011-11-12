@@ -37,6 +37,7 @@ void callback(void *arg)
 void debugging()
 {
     Game newGame("saved.sudoku");
+
     cout<<newGame<<endl;
     newGame.run();
 }
