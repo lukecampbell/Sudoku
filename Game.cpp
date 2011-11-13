@@ -95,6 +95,7 @@ void Game::loadGame(const string& filename)
 void Game::saveGame(const string &filename)
 {
     Frame *currentFrame;
+    pushFrame(); // Push the frame so that we may go back to it etc.
     ofstream output(filename.c_str(), ofstream::out);
     if (frames.empty())
         return;
