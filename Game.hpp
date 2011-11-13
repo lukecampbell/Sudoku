@@ -14,7 +14,9 @@
 using namespace std;
 
 
-
+// A class to model the and encapsulate the sudoku objects into an
+// interactive game with the ability to save and restore game states
+// and go backward to previous states.
 class Game
 {
 private:
@@ -24,21 +26,43 @@ private:
     void pushFrame();
     void popFrame();
 
-public:
-    Game();
-    Game(const string &filename);
-    ~Game(); // I do not intend to derive from this class
+    void printMenu();
+    void printGameSubMenu();
 
-    void loadGame();
+public:
+    // Builds a blank game
+    Game();
+    // Builds a game using the specified file
+    Game(const string &filename);
+
+    // Frees all the frames in the stack
+    ~Game();
+
+    // Starts a blank new game
+    void newGame();
+
+
+    // Loads a game from the specified file
+    void loadGame(const string&);
+
+    // Saves the current game state to the specified filename
     void saveGame(const string&);
+
+    // Prints the current board state graphically
     ostream& print(ostream &);
 
+    // interactive method to change a square's state
     void changeSquare();
+
+    // interactive method to retrieve a square's state
     void getSquare();
+
+    // main application loop
+    // run() loops and interacts with the user
     void run();
 
 };
-
+// Overloaded operator to allow easy output
 inline ostream& operator<<(ostream &out, Game &game)
 {
     return game.print(out);

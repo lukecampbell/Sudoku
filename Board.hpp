@@ -14,7 +14,7 @@
 #include "SquareState.hpp"
 // END INCLUDES AND MACROS //
 
-
+// A structure to hold the 81 Square's states
 struct Frame
 {
     SquareState states[81];
@@ -32,16 +32,21 @@ private:
 
 
 public:
-    Board(); // Default Constructor
-    Board(const char *filename); // Initializes
-    ~Board(); // For debugging purposes only as of yet
-    Square& sub(int j, int k); // Subscript for a Square member
-
+    // Default Constructor
+    Board();
+    // Loads the board based on the input
+    Board(const char *filename);
+    // For debugging purposes only as of yet
+    ~Board();
+    // Subscript for a square member
+    Square& sub(int j, int k);
+    // Prints the board (square by square)
     ostream& print(ostream& out); // Prints the board
-
-    ostream& printGUI(ostream& out); // Prints formatted GUI board
-
+    // Prints the graphical board
+    ostream& printGUI(ostream& out);
+    // Saves the current board's state to the frame
     void saveState(Frame *);
+    // Restores the board's state from the designated frame
     void restoreState(Frame *);
 
 

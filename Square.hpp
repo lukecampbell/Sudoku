@@ -23,7 +23,7 @@ using namespace std;
 
 class Cluster;
 
-// This is an event handler callback for the interface
+
 
 
 //-----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ public:
 
     SquareState getState() const; // returns the current state of this square
     void setState(SquareState &state); // sets the state of this square
-    static void makeClusters(Square *squares[81]);
+
 
 };
 inline ostream& operator<<(ostream & out, Square &square)

@@ -20,9 +20,7 @@ Game::Game()
 // Constructs a game and loads a file from filename
 Game::Game(const string &filename)
 {
-    input.open(filename.c_str(), ifstream::in);
-    if (!input.fail())
-        loadGame();
+    loadGame(filename);
 
 }
 //-----------------------------------------------------------------------------
@@ -56,7 +54,7 @@ void Game::popFrame()
     Frame *frame;
     if (frames.empty())
     {
-        cerr << "Frame stack is empty" << endl;
+        cerr << "Can't go back any futher" << endl;
         return;
     }
     frame = frames.top();
@@ -67,9 +65,19 @@ void Game::popFrame()
 
 //-----------------------------------------------------------------------------
 // loadGame()
-// As the name suggests
-void Game::loadGame()
+// Loads a game state from the specified filename
+void Game::loadGame(const string& filename)
 {
+    if(input.is_open())
+        input.close();
+    input.open(filename.c_str(),ifstream::in);
+    if(input.fail())
+    {
+        cout<<"File: " << filename <<endl;
+        cout<<"Load failed"<<endl;
+
+        return;
+    }
     Frame *frame = new Frame;
     for (int k = 0; k < 81; k++)
     {
@@ -80,7 +88,6 @@ void Game::loadGame()
     board.restoreState(frame);
 
     frames.push(frame);
-
 }
 //-----------------------------------------------------------------------------
 // saveGame()
@@ -99,20 +106,88 @@ void Game::saveGame(const string &filename)
 
 }
 
+//-----------------------------------------------------------------------------
+// print()
+// Prints the current graphical board
 ostream& Game::print(ostream &out)
 {
     board.printGUI(out);
     return out;
 }
-
-static void printMenu()
+//-----------------------------------------------------------------------------
+// newGame()
+// Pushes the current frame then clears the board
+void Game::newGame()
 {
-    cout << "Enter a choice: " << endl << "\t(1) Print Board" << endl
-            << "\t(2) Go Back" << endl << "\t(3) Change a Square" << endl
-            << "\t(4) Get Square " << endl << "\t(5) Quit " << endl;
+    pushFrame();
+    for(int i=0;i<81;i++)
+    {
+        board.sub(i/9,i%9).mark('-');
+    }
 
 }
+//-----------------------------------------------------------------------------
+// printMenu()
+// Displays a selection menu
+void Game::printMenu()
+{
+    cout<<" Game Menu "<<endl
+        <<" \\__ (1) Print Board" <<endl
+        <<" \\__ (2) Go Back" <<endl
+        <<" \\__ (3) Change a Square" <<endl
+        <<" \\__ (4) Get Square" <<endl
+        <<" \\__ (5) Game Option" <<endl
+        <<" \\__ (6) Quit" <<endl;
 
+}
+//-----------------------------------------------------------------------------
+// printGameSubMenu()
+// Displays and accepts user input for the Game submenu
+// which includes saving, loading and a new game
+void Game::printGameSubMenu()
+{
+    char input;
+    string buffer;
+    // The menu to be displayed
+    cout<<"\t\\__ (1) New Game" << endl
+        <<"\t\\__ (2) Save Game" << endl
+        <<"\t\\__ (3) Load Game " << endl
+        <<"\t\\__ (4) Go Back" <<endl;
+    cout<<"Enter a choice: ";
+    cin>>input;
+
+    // Handle the user's response
+    switch(input)
+    {
+    case '1': // New Game
+        newGame();
+        cout<<"New game"<<endl;
+        cout<<*this<<endl;
+        break;
+    case '2': // Save Game
+        cout<<"Save Game"<<endl;
+        cout<<"Enter filename: ";
+        cin.get(); // clears newline in buffer
+        getline(cin,buffer);
+        saveGame(buffer);
+        cout<<*this<<endl;
+        break;
+    case '3':  // Load Game
+        cout<<"Load Game"<<endl;
+        cout<<"Enter filename: ";
+        cin.get(); // clears the newline
+        getline(cin,buffer);
+        loadGame(buffer);
+        cout<<*this<<endl;
+        break;
+    default: // Go back
+        return;
+    }
+}
+//-----------------------------------------------------------------------------
+// run()
+// The main loop which interacts with the user prompting actions and displaying
+// the interfaces
 void Game::run()
 {
     char choice;
@@ -120,31 +195,36 @@ void Game::run()
     do
     {
         printMenu();
-        cout << "Enter a choice: " << endl;
+        cout << "Enter a choice: ";
         cin >> choice;
         switch (choice)
         {
-        case '1':
+        case '1': // Print Board
             cout << *this << endl;
             break;
-        case '2':
+        case '2': // Go back
             popFrame();
             cout << *this << endl;
             break;
-        case '3':
+        case '3': // Change a Square
             changeSquare();
             cout << *this << endl;
             break;
-        case '4':
+        case '4': // Get A Square
             getSquare();
             break;
-
+        case '5': // Game Submenu
+            printGameSubMenu();
+            break;
         default:
             return;
         }
-    } while (choice >= '1' && choice <= '4');
+    } while (choice >= '1' && choice <= '5');
 }
-
+//-----------------------------------------------------------------------------
+// getSquare()
+// An interactive method to retrieve the Square's state based on the user's
+// responses
 void Game::getSquare()
 {
     char r, c;
@@ -165,7 +245,10 @@ void Game::getSquare()
     cout << board.sub(r - '1', c - '1') << endl;
 
 }
-
+//-----------------------------------------------------------------------------
+// chagneSquare()
+// Allows the user to change the state of a desired square based on user's
+// response
 void Game::changeSquare()
 {
     char r, c, val;

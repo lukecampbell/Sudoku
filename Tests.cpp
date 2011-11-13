@@ -7,6 +7,18 @@
 #include "Square.hpp"
 #include "Board.hpp"
 #include "Cluster.hpp"
+#include "Game.hpp"
+
+//-----------------------------------------------------------------------------
+// testGameRun()
+// This test is the compilation of all tests
+// loads a known sudoku puzzle provided with this project
+void testGameRun()
+{
+    Game newGame("saved.sudoku");
+    cout<<newGame<<endl;
+    newGame.run();
+}
 
 //-----------------------------------------------------------------------------
 // testSquare()

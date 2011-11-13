@@ -18,6 +18,7 @@
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
+void testGameRun(); // Test the Game class and all other classes
 void testSquare(); // Test the Square class
 void testBoard(); // Test the Board class
 void testCluster(); // Test clusters
