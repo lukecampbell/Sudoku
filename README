@@ -3,6 +3,14 @@ Lucas Campbell
 11 Nov 2011
 Project 5
 
+
+To get the most current version of this use git
+git clone git://github.com/lukecampbell/Sudoku.git Sudoku
+
+To view the changes and logs for this repo
+https://github.com/lukecampbell/Sudoku/
+
+
 To compile with debugging trace and debugging information enabled use
   $ ./enable-debug.sh
 

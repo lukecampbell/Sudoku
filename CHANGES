@@ -1,2 +1,137 @@
-Makefile:
-	Used pattern matching to successfully compile.
+commit 1706d6d054b394ad944a086682e4e70a31317870
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 13 15:02:21 2011 -0500
+
+    Cleaning tree structure for production deployment
+
+commit 476b642b478973b779e59431c87837bc435d6edb
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 13 14:53:16 2011 -0500
+
+    Fixed saveGame() bug
+
+commit f1de1e9d5baceef38b9c1098c9707bb6c2bb80ed
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 13 14:39:11 2011 -0500
+
+    More comments and refactoring
+
+commit 8fef42061ba66a1bb4cdf6c630420ac95ae015a5
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 12 20:48:31 2011 -0500
+
+    -
+
+commit 50e40d4b6125c5a301ab36d2e4f5daf8617c326f
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 12 19:17:19 2011 -0500
+
+    removed marking from actually setting value again
+
+commit 7854b0653dbf4f331012c48585c5b9632745ee94
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 12 15:22:59 2011 -0500
+
+    changed SquareState::mark to allow for illegal sets BUT returns false, before it wouldn't mark it
+
+commit 0acc29c38bc463e107f7d038168a09b291561fce
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 12 15:10:21 2011 -0500
+
+    more progress
+
+commit 11c29c27229ec1960afd5bb4e27291a98a3e47a1
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 18:38:43 2011 -0500
+
+    state manipulations
+
+commit a64498fa33352d1d496a0e521af8d0a9b9314a92
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 17:24:35 2011 -0500
+
+    addded Game class and Frame
+
+commit de37b0cee1ebbea2edf50405a371a7f2d9604ee5
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 16:28:39 2011 -0500
+
+    cleaned up all the code
+
+commit 0251a576a8217b2cb7e2d4ebe5b32b4671ff0bf5
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 15:26:42 2011 -0500
+
+    cleaned up swp
+
+commit c393f49df55664bbc910661d0c40b189a5586bce
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 15:26:15 2011 -0500
+
+    changed mark to a bool
+
+commit ba9b062599a1e2f3875b8f81b30037fa8d7c7cdf
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 15:06:30 2011 -0500
+
+    neater commented code
+
+commit 48bfd28b4d248bbe87c7760c8b7b21b076389e1e
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 14:57:20 2011 -0500
+
+    Fixed the callback segfault bug and added Square::getState and Square::setState
+
+commit b3dd77621a7fb3bd9ec433b2cb461250e886eb4e
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 14:33:06 2011 -0500
+
+    Major refactoring
+
+commit b19272ec72775ecd9b3d65edc7ee75b8cc5cdd50
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 13:59:18 2011 -0500
+
+    added a callback for a change in a Square's value
+
+commit 91be5a9f2134b0225bad92448ce89c167bb4b688
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 13:33:31 2011 -0500
+
+    more pointer fixes
+
+commit 7bea5176b76ebdb635e71363b07fcf85cbca527d
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 13:30:17 2011 -0500
+
+    board pointer
+
+commit 2ef91fca70ded261bd321e279ed0d01c9da5cfca
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 13:20:30 2011 -0500
+
+    grrr
+
+commit 138f4ee03c8178715147d1ec75d25d78aac700f9
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 13:01:17 2011 -0500
+
+    more stuff
+
+commit 237bdb639314188d45720f725e3c524aeb66c21e
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 12:27:14 2011 -0500
+
+    const
+
+commit 41a6a5e3509446a4b4ca98a71c7962dcdaf1e6f3
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 11:35:06 2011 -0500
+
+    gitignore
+
+commit 33595f5548b86f93a98d99f979c820f4d3b6f4ee
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 11 11:29:32 2011 -0500
+
+    initial commit
