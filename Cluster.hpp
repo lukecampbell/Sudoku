@@ -27,6 +27,7 @@ private:
     static const char *cluster_type_string[3];    // for the string enumeration
     ClusterType cluster_type;          // The type of the cluster
     Square *cluster_group[9];        // Squares in the cluster
+    int references[9];              // keep track of what numbers are used
 
 
 public:
@@ -35,6 +36,7 @@ public:
     ~Cluster();                                     // destructor
     ostream& print(ostream &out);                   // prints Cluster info
     void shoop(Square *s, char val);                // shoops a given square
+    void unshoop(Square *s, char val);
 };
 inline ostream& operator<<(ostream& out,Cluster &c)
 {

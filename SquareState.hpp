@@ -30,6 +30,7 @@ public:
 
     virtual bool mark(char value);
     virtual void turnOff(int n);
+    virtual void turnOn(int n);
     string possibilitiesString() const; // A string of the possibilities
     virtual ostream& print(ostream &) const;
     virtual void operator=(const SquareState& copy);

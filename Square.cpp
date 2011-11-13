@@ -71,7 +71,19 @@ Square::print(ostream& out) const
 // no return
 bool Square::mark(char value)
 {
+    char val = state_value;
     bool ret = SquareState::mark(value);
+    //------------------------------------------------
+    // Unshoop old value
+    //------------------------------------------------
+    if(ret && (val!='-'))
+    {
+        vector<Cluster *>::iterator it;
+        for(it = square_clusters.begin();it<square_clusters.end();it++)
+        {
+            (*it)->unshoop(this,val);
+        }
+    }
     //------------------------------------------------
     // Shoop it!
     //------------------------------------------------

@@ -48,9 +48,12 @@ bool SquareState::mark(char value)
 {
     if (value == '-' || value == '0')
     {
+        if(state_value!='-')
+           turnOn(state_value-'0');
         state_value = '-';
         state_callback(this);
-        return false; //non value
+        
+        return true; //non value
     }
     //------------------------------------------------
     // Check to see if we are allowed to set it
@@ -64,6 +67,8 @@ bool SquareState::mark(char value)
                     << endl << *this << endl;
             return false;
         }
+        if(state_value != '-')
+            turnOn(state_value-'0');
         state_value = value;
         state_callback(this);
 
@@ -99,6 +104,18 @@ void SquareState::turnOff(int n)
     }
 
 }
+void SquareState::turnOn(int n)
+{
+    unsigned short int mask;
+    if(n<1 || n>9)
+        return;
+    mask = 0x01 <<n;
+    state_bitmap = state_bitmap | mask;
+    if(state_count<9)
+        state_count++;
+}
+
+
 //-----------------------------------------------------------------------------
 // possibilitiesString()
 // Returns a string of the remaining possibilities for this square
