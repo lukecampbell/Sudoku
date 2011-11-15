@@ -46,7 +46,7 @@ SquareState::~SquareState()
 // Marks a value into the square
 bool SquareState::mark(char value)
 {
-    if (value == '-' || value == '0')
+    if (value == '-' || value == '0' || value==' ')
     {
         if(state_value!='-')
            turnOn(state_value-'0');
@@ -74,7 +74,7 @@ bool SquareState::mark(char value)
 
     } else
     {
-        cerr << " Attempted to set an illegal value";
+        cerr << " Attempted to set an illegal value ("<< value << ")" << endl;
         return false;
     }
     // TODO: Throw an exception for illegal mark

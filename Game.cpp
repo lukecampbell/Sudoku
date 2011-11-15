@@ -73,11 +73,12 @@ void Game::loadGame(const string& filename)
     input.open(filename.c_str(),ifstream::in);
     if(input.fail())
     {
-        cout<<"File: " << filename <<endl;
-        cout<<"Load failed"<<endl;
+        cerr<<"File: " << filename <<endl;
+        cerr<<"Load failed"<<endl;
 
         return;
     }
+    newGame();
     Frame *frame = new Frame;
     for (int k = 0; k < 81; k++)
     {
@@ -87,6 +88,46 @@ void Game::loadGame(const string& filename)
     }
     board.restoreState(frame);
 
+    frames.push(frame);
+}
+//-----------------------------------------------------------------------------
+// loadGame2()
+// Loads a file of an alternative type
+void Game::loadGame2(const string& filename)
+{
+    if(input.is_open())
+        input.close();
+    input.open(filename.c_str(), ifstream::in);
+    if(input.fail())
+    {
+        cerr<<"File: "<<filename<<endl;
+        cerr<<"Load failed"<<endl;
+        return;
+    }
+    newGame();
+    Frame *frame = new Frame;
+    for(int x=0;x<9 && !input.eof();x++)
+    {
+        string line;
+        getline(input,line);
+        for(int y=0;y<9;y++)
+        {
+            char c = line[y];
+            frame->states[x*9 + y].mark(c);
+        }
+        cout<<line<<endl;
+    }
+    if(!input.eof())
+    {
+        string comments;
+        while(!input.eof())
+        {
+            getline(input,comments);
+            cout<<comments<<endl;
+        }
+    }
+    cout<<"----File Loaded------"<<endl;
+    board.restoreState(frame);
     frames.push(frame);
 }
 //-----------------------------------------------------------------------------
@@ -178,7 +219,7 @@ void Game::printGameSubMenu()
         cout<<"Enter filename: ";
         cin.get(); // clears the newline
         getline(cin,buffer);
-        loadGame(buffer);
+        loadGame2(buffer);
         cout<<*this<<endl;
         break;
     default: // Go back

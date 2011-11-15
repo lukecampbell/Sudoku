@@ -10,6 +10,7 @@
 #include <stack>
 #include "Board.hpp"
 #include "SquareState.hpp"
+#include "SudokuStack.hpp"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class Game
 private:
     Board board;
     ifstream input; // the file loaded which contains the game
-    stack<Frame *> frames;
+    SudokuStack<Frame *> frames;
     void pushFrame();
     void popFrame();
 
@@ -44,6 +45,9 @@ public:
 
     // Loads a game from the specified file
     void loadGame(const string&);
+
+    // Support for alternative file types
+    void loadGame2(const string&);
 
     // Saves the current game state to the specified filename
     void saveGame(const string&);
