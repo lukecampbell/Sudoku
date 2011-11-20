@@ -1,0 +1,153 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOARD_HPP__	./Board.hpp	7;"	d
+Board	./Board.cpp	/^Board::Board()$/;"	f	class:Board
+Board	./Board.cpp	/^Board::Board(const char *filename)$/;"	f	class:Board
+Board	./Board.hpp	/^class Board$/;"	c
+CC	./Makefile	/^CC=g++$/;"	m
+CLASS	./tools.hpp	14;"	d
+CLUSTER_BOX	./Cluster.hpp	/^enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX };$/;"	e	enum:ClusterType
+CLUSTER_COL	./Cluster.hpp	/^enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX };$/;"	e	enum:ClusterType
+CLUSTER_HPP_	./Cluster.hpp	7;"	d
+CLUSTER_ROW	./Cluster.hpp	/^enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX };$/;"	e	enum:ClusterType
+CPPFLAGS	./Makefile	/^CPPFLAGS=-g -Wall -ggdb -ansi -O0$/;"	m
+Cell	./SudokuStack.hpp	/^        Cell(_T data, Cell *next) :$/;"	f	class:SudokuStack::Cell
+Cell	./SudokuStack.hpp	/^    class Cell$/;"	c	class:SudokuStack
+Cluster	./Cluster.cpp	/^Cluster::Cluster()$/;"	f	class:Cluster
+Cluster	./Cluster.cpp	/^Cluster::Cluster(ClusterType type, Square *squares[9])$/;"	f	class:Cluster
+Cluster	./Cluster.hpp	/^class Cluster$/;"	c
+ClusterType	./Cluster.hpp	/^enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX };$/;"	g
+DEBUG_CALL	./Sudoku.hpp	13;"	d
+DEBUG_MSG	./Sudoku.hpp	14;"	d
+DUMPp	./tools.hpp	39;"	d
+DUMPv	./tools.hpp	40;"	d
+Frame	./Board.hpp	/^struct Frame$/;"	s
+GAME_HPP_	./Game.hpp	7;"	d
+Game	./Game.cpp	/^Game::Game()$/;"	f	class:Game
+Game	./Game.cpp	/^Game::Game(const string &filename)$/;"	f	class:Game
+Game	./Game.hpp	/^class Game$/;"	c
+LIBS	./Makefile	/^LIBS=$/;"	m
+NAME	./tools.hpp	13;"	d
+OBJECTS	./Makefile	/^OBJECTS=Sudoku.o Square.o tools.o Board.o Cluster.o Tests.o SquareState.o Game.o$/;"	m
+SQUARESTATE_HPP_	./SquareState.hpp	8;"	d
+SQUARE_HPP__	./Square.hpp	8;"	d
+SUDOKUSTACK_H_	./SudokuStack.hpp	6;"	d
+Square	./Square.cpp	/^Square::Square() :$/;"	f	class:Square
+Square	./Square.cpp	/^Square::Square(const Square& copy) :$/;"	f	class:Square
+Square	./Square.cpp	/^Square::Square(int row, int col) :$/;"	f	class:Square
+Square	./Square.hpp	/^class Square: public SquareState$/;"	c
+SquareState	./SquareState.cpp	/^SquareState::SquareState()$/;"	f	class:SquareState
+SquareState	./SquareState.cpp	/^SquareState::SquareState(const SquareState &copy)$/;"	f	class:SquareState
+SquareState	./SquareState.hpp	/^class SquareState$/;"	c
+SudokuStack	./SudokuStack.hpp	/^SudokuStack<_T>::SudokuStack()$/;"	f	class:SudokuStack
+SudokuStack	./SudokuStack.hpp	/^class SudokuStack$/;"	c
+TOOLSPP_H	./tools.hpp	7;"	d
+UNIX	./tools.hpp	12;"	d
+_SUDOKU_HPP_	./Sudoku.hpp	7;"	d
+addCluster	./Square.cpp	/^void Square::addCluster(Cluster *cluster)$/;"	f	class:Square
+at	./SudokuStack.hpp	/^_T SudokuStack<_T>::at(int n) const$/;"	f	class:SudokuStack
+banner	./tools.hpp	52;"	d
+board	./Board.hpp	/^    Square *board[81]; \/\/ The board$/;"	m	class:Board
+board	./Game.hpp	/^    Board board;$/;"	m	class:Game
+board_clusters	./Board.hpp	/^    Cluster *board_clusters[27]; \/\/ the clusters on the board$/;"	m	class:Board
+board_reader	./Board.hpp	/^    ifstream board_reader; \/\/ reader for data$/;"	m	class:Board
+bye	./tools.cpp	/^void bye( void ) { cerr << "\\n\\nNormal termination.\\n" ; hold(); }$/;"	f
+bye	./tools.cpp	/^void bye( void ) { cerr << "\\n\\nNormal termination.\\n" ; }$/;"	f
+changeSquare	./Game.cpp	/^void Game::changeSquare()$/;"	f	class:Game
+clearscreen	./tools.cpp	/^void clearscreen (void) {  cout << "\\f" ;  } $/;"	f
+clearscreen	./tools.cpp	/^void clearscreen (void) { system("cls"); }                                                          $/;"	f
+cluster_group	./Cluster.hpp	/^    Square *cluster_group[9];        \/\/ Squares in the cluster$/;"	m	class:Cluster
+cluster_type	./Cluster.hpp	/^    ClusterType cluster_type;          \/\/ The type of the cluster$/;"	m	class:Cluster
+cluster_type_string	./Cluster.cpp	/^const char *Cluster::cluster_type_string[] = { "Row", "Column", "Box" };$/;"	m	class:Cluster	file:
+cluster_type_string	./Cluster.hpp	/^    static const char *cluster_type_string[3];    \/\/ for the string enumeration$/;"	m	class:Cluster
+cstream	./tools.hpp	/^typedef FILE* cstream;$/;"	t
+cstring	./tools.hpp	/^typedef char* cstring;$/;"	t
+data	./SudokuStack.hpp	/^        _T data;$/;"	m	class:SudokuStack::Cell
+debugging	./Sudoku.cpp	/^void debugging()$/;"	f
+delay	./tools.cpp	/^delay( int seconds )$/;"	f
+doNothing	./SquareState.cpp	/^static void doNothing(void *)$/;"	f	file:
+empty	./SudokuStack.hpp	/^bool SudokuStack<_T>::empty() const$/;"	f	class:SudokuStack
+eventHandler	./SquareState.hpp	/^typedef void (*eventHandler)(void *);$/;"	t
+fatal	./tools.cpp	/^fatal (char* format, ...)$/;"	f
+fbanner	./tools.cpp	/^fbanner( ostream& fout )$/;"	f
+flush	./tools.cpp	/^flush( istream& is ) {     return is.seekg( 0, ios::end ); }$/;"	f
+frames	./Game.hpp	/^    SudokuStack<Frame *> frames;$/;"	m	class:Game
+getCol	./Square.cpp	/^int Square::getCol() const$/;"	f	class:Square
+getCount	./SquareState.cpp	/^int SquareState::getCount() const$/;"	f	class:SquareState
+getRow	./Square.cpp	/^int Square::getRow() const$/;"	f	class:Square
+getSquare	./Game.cpp	/^void Game::getSquare()$/;"	f	class:Game
+getState	./Square.cpp	/^SquareState Square::getState() const$/;"	f	class:Square
+getValue	./SquareState.cpp	/^char SquareState::getValue() const$/;"	f	class:SquareState
+head	./SudokuStack.hpp	/^    Cell *head;$/;"	m	class:SudokuStack
+hold	./tools.cpp	/^hold( void )                                    $/;"	f
+input	./Game.hpp	/^    ifstream input; \/\/ the file loaded which contains the game$/;"	m	class:Game
+length	./SudokuStack.hpp	/^unsigned int SudokuStack<_T>::length() const$/;"	f	class:SudokuStack
+loadGame	./Game.cpp	/^void Game::loadGame(const string& filename)$/;"	f	class:Game
+loadGame2	./Game.cpp	/^void Game::loadGame2(const string& filename)$/;"	f	class:Game
+main	./Sudoku.cpp	/^int main(int argc, char *argv[])$/;"	f
+mark	./Square.cpp	/^bool Square::mark(char value)$/;"	f	class:Square
+mark	./SquareState.cpp	/^bool SquareState::mark(char value)$/;"	f	class:SquareState
+newGame	./Game.cpp	/^void Game::newGame()$/;"	f	class:Game
+next	./SudokuStack.hpp	/^        Cell *next;$/;"	m	class:SudokuStack::Cell
+oclock	./tools.cpp	/^oclock( char* hour)$/;"	f
+operator <<	./Board.hpp	/^inline ostream& operator<<(ostream& out, Board& b)$/;"	f
+operator <<	./Cluster.hpp	/^inline ostream& operator<<(ostream& out,Cluster &c)$/;"	f
+operator <<	./Game.hpp	/^inline ostream& operator<<(ostream &out, Game &game)$/;"	f
+operator <<	./Square.hpp	/^inline ostream& operator<<(ostream & out, Square &square)$/;"	f
+operator <<	./SquareState.hpp	/^inline ostream& operator<<(ostream &out, SquareState &state)$/;"	f
+operator =	./Square.cpp	/^void Square::operator =(const Square& copy)$/;"	f	class:Square
+operator =	./SquareState.cpp	/^void SquareState::operator=(const SquareState &copy)$/;"	f	class:SquareState
+peek	./SudokuStack.hpp	/^_T SudokuStack<_T>::peek() const$/;"	f	class:SudokuStack
+pop	./SudokuStack.hpp	/^_T SudokuStack<_T>::pop()$/;"	f	class:SudokuStack
+popFrame	./Game.cpp	/^void Game::popFrame()$/;"	f	class:Game
+possibilitiesString	./SquareState.cpp	/^string SquareState::possibilitiesString() const$/;"	f	class:SquareState
+print	./Board.cpp	/^ostream& Board::print(ostream& out)$/;"	f	class:Board
+print	./Cluster.cpp	/^ostream& Cluster::print(ostream &out)$/;"	f	class:Cluster
+print	./Game.cpp	/^ostream& Game::print(ostream &out)$/;"	f	class:Game
+print	./Square.cpp	/^Square::print(ostream& out) const$/;"	f	class:Square
+print	./SquareState.cpp	/^ostream& SquareState::print(ostream &out) const$/;"	f	class:SquareState
+printGUI	./Board.cpp	/^ostream& Board::printGUI(ostream& out)$/;"	f	class:Board
+printGameSubMenu	./Game.cpp	/^void Game::printGameSubMenu()$/;"	f	class:Game
+printMenu	./Game.cpp	/^void Game::printMenu()$/;"	f	class:Game
+push	./SudokuStack.hpp	/^void SudokuStack<_T>::push(_T data)$/;"	f	class:SudokuStack
+pushFrame	./Game.cpp	/^void Game::pushFrame()$/;"	f	class:Game
+references	./Cluster.hpp	/^    int references[9];              \/\/ keep track of what numbers are used$/;"	m	class:Cluster
+registerCallback	./SquareState.cpp	/^void SquareState::registerCallback(eventHandler callback)$/;"	f	class:SquareState
+restoreState	./Board.cpp	/^void Board::restoreState(Frame *frame)$/;"	f	class:Board
+run	./Game.cpp	/^void Game::run()$/;"	f	class:Game
+saveGame	./Game.cpp	/^void Game::saveGame(const string &filename)$/;"	f	class:Game
+saveState	./Board.cpp	/^void Board::saveState(Frame *frame)$/;"	f	class:Board
+say	./tools.cpp	/^say (char* format, ...)$/;"	f
+setState	./Square.cpp	/^void Square::setState(SquareState &state)$/;"	f	class:Square
+shoop	./Cluster.cpp	/^void Cluster::shoop(Square *s, char val)$/;"	f	class:Cluster
+size	./SudokuStack.hpp	/^    unsigned int size;$/;"	m	class:SudokuStack
+square_clusters	./Square.hpp	/^    vector<Cluster *> square_clusters; \/\/ The cluster that the square belongs to$/;"	m	class:Square
+square_col	./Square.hpp	/^    unsigned int square_col; \/\/ square resides$/;"	m	class:Square
+square_row	./Square.hpp	/^    unsigned int square_row; \/\/ The current row and column for which$/;"	m	class:Square
+state_bitmap	./SquareState.hpp	/^    unsigned short int state_bitmap;$/;"	m	class:SquareState
+state_callback	./SquareState.hpp	/^    eventHandler state_callback;$/;"	m	class:SquareState
+state_count	./SquareState.hpp	/^    short int state_count;$/;"	m	class:SquareState
+state_value	./SquareState.hpp	/^    char state_value;$/;"	m	class:SquareState
+states	./Board.hpp	/^    SquareState states[81];$/;"	m	struct:Frame
+sub	./Board.cpp	/^Square& Board::sub(int j, int k)$/;"	f	class:Board
+testBoard	./Tests.cpp	/^void testBoard()$/;"	f
+testCluster	./Tests.cpp	/^void testCluster()$/;"	f
+testGameRun	./Tests.cpp	/^void testGameRun()$/;"	f
+testSquare	./Tests.cpp	/^void testSquare()$/;"	f
+testTogether	./Tests.cpp	/^void testTogether()$/;"	f
+today	./tools.cpp	/^today( char* date )$/;"	f
+top	./SudokuStack.hpp	/^_T SudokuStack<_T>::top() const$/;"	f	class:SudokuStack
+turnOff	./SquareState.cpp	/^void SquareState::turnOff(int n)$/;"	f	class:SquareState
+turnOn	./SquareState.cpp	/^void SquareState::turnOn(int n)$/;"	f	class:SquareState
+unshoop	./Cluster.cpp	/^void Cluster::unshoop(Square *s, char val)$/;"	f	class:Cluster
+when	./tools.cpp	/^when( char* date, char* hour)$/;"	f
+~Board	./Board.cpp	/^Board::~Board()$/;"	f	class:Board
+~Cluster	./Cluster.cpp	/^Cluster::~Cluster()$/;"	f	class:Cluster
+~Game	./Game.cpp	/^Game::~Game()$/;"	f	class:Game
+~Square	./Square.cpp	/^Square::~Square()$/;"	f	class:Square
+~SquareState	./SquareState.cpp	/^SquareState::~SquareState()$/;"	f	class:SquareState
+~SudokuStack	./SudokuStack.hpp	/^SudokuStack<_T>::~SudokuStack()$/;"	f	class:SudokuStack
