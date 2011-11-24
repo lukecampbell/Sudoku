@@ -3,11 +3,72 @@
 // 1 Oct 2011
 // Contains the testing functions
 
+#include <typeinfo>
+
 #include "Sudoku.hpp"
 #include "Square.hpp"
 #include "Board.hpp"
 #include "Cluster.hpp"
 #include "Game.hpp"
+#include "BadMove.hpp"
+#include "IllegalInput.hpp"
+
+
+//-----------------------------------------------------------------------------
+// testIllegalInputException()
+// Unit test for IllegalInput exception
+void testIllegalInputException()
+{
+	IllegalInput bad;
+	cout<<"Illegal Input Exception test"<<endl;
+
+	// it should successfully be thrown and caught
+	cout<<" - testing throw/catch"<<endl;
+	try {
+		throw bad;
+
+	} catch(BadMove &bm) {
+		cout<<"   test successful."<<endl;
+	} catch(...) {
+		cout<<"   test failed."<<endl;
+	}
+
+
+}
+
+//-----------------------------------------------------------------------------
+// testBadMoveException()
+// Unit test for BadMove exception
+void testBadMoveException()
+{
+
+	BadMove badMove;
+
+	cout<<"Bad Move Exception"<<endl;
+	// test creation and throwing
+	cout<<" - testing throw/catch"<<endl;
+	try {
+		throw badMove;
+	} catch(BadMove &bm) {
+		cout<<"   test satisfactory"<<endl;
+	} catch(...) {
+		cerr<<"   test failed to successfully throw and catch a BadMove Exception"
+				<<endl;
+	}
+
+	cout<<" - testing print()"<<endl;
+	if(typeid(cout)==typeid(badMove.print(cout)))
+	{
+		cout<<"   test succeeded"<<endl;
+	}
+	else
+	{
+		cout<<"   test failed"<<endl;
+	}
+
+
+
+}
 
 //-----------------------------------------------------------------------------
 // testGameRun()

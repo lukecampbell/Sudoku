@@ -24,7 +24,8 @@
 int main(int argc, char *argv[])
 {
     banner();
-    testGameRun();
+    testBadMoveException();
+    testIllegalInputException();
     bye();
     return 0;
 }
