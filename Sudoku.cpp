@@ -36,12 +36,13 @@ void debugging()
 	Game newGame;
 	try {
 		newGame.loadGame("saved.sudoku");
+		newGame.run();
 
 	} catch(BadMove &b)
 	{
 		cout<<b<<endl;
 	}
-	newGame.run();
+
 }
 
 

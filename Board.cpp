@@ -4,8 +4,8 @@
 // Implementation for Board Class
 
 #include "Board.hpp"
-#include <iostream>
-using namespace std;
+
+
 
 //-----------------------------------------------------------------------------
 // Board()
@@ -214,15 +214,23 @@ Square& Board::sub(int j, int k)
 { // TODO Add a test to the testplan for several index checks
     if (j < 0 || j > 8)
     {
-        char errormsg[] = "The subscript index is out of bounds [%d,%d] at %d";
-        fatal(errormsg, j, k, j);
+        stringstream errormsg;
+        errormsg<<"The subscript index is out of bounds ["
+        		<<j<<","
+        		<<k<<"] at row"<<j;
+
+        throw IllegalInput(j,k,'-',errormsg.str());
         //exit(1); // TODO assign error codes
         // TODO: throw an exception
     }
     if (k < 0 || k > 8)
     {
-        char errormsg[] = "The subscript index is out of bounds [%d,%d] at %d";
-        fatal(errormsg, j, k, j);
+    	stringstream errormsg;
+		errormsg<<"The subscript index is out of bounds ["
+				<<j<<","
+				<<k<<"] at col"<<k;
+
+		throw IllegalInput(j,k,'-',errormsg.str());
         //exit(1); //TODO Assign error codes
         //TODO: throw an exception
     }

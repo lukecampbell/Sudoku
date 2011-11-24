@@ -12,6 +12,11 @@
 #include "Cluster.hpp"
 #include "Square.hpp"
 #include "SquareState.hpp"
+#include "IllegalInput.hpp"
+#include <sstream>
+#include <string>
+#include <iostream>
+using namespace std;
 // END INCLUDES AND MACROS //
 
 // A structure to hold the 81 Square's states
