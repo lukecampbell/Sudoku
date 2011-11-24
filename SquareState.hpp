@@ -8,6 +8,9 @@
 #define SQUARESTATE_HPP_
 
 #include "Sudoku.hpp"
+#include "BadMove.hpp"
+#include "IllegalInput.hpp"
+#include "ConflictingValue.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -72,6 +75,13 @@ public:
 
     // Returns the number of possibilities remaining
     int getCount() const;
+
+    // Returns true if the input is between 1 and 9 and/or is a valid
+    // empty square value
+    static bool isValidInput(char value);
+
+    // Returns true if the value is possible in this SquareState
+    bool isPossible(char value) const;
 
 };
 inline ostream& operator<<(ostream &out, SquareState &state)

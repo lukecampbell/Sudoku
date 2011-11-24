@@ -63,6 +63,7 @@ bool SquareState::mark(char value)
         unsigned short int mask = 0x01 << (value - '0');
         if ((state_bitmap & mask) == 0)
         {
+        	//TODO: Refactor this to support exceptions
             cerr << "Attempted to set an illegal value (" << value << ")"
                     << endl << *this << endl;
             return false;
@@ -74,6 +75,7 @@ bool SquareState::mark(char value)
 
     } else
     {
+    	// TODO: Refactor this to support exception
         cerr << " Attempted to set an illegal value ("<< value << ")" << endl;
         return false;
     }
@@ -164,6 +166,35 @@ char SquareState::getValue() const
 int SquareState::getCount() const
 {
     return state_count;
+}
+//-----------------------------------------------------------------------------
+// isValidInput()
+// Returns true if the input is between 1 and 9 and/or is a valid
+// empty square value
+bool SquareState::isValidInput(char value)
+{
+	if(value=='-' || value=='0' || value ==' ')
+		return true;
+	if(value>='1' && value<='9')
+		return true;
+	return false;
+}
+//-----------------------------------------------------------------------------
+// isPossible()
+// Returns true if the value is possible in this SquareState
+bool SquareState::isPossible(char value) const
+{
+	unsigned short int mask=0;
+	if(value<'1' || value>'9')
+	{
+		throw IllegalInput(-1,-1,value,
+				"called isPossible with improper integer value");
+	}
+	mask = value - '0';
+	mask = 0x01 >> mask;
+	if((state_bitmap & mask) != 0)
+		return true;
+	return false;
 }
 //-----------------------------------------------------------------------------
 // registerCallback()

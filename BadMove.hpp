@@ -14,20 +14,29 @@ using namespace std;
 
 class BadMove
 {
-private:
+protected:
 	unsigned short int row;
 	unsigned short int col;
 	char illegalInput;
+	string information;
 public:
-	BadMove(int row=-1, int col=-1, char illegalInput='\0');
+	BadMove(unsigned short int row=-1,
+			unsigned short int col=-1,
+			char illegalInput='\0');
 	virtual ~BadMove();
-	virtual const char *what();
+	virtual const char *what() const;
 
 	virtual ostream &print(ostream &out);
 
-	void setRow(int row);
-	void setCol(int col);
+	void setRow(unsigned short int row);
+	void setCol(unsigned short int col);
 	void setValue(char value);
+	void setMessage(const string &message);
+
+	unsigned short int getRow() const;
+	unsigned short int getCol() const;
+	char getValue() const;
+	string getMessage() const;
 
 };
 

@@ -72,6 +72,17 @@ Square::print(ostream& out) const
 bool Square::mark(char value)
 {
     char val = state_value;
+
+    // Exceptions testing
+    if(!isValidInput(value))
+    {
+    	throw IllegalInput(square_row,square_col,value,"invalid input");
+    }
+    if(!isPossible(value))
+    {
+    	throw ConflictingValue(square_row, square_col, value,
+    			"the value is not a value that is possible for this square");
+    }
     bool ret = SquareState::mark(value);
     //------------------------------------------------
     // Unshoop old value

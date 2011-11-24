@@ -7,9 +7,11 @@
 
 #include "IllegalInput.hpp"
 
-IllegalInput::IllegalInput()
+IllegalInput::IllegalInput(unsigned short int row, unsigned short int col,
+		char value, string message)
+:BadMove(row,col,value)
 {
-
+	setMessage(message);
 }
 
 IllegalInput::~IllegalInput()
@@ -19,9 +21,16 @@ IllegalInput::~IllegalInput()
 
 const char *IllegalInput::what()
 {
+	stringstream ss;
+	string ret;
+	ss<<"Illegal Input ["<<row<<","<<col<<"] ("<<illegalInput<<"): "
+			<<information;
+	ret = ss.str();
+	return ret.c_str();
 
 }
 ostream& IllegalInput::print(ostream &out)
 {
+	out<<what();
 	return out;
 }

@@ -44,6 +44,7 @@ void testConflictingValueException()
 
 	} catch(ConflictingValue &cv) {
 		cout<<"   test successful."<<endl;
+		cout<<cv<<endl;
 		wasThrown=true;
 	} catch(...) {
 		cerr<<"   test failed."<<endl
@@ -88,12 +89,13 @@ void testIllegalInputException()
 	// you try to input an illegal value into a square
 
 	Square testSquare;
-	cout<<"  - testing Illegal Square::mark"<<endl;
+	cout<<" - testing Illegal Square::mark"<<endl;
 
 	try{
 		testSquare.mark('a'); // illegal mark
 	} catch(IllegalInput &ii) {
 		cout<<" - test successful."<<endl;
+		cout<<ii<<endl;
 		wasThrown=true;
 	}
 	if(!wasThrown)

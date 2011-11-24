@@ -7,9 +7,14 @@
 
 #include "ConflictingValue.hpp"
 
-ConflictingValue::ConflictingValue()
+ConflictingValue::ConflictingValue(
+		unsigned short int row,
+		unsigned short int col,
+		char value,
+		string message)
+:BadMove(row,col,value)
 {
-
+	setMessage(message);
 }
 
 ConflictingValue::~ConflictingValue()
@@ -18,9 +23,14 @@ ConflictingValue::~ConflictingValue()
 }
 const char *ConflictingValue::what()
 {
-
+	stringstream ss;
+	string ret;
+	ss<<"Conflicting Value ["<<row<<","<<col<<"] ("<<illegalInput<<"): "
+			<<information;
+	ret = ss.str();
+	return ret.c_str();
 }
 ostream& ConflictingValue::print(ostream &out)
 {
-	return out;
+	out<<what();
 }
