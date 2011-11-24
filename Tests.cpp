@@ -65,6 +65,9 @@ void testConflictingValueException()
 void testIllegalInputException()
 {
 	IllegalInput bad;
+
+	// Used to make sure that the exception was thrown and caught
+	bool wasThrown = false;
 	cout<<"Illegal Input Exception test"<<endl;
 
 	// it should successfully be thrown and caught
@@ -79,6 +82,26 @@ void testIllegalInputException()
 		cerr<<"Illegal Input Exception"<<endl
 		    <<"  - Illegal Input Exception failed to be thrown and caught"
 		    <<endl;
+	}
+
+	// it should successfully throw an exception when
+	// you try to input an illegal value into a square
+
+	Square testSquare;
+	cout<<"  - testing Illegal Square::mark"<<endl;
+
+	try{
+		testSquare.mark('a'); // illegal mark
+	} catch(IllegalInput &ii) {
+		cout<<" - test successful."<<endl;
+		wasThrown=true;
+	}
+	if(!wasThrown)
+	{
+		cout<<" - test failed."<<endl;
+				cerr<<"Illegal Input Exception"<<endl
+					<<"  - Failed to throw an exception when Square is marked with"
+					<<" wrong value"<<endl;
 	}
 
 
