@@ -84,7 +84,11 @@ void Game::loadGame(const string& filename)
     {
         char c;
         input >> c;
-        frame->states[k].mark(c);
+        try {
+        	frame->states[k].mark(c);
+        } catch(BadMove &b) {
+        	cerr<<b<<endl;
+        }
     }
     board.restoreState(frame);
 
@@ -113,7 +117,11 @@ void Game::loadGame2(const string& filename)
         for(int y=0;y<9;y++)
         {
             char c = line[y];
-            frame->states[x*9 + y].mark(c);
+            try {
+            	frame->states[x*9 + y].mark(c);
+            } catch(BadMove &b) {
+            	cerr<<b<<endl;
+            }
         }
         cout<<line<<endl;
     }
@@ -164,7 +172,11 @@ void Game::newGame()
     pushFrame();
     for(int i=0;i<81;i++)
     {
-        board.sub(i/9,i%9).mark('-');
+    	try {
+    		board.sub(i/9,i%9).mark('-');
+    	} catch ( BadMove &b) {
+    		cerr<<b<<endl;
+    	}
     }
 
 }
@@ -233,7 +245,7 @@ void Game::printGameSubMenu()
 void Game::run()
 {
     char choice;
-
+    cout<<*this<<endl;
     do
     {
         printMenu();
@@ -314,7 +326,11 @@ void Game::changeSquare()
     // Push the frame
 
     pushFrame();
-    if (!board.sub(r - '1', c - '1').mark(val))
-        // the Mark is illegal and so we go back
-        popFrame();
+    try {
+		if (!board.sub(r - '1', c - '1').mark(val))
+			// the Mark is illegal and so we go back
+			popFrame();
+    } catch(BadMove &b) {
+    	cerr<<b<<endl;
+    }
 }

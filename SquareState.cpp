@@ -191,7 +191,7 @@ bool SquareState::isPossible(char value) const
 				"called isPossible with improper integer value");
 	}
 	mask = value - '0';
-	mask = 0x01 >> mask;
+	mask = 0x01 << mask;
 	if((state_bitmap & mask) != 0)
 		return true;
 	return false;

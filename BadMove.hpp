@@ -26,7 +26,7 @@ public:
 	virtual ~BadMove();
 	virtual const char *what() const;
 
-	virtual ostream &print(ostream &out);
+	virtual ostream &print(ostream &out); // TODO: make const
 
 	void setRow(unsigned short int row);
 	void setCol(unsigned short int col);
@@ -39,5 +39,10 @@ public:
 	string getMessage() const;
 
 };
+inline ostream& operator<<(ostream& out, BadMove& b)
+{
+	return b.print(out);
+
+}
 
 #endif /* BADMOVE_H_ */

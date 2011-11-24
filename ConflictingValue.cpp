@@ -25,7 +25,7 @@ const char *ConflictingValue::what()
 {
 	stringstream ss;
 	string ret;
-	ss<<"Conflicting Value ["<<row<<","<<col<<"] ("<<illegalInput<<"): "
+	ss<<"Conflicting Value ["<<row+1<<","<<col+1<<"] ("<<illegalInput<<"): "
 			<<information;
 	ret = ss.str();
 	return ret.c_str();

@@ -8,6 +8,7 @@
 #define SQUARE_HPP__
 
 #include <vector>
+#include <sstream>
 
 #include "tools.hpp"
 #include "Sudoku.hpp"

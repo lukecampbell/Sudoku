@@ -23,7 +23,7 @@ const char *IllegalInput::what()
 {
 	stringstream ss;
 	string ret;
-	ss<<"Illegal Input ["<<row<<","<<col<<"] ("<<illegalInput<<"): "
+	ss<<"Illegal Input ["<<row+1<<","<<col+1<<"] ("<<illegalInput<<"): "
 			<<information;
 	ret = ss.str();
 	return ret.c_str();

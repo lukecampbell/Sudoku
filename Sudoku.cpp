@@ -9,6 +9,7 @@
 #include "Sudoku.hpp"
 #include "Board.hpp"
 #include "SquareState.hpp"
+#include "BadMove.hpp"
 #include "Game.hpp"
 
 #include <sys/types.h>
@@ -24,9 +25,7 @@
 int main(int argc, char *argv[])
 {
     banner();
-    testBadMoveException();
-    testIllegalInputException();
-    testConflictingValueException();
+    debugging();
     bye();
     return 0;
 }
@@ -34,10 +33,15 @@ int main(int argc, char *argv[])
 
 void debugging()
 {
-    Game newGame("saved.sudoku");
+	Game newGame;
+	try {
+		newGame.loadGame("saved.sudoku");
 
-    cout<<newGame<<endl;
-    newGame.run();
+	} catch(BadMove &b)
+	{
+		cout<<b<<endl;
+	}
+	newGame.run();
 }
 
 

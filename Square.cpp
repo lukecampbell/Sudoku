@@ -78,11 +78,17 @@ bool Square::mark(char value)
     {
     	throw IllegalInput(square_row,square_col,value,"invalid input");
     }
-    if(!isPossible(value))
-    {
-    	throw ConflictingValue(square_row, square_col, value,
-    			"the value is not a value that is possible for this square");
-    }
+    if(value>='1' && value<='9')
+		if(!isPossible(value))
+		{
+			stringstream message;
+			message<<"The value is not a value that is possible for "
+					<<"this square."<<endl;
+			message<<*this<<endl;
+
+			throw ConflictingValue(square_row, square_col, value,
+					message.str());
+		}
     bool ret = SquareState::mark(value);
     //------------------------------------------------
     // Unshoop old value

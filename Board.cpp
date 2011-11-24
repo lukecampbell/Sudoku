@@ -303,7 +303,11 @@ void Board::restoreState(Frame *frame)
 {
     for (int k = 0; k < 81; k++)
     {
-        sub(k / 9, k % 9).mark(frame->states[k].getValue());
+    	try {
+    		sub(k / 9, k % 9).mark(frame->states[k].getValue());
+    	} catch (BadMove &b) {
+    		cerr<<b<<endl;
+    	}
         // note: I have to use mark to link it to the Clusters
         // using setState results in unpredictable behavior
     }

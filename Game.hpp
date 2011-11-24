@@ -11,6 +11,7 @@
 #include "Board.hpp"
 #include "SquareState.hpp"
 #include "SudokuStack.hpp"
+#include "BadMove.hpp"
 
 using namespace std;
 
