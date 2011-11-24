@@ -19,11 +19,15 @@ private:
 	unsigned short int col;
 	char illegalInput;
 public:
-	BadMove();
+	BadMove(int row=-1, int col=-1, char illegalInput='\0');
 	virtual ~BadMove();
 	virtual const char *what();
 
 	virtual ostream &print(ostream &out);
+
+	void setRow(int row);
+	void setCol(int col);
+	void setValue(char value);
 
 };
 

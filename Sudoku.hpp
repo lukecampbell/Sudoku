@@ -18,6 +18,7 @@
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
+void testConflictingValueException();
 void testIllegalInputException(); // Unit test for Illegal Input exception
 void testBadMoveException(); // Unit test for BadMove Exception
 void testGameRun(); // Test the Game class and all other classes

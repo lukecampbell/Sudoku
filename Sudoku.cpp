@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     banner();
     testBadMoveException();
     testIllegalInputException();
+    testConflictingValueException();
     bye();
     return 0;
 }

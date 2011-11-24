@@ -7,11 +7,12 @@
 
 #include "BadMove.hpp"
 
-BadMove::BadMove()
+// initializes to values that indicate they were never initialized
+
+BadMove::BadMove(int row, int col, char illegalInput)
 {
 
 }
-
 BadMove::~BadMove()
 {
 
@@ -27,3 +28,4 @@ ostream &BadMove::print(ostream &out)
 
 	return out;
 }
+

@@ -12,8 +12,53 @@
 #include "Game.hpp"
 #include "BadMove.hpp"
 #include "IllegalInput.hpp"
+#include "ConflictingValue.hpp"
 
+//-----------------------------------------------------------------------------
+// testConflictingValueException()
+// Unit test for Conflicting Value Exception
+void testConflictingValueException()
+{
+	ConflictingValue bad;
+	cout<<"Conflicting Value Exception test"<<endl;
+	// it should successfully be thrown and caught
+	cout<<" - testing throw/catch"<<endl;
+	try {
+		throw bad;
+	} catch(BadMove &bm) {
+		cout<<"   test successful."<<endl;
+	} catch(...) {
+		cout<<"   test failed."<<endl;
+		cerr<<"Conflicting Value Test Failed"<<endl
+			<<"  - Failed to be thrown/caught."<<endl;
+	}
 
+	// it should be thrown when we try to mark a square that
+	// doesn't have the appropriate value in the list of possibilities
+	Square testSquare;
+	bool wasThrown = false; // indicates that the exception was thrown
+	cout<<" - testing Square::mark()"<<endl;
+	testSquare.turnOff(3);
+	try {
+		testSquare.mark('3');
+
+	} catch(ConflictingValue &cv) {
+		cout<<"   test successful."<<endl;
+		wasThrown=true;
+	} catch(...) {
+		cerr<<"   test failed."<<endl
+			<<"   Square class should throw ConflictingValue exception "
+			<<"when marked with an impossible value"<<endl;
+	}
+	if(!wasThrown)
+	{
+		cout<<"   test failed."<<endl;
+		cerr<<"Conflicting Value Test Failed"<<endl
+			<<"  - Square class failed to throw an exception for marking"
+			<<"    an impossible value"<<endl;
+	}
+
+}
 //-----------------------------------------------------------------------------
 // testIllegalInputException()
 // Unit test for IllegalInput exception
@@ -31,6 +76,9 @@ void testIllegalInputException()
 		cout<<"   test successful."<<endl;
 	} catch(...) {
 		cout<<"   test failed."<<endl;
+		cerr<<"Illegal Input Exception"<<endl
+		    <<"  - Illegal Input Exception failed to be thrown and caught"
+		    <<endl;
 	}
 
 
@@ -52,8 +100,9 @@ void testBadMoveException()
 	} catch(BadMove &bm) {
 		cout<<"   test satisfactory"<<endl;
 	} catch(...) {
-		cerr<<"   test failed to successfully throw and catch a BadMove Exception"
-				<<endl;
+		cout<<"   test failed."<<endl;
+		cerr<<"Bad Move Exception Test Failed"<<endl
+			<<"  - Failed to be thrown and caught"<<endl;
 	}
 
 	cout<<" - testing print()"<<endl;
@@ -64,6 +113,8 @@ void testBadMoveException()
 	else
 	{
 		cout<<"   test failed"<<endl;
+		cerr<<"Bad Move Exception Test Failed"<<endl
+			<<"  - Failed to print correctly"<<endl;
 	}
 
 
