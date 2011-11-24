@@ -13,6 +13,9 @@
 #include "Sudoku.hpp"
 #include "Cluster.hpp"
 #include "SquareState.hpp"
+#include "IllegalInput.hpp"
+#include "ConflictingValue.hpp"
+#include "BadMove.hpp"
 
 using namespace std;
 //  END INCLUDEDS AND MACROS   //

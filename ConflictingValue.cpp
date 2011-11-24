@@ -33,4 +33,5 @@ const char *ConflictingValue::what()
 ostream& ConflictingValue::print(ostream &out)
 {
 	out<<what();
+	return out;
 }
