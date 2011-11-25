@@ -18,6 +18,8 @@
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
+void testFatal();
+void testFatalException();
 void testConflictingValueException();
 void testIllegalInputException(); // Unit test for Illegal Input exception
 void testBadMoveException(); // Unit test for BadMove Exception

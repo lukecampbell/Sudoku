@@ -13,6 +13,55 @@
 #include "BadMove.hpp"
 #include "IllegalInput.hpp"
 #include "ConflictingValue.hpp"
+#include "FatalException.hpp"
+
+
+
+//-----------------------------------------------------------------------------
+// testFatal()
+// Unit test for a fatal execution
+void testFatal()
+{
+   cout<<"Fatal Unit Test"<<endl;
+   // it should successsfully end program execution
+   try {
+      cout<<" - Testing Fatal Execution Interruption"<<endl;
+      throw FatalException("   test succeeded.");
+   } catch(FatalException &f) {
+      // Error message format, using char[] because param
+      // for fatal() is char* not const char*
+      char errormsg[] = "%s\n"; 
+      cout<<"   caught..."<<endl;
+      fatal(errormsg,f.what());
+   }
+   cout<<"   test failed."<<endl;
+   cerr<<"Fatal Unit Test Failed"<<endl
+       <<" - The program failed to terminate with a fatal exception."<<endl;
+
+}
+
+
+//-----------------------------------------------------------------------------
+// testFatalException()
+// Unit test for Fatal Exception
+void testFatalException()
+{
+   FatalException fe("Unit Test");
+   cout<<"Fatal Exception test"<<endl;
+   // it should successfully be thrown and caught
+   cout<<" - test throw/catch"<<endl;
+   try {
+      throw fe;
+   } catch(FatalException fe) {
+      cout<<"   test successful."<<endl;
+      cout<<"(message: "<<fe<<")"<<endl;
+   } catch(...) {
+      cout<<"   test failed."<<endl;
+      cerr<<"Fatal Exception Test Failed"<<endl
+          <<"  - Failed to be thrown/caught."<<endl;
+   }
+
+}
 
 //-----------------------------------------------------------------------------
 // testConflictingValueException()
@@ -152,9 +201,17 @@ void testBadMoveException()
 // loads a known sudoku puzzle provided with this project
 void testGameRun()
 {
-    Game newGame("saved.sudoku");
-    cout<<newGame<<endl;
-    newGame.run();
+   Game newGame;
+   try {
+      newGame.loadGame("saved.sudoku");
+      newGame.run();
+   } catch(BadMove &b) {
+      cout<<b<<endl;
+   } catch(FatalException &f) {
+      // error message format
+      char errormsg[] = "%s\n";
+      fatal(errormsg,f.what());
+   }
 }
 
 //-----------------------------------------------------------------------------
