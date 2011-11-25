@@ -364,13 +364,30 @@ void testCluster()
     Row.shoop(&main.sub(3, 5), '5');
     Col.shoop(&main.sub(2, 2), '6');
     Box.shoop(&main.sub(1, 1), '2');
+    //---------------------------------------------
+    // based on the above shoop calls
+    // it shouuld be impossible for Square[3,4] to
+    // have a 5 in it's possibility list
+    //---------------------------------------------
 
-    cout << Row << endl << Col << endl << Box << endl;
+    if(main.sub(3,4).isPossible('5'))
+       cout<<"  - shoop test failed"<<endl;
+    else
+       cout<<"  - shoop test succeeded."<<endl;
 
-    main.sub(2, 3).mark('2');
-    cout << main << endl;
-    cout<<" Test completed satisfactory"<<endl;
-    cout<<" Testing throwing faults"<<endl;
+    cout<<"Testing unshoop..."<<endl;
+    Row.unshoop(&main.sub(3,5),'5');
+    if(main.sub(3,4).isPossible('5'))
+       cout<<"  - unshoop test succeeded."<<endl;
+    else
+       cout<<"  - unsoop test failed."<<endl;
+    
+
+    //---------------------------------------------
+    // Fault tolerant tests
+    //---------------------------------------------
+    cout<<"Functionality and Shoop Tests completed satisfactory"<<endl;
+    cout<<"Testing throwing faults"<<endl;
     try {
       // The code below references a bad pointer
       // and throws a fatal exception as it should
@@ -384,7 +401,7 @@ void testCluster()
       cout<<tshort<<endl;
 
     } catch(FatalException &fe) {
-       cout<<"  test successful."<<endl;
+       cout<<"  - test successful."<<endl;
        cout<<fe<<endl;
     }
     

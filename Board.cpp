@@ -205,7 +205,7 @@ Board::~Board()
 // int j,k - Retrieve a Square object at the subscript [j,k]
 // Square& - The Square object referenced from the Board object
 Square& Board::sub(int j, int k)
-{ // TODO Add a test to the testplan for several index checks
+{ 
     if (j < 0 || j > 8)
     {
         stringstream errormsg;
@@ -214,8 +214,6 @@ Square& Board::sub(int j, int k)
         		<<k<<"] at row"<<j;
 
         throw IllegalInput(j,k,'-',errormsg.str());
-        //exit(1); // TODO assign error codes
-        // TODO: throw an exception
     }
     if (k < 0 || k > 8)
     {
@@ -225,8 +223,6 @@ Square& Board::sub(int j, int k)
 				<<k<<"] at col"<<k;
 
 		throw IllegalInput(j,k,'-',errormsg.str());
-        //exit(1); //TODO Assign error codes
-        //TODO: throw an exception
     }
     return *board[9 * j + k];
 }

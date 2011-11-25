@@ -39,7 +39,7 @@ Cluster::Cluster(ClusterType type, Square *squares[9])
     for (k = 0; k < 9; k++)
         references[k] = 0; //tracks what numbers are used
     //------------------------------------------------
-    // Check to see if **squares is null
+    // Check to see if **squares are null
     //------------------------------------------------
     if (!squares)
     {
@@ -49,7 +49,6 @@ Cluster::Cluster(ClusterType type, Square *squares[9])
     cluster_type = type;
     //------------------------------------------------
     // Initialize the squares using the provided array
-    // TODO: we need to find a way to check for segment bounds
     //------------------------------------------------
     for (k = 0; k < 9; k++)
     {
@@ -100,8 +99,7 @@ void Cluster::unshoop(Square *s, char val)
        return;
     if (val < '0' || val > '9')
     {
-        char errmsg[] = "Invalid character input\n";
-        fatal(errmsg);
+        throw IllegalInput(s->getRow(),s->getCol(),val,"Cluster::unshoop() invalid character input");
     }
     int ref = val -'1';
     if(references[ref]>0)
