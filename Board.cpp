@@ -102,9 +102,7 @@ Board::Board(const char *filename)
     board_reader.open(filename, ifstream::in);
     if (board_reader.fail())
     { // TODO add a test to the test plan to test the filename
-        char errormsg[] = "Failed to open file: %s\n";
-        fatal(errormsg, filename);
-        //exit(1);  //TODO Set standard exit codes for the application
+        throw FatalException("Failed to read input file");
     }
 
     Square *lineup[9]; // the working set to allocate the clusters
