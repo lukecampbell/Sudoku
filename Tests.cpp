@@ -259,7 +259,6 @@ void testSquare()
 }
 void testBoard()
 {
-   Square *buf;
 
    Board board;
    cout<<"Testing Board"<<endl;

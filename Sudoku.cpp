@@ -17,14 +17,8 @@
 #include <stdio.h>
 //  END INCLUDES AND MACROS //
 
-
-//-----------------------------------------------------------------------------
-// main()
-// arguments from command line argc and argv
-// returns 0 regardless of execution
-int main(int argc, char *argv[])
+inline void runTests()
 {
-    banner();
     testSquare();
     testBoard();
     testCluster();
@@ -32,6 +26,41 @@ int main(int argc, char *argv[])
     testIllegalInputException();
     testConflictingValueException();
     testFatalException();
+}
+
+static void gameInit()
+{
+   Game newGame;
+   try {
+      newGame.run();
+   } catch(BadMove &b) {
+      cout<<b<<endl;
+   } catch(FatalException &f) {
+      char errormsg[] = "%s\n";
+      fatal(errormsg,f.what());
+   }
+}
+
+//-----------------------------------------------------------------------------
+// main()
+// arguments from command line argc and argv
+// returns 0 regardless of execution
+int main(int argc, char *argv[])
+{
+    if(argc>1)
+    {
+       cout<<argv[1]<<endl;
+       if(!strcmp(argv[1],"test") || !strcmp(argv[1],"--test"))
+       {
+          banner();
+          runTests();
+          bye();
+       }
+       return 0;
+    }
+
+    banner();
+    gameInit();
     bye();
     return 0;
 }

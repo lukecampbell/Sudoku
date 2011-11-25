@@ -191,7 +191,8 @@ void Game::printMenu()
         <<" \\__ (3) Change a Square" <<endl
         <<" \\__ (4) Get Square" <<endl
         <<" \\__ (5) Game Option" <<endl
-        <<" \\__ (6) Quit" <<endl;
+        <<" \\__ (6) Select a Cluster" <<endl
+        <<" \\__ (7) Quit"<<endl ;
 
 }
 //-----------------------------------------------------------------------------
@@ -239,6 +240,34 @@ void Game::printGameSubMenu()
     }
 }
 //-----------------------------------------------------------------------------
+// selectCluster()
+// Allows the user to select a cluster in the game
+void selectCluster()
+{
+   char choice;
+   cout<<"\t\\__ (1) Row Cluster"<<endl;
+   cout<<"\t\\__ (2) Column Cluster"<<endl;
+   cout<<"\t\\__ (3) Box Cluster"<<endl;
+
+   cout<<"Enter a choice: ";
+   cin>>choice;
+   switch(choice)
+   {
+     case '1':
+        cout<<"Row cluster"<<endl;
+        break;
+     case '2':
+        cout<<"Column cluster"<<endl;
+        break;
+     case '3':
+        cout<<"Box cluster"<<endl;
+        break;
+     default:
+        break;
+   }
+
+}
+//-----------------------------------------------------------------------------
 // run()
 // The main loop which interacts with the user prompting actions and displaying
 // the interfaces
@@ -258,11 +287,11 @@ void Game::run()
             break;
         case '2': // Go back
             popFrame();
-            cout << *this << endl;
+            cout << endl << *this << endl;
             break;
         case '3': // Change a Square
             changeSquare();
-            cout << *this << endl;
+            cout << endl << *this << endl;
             break;
         case '4': // Get A Square
             getSquare();
@@ -270,10 +299,13 @@ void Game::run()
         case '5': // Game Submenu
             printGameSubMenu();
             break;
+        case '6': // Cluster Menu
+            selectCluster();
+            break;
         default:
             return;
         }
-    } while (choice >= '1' && choice <= '5');
+    } while (choice >= '1' && choice <= '6');
 }
 //-----------------------------------------------------------------------------
 // getSquare()
