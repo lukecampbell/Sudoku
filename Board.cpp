@@ -274,23 +274,24 @@ ostream& Board::print(ostream& out)
 // ostream& - The ostream that has been printed is returned
 ostream& Board::printGUI(ostream& out)
 {
-   cout<<"    1 2 3   4 5 6   7 8 9"<<endl;
+   out<<"    1 2 3   4 5 6   7 8 9"<<endl;
       
-   cout<<"   _______ _______ _______"<<endl; 
+   out<<"   _______ _______ _______"<<endl; 
    for(int row=1;row<=9;row++)
    {
-      cout<<row<<" | ";
+      out<<row<<" | ";
       for(int col=1;col<=9;col++)
       {
          if(col%3==0)
-            cout<<sub(row-1,col-1).getValue()<<" | ";
+            out<<sub(row-1,col-1).getValue()<<" | ";
          else
-            cout<<sub(row-1,col-1).getValue()<<" ";
+            out<<sub(row-1,col-1).getValue()<<" ";
       }
-      cout<<endl;
+      out<<endl;
       if(row%3==0)
-         cout<<"  |_______|_______|_______|"<<endl;
+         out<<"  |_______|_______|_______|"<<endl;
    }
+   return out; 
 }
 
 //-----------------------------------------------------------------------------
