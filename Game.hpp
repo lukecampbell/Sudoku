@@ -30,6 +30,7 @@ private:
 
     void printMenu();
     void printGameSubMenu();
+    void selectCluster();
 
 public:
     // Builds a blank game

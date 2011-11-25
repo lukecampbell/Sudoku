@@ -311,4 +311,7 @@ void Board::restoreState(Frame *frame)
     }
 }
 
-
+Cluster& Board::getCluster(ClusterType type, int num)
+{
+   
+}
