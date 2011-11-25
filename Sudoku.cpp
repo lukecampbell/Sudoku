@@ -25,7 +25,7 @@
 int main(int argc, char *argv[])
 {
     banner();
-    testGameRun();
+    testCluster();
     bye();
     return 0;
 }

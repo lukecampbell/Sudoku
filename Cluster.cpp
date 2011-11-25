@@ -43,9 +43,7 @@ Cluster::Cluster(ClusterType type, Square *squares[9])
     //------------------------------------------------
     if (!squares)
     {
-        // Throw error
-        char errmsg[] = "Null pointer\n";
-        fatal(errmsg);
+        throw FatalException("Cluster::Cluster() null pointer in parameter");
     }
 
     cluster_type = type;
@@ -57,8 +55,7 @@ Cluster::Cluster(ClusterType type, Square *squares[9])
     {
         if (!squares[k])
         {
-            char errmsg[] = "Null pointer\n";
-            fatal(errmsg);
+           throw FatalException("Cluster::Cluster() null pointer in parameter");
         }
         cluster_group[k] = squares[k];
 
@@ -79,9 +76,8 @@ void Cluster::shoop(Square *s, char val)
        return;
     if (val < '0' || val > '9')
     {
-        // TODO: Throw an error here for invalid char
-        char errmsg[] = "Invalid character input\n";
-        fatal(errmsg);
+        throw IllegalInput(s->getRow(),s->getCol(),val,
+              "Invalid character input");
     }
 
     int ref = val - '1';

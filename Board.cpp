@@ -78,14 +78,12 @@ Board::Board()
     //------------------------------------------------
     catch (bad_alloc& ba)
     {
-        char errmsg[] =
-                "Board::Board() failed to allocate memory for clusters.\n";
         // free the allocated clusters so far.
         unsigned short int k = 0;
         for (k = 0; k < allocs; k++)
             delete board_clusters[k];
 
-        fatal(errmsg);
+        throw FatalException("Board::Board() failed to allocate memory for clusters.\n");
     }
 }
 
@@ -171,14 +169,12 @@ Board::Board(const char *filename)
     //------------------------------------------------
     catch (bad_alloc& ba)
     {
-        char errmsg[] =
-                "Board::Board() failed to allocate memory for clusters.\n";
         // free the allocated clusters so far.
         unsigned short int k = 0;
         for (k = 0; k < allocs; k++)
             delete board_clusters[k];
 
-        fatal(errmsg);
+        throw FatalException("Board::Board() failed to allocate memory for clusters.\n");
     }
 }
 

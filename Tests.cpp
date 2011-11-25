@@ -341,21 +341,25 @@ void testBoard()
 
 void testCluster()
 {
+    cout<<"Testing cluster controller"<<endl;
     Board main;
+    cout<<"board created"<<endl;
     Square *row[9];
     Square *col[9];
     Square *box[9];
+    cout<<"creating square groups"<<endl;
     //Cluster A;
     for (int k = 0; k < 9; k++)
     {
         row[k] = &main.sub(3, k);
         col[k] = &main.sub(k, 2);
         box[k] = &main.sub((k / 3), k % 3);
-        //cout<<*box[k]<<endl;
     }
+    cout<<"squares created"<<endl;
     Cluster Row(CLUSTER_ROW, row);
     Cluster Col(CLUSTER_COL, col);
     Cluster Box(CLUSTER_BOX, box);
+    cout<<"Clusters created"<<endl;
 
     Row.shoop(&main.sub(3, 5), '5');
     Col.shoop(&main.sub(2, 2), '6');
@@ -365,16 +369,25 @@ void testCluster()
 
     main.sub(2, 3).mark('2');
     cout << main << endl;
-    //    The below code causes a SEGFAULT
-    //    Square *tooshort[9];
-    //    bzero(tooshort,9);
-    //    for(int k=0;k<6;k++)
-    //    {
-    //        tooshort[k] = &main.sub(1,k);
-    //    }
-    //    Cluster tshort(CLUSTER_ROW,tooshort);
-    //    cout<<tshort<<endl;
+    cout<<" Test completed satisfactory"<<endl;
+    cout<<" Testing throwing faults"<<endl;
+    try {
+      // The code below references a bad pointer
+      // and throws a fatal exception as it should
+      Square *tooshort[9];
+      bzero(tooshort,9);
+      for(int k=0;k<6;k++)
+      {
+          tooshort[k] = &main.sub(1,k);
+      }
+      Cluster tshort(CLUSTER_ROW,tooshort);
+      cout<<tshort<<endl;
 
+    } catch(FatalException &fe) {
+       cout<<"  test successful."<<endl;
+       cout<<fe<<endl;
+    }
+    
 }
 
 //-----------------------------------------------------------------------------

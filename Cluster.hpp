@@ -8,6 +8,8 @@
 
 // INCLUDES AND MACROS
 #include "Square.hpp"
+#include "IllegalInput.hpp"
+#include "FatalException.hpp"
 
 
 // END INCLUDES AND MACROS
