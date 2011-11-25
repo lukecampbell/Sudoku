@@ -191,8 +191,8 @@ Board::~Board()
         delete board_clusters[k];
     for (int k = 0; k < 81; k++)
         delete board[k];
-
-    cout << "Board is destroyed" << endl;
+    // below is commented out for flow reasons
+    //cout << "Board is destroyed" << endl;
 
 #ifdef __DEBUG__
     DEBUG_CALL(Board::~Board(),__LINE__);

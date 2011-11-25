@@ -25,7 +25,13 @@
 int main(int argc, char *argv[])
 {
     banner();
+    testSquare();
+    testBoard();
     testCluster();
+    testBadMoveException();
+    testIllegalInputException();
+    testConflictingValueException();
+    testFatalException();
     bye();
     return 0;
 }
