@@ -47,6 +47,7 @@ void testFatal()
 void testFatalException()
 {
    FatalException fe("Unit Test");
+   bool wasThrown=false;
    cout<<"Fatal Exception test"<<endl;
    // it should successfully be thrown and caught
    cout<<" - test throw/catch"<<endl;
@@ -60,7 +61,21 @@ void testFatalException()
       cerr<<"Fatal Exception Test Failed"<<endl
           <<"  - Failed to be thrown/caught."<<endl;
    }
-
+   // it should be thrown when a Board is created with a non-existent file
+   try {
+      cout<<" - test load board without good file"<<endl;
+      Board myBoard("does_not_exist");
+   } catch(FatalException &f) {
+      cout<<"   test successful."<<endl;
+      wasThrown=true;
+   }
+   if(!wasThrown)
+   {
+      cout<<"   test failed."<<endl;
+      cerr<<"Fatal Exception Test Failed"<<endl
+          <<"  - Failed to be thrown in Board class for bad file input"<<endl;
+   }
+   
 }
 
 //-----------------------------------------------------------------------------

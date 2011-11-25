@@ -13,6 +13,7 @@
 #include "Square.hpp"
 #include "SquareState.hpp"
 #include "IllegalInput.hpp"
+#include "FatalException.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>
