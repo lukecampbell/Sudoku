@@ -154,8 +154,11 @@ void Game::saveGame(const string &filename)
         return;
     currentFrame = frames.top();
     for (int k = 0; k < 81; k++)
-        output << currentFrame->states[k].getValue() << " ";
-
+    {
+       if(k%9==0 && k!=0)
+          output<<endl;
+        output << currentFrame->states[k].getValue();
+    }
     output.close();
 
 }
