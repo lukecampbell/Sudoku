@@ -104,8 +104,11 @@ void Cluster::unshoop(Square *s, char val)
     int ref = val -'1';
     if(references[ref]>0)
         references[ref]--;
+
     if(references[ref]==0) // there are no more references
     {
+    	// I need to check other clusters here to make sure
+    	// they aren't referencing as well
         for(int k=0;k<9;k++)
         {
             if(s==cluster_group[k])

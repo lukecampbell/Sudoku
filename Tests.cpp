@@ -499,23 +499,26 @@ void testCluster()
     Cluster Box(CLUSTER_BOX, box);
     cout<<"Clusters created"<<endl;
 
-    Row.shoop(&main.sub(3, 5), '5');
-    Col.shoop(&main.sub(2, 2), '6');
-    Box.shoop(&main.sub(1, 1), '2');
+
+
+    main.sub(3,5).mark('5');
     //---------------------------------------------
-    // based on the above shoop calls
+    // based on the above mark calls
     // it shouuld be impossible for Square[3,4] to
     // have a 5 in it's possibility list
     //---------------------------------------------
-
-    if(main.sub(3,4).isPossible('5'))
+    // Make sure that row, column and box dont have a possibility
+    if(main.sub(3,4).isPossible('5') || main.sub(2,5).isPossible('5') ||
+    		main.sub(4,3).isPossible('5'))
        cout<<"  - shoop test failed"<<endl;
     else
        cout<<"  - shoop test succeeded."<<endl;
 
     cout<<"Testing unshoop..."<<endl;
-    Row.unshoop(&main.sub(3,5),'5');
-    if(main.sub(3,4).isPossible('5'))
+    main.sub(3,5).mark('1');
+    // Make sure that row, column and box HAVE the possiblity back
+    if(main.sub(3,4).isPossible('5') && main.sub(2,5).isPossible('5') &&
+    		main.sub(4,3).isPossible('5'))
        cout<<"  - unshoop test succeeded."<<endl;
     else
        cout<<"  - unsoop test failed."<<endl;

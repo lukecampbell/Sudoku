@@ -442,6 +442,7 @@ void Game::changeSquare()
         cerr << "Invalid entry" << endl;
         return;
     }
+    cout<<board.sub(r-'1',c-'1')<<endl;
     cout << "Enter the value: ";
     cin >> val;
 
