@@ -530,6 +530,8 @@ void testCluster()
       // The code below references a bad pointer
       // and throws a fatal exception as it should
       Square *tooshort[9];
+      for(int k=0;k<9;k++)
+    	  tooshort[k]=NULL;
       bzero(tooshort,9);
       for(int k=0;k<6;k++)
       {
