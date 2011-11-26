@@ -229,7 +229,8 @@ void testConflictingValueException()
 			<<"  - Square class failed to throw an exception for marking"
 			<<"    an impossible value"<<endl;
 	}
-   // a conflicting value exception should be thrown if you try to mark a const square
+   // a conflicting value exception should be thrown if you try to
+   // mark a const square
    cout<<"Const Square Mark Test"<<endl;
    Square constSquare;
    constSquare.mark('1');
@@ -290,7 +291,7 @@ void testIllegalInputException()
 	{
 		cout<<" - test failed."<<endl;
 				cerr<<"Illegal Input Exception"<<endl
-					<<"  - Failed to throw an exception when Square is marked with"
+			<<"  - Failed to throw an exception when Square is marked with"
 					<<" wrong value"<<endl;
 	}
 
@@ -567,9 +568,7 @@ void testCluster()
 
 //-----------------------------------------------------------------------------
 // testTogether()
-// Performs an array of tests on the Sudoku application
-// no arguments
-// no return
+// Deprecated do not use
 void testTogether()
 {
     char game[] = { 0, 0, 0, 2, 6, 0, 7, 0, 1, 6, 8, 0, 0, 7, 0, 0, 9, 0, 1, 9,

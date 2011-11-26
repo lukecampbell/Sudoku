@@ -50,7 +50,6 @@ int main(int argc, char *argv[])
 {
     if(argc>1)
     {
-       cout<<argv[1]<<endl;
        if(!strcmp(argv[1],"test") || !strcmp(argv[1],"--test"))
        {
           banner();
