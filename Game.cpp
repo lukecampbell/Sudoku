@@ -366,22 +366,19 @@ void Game::run()
     char choice;
     do
     {
-        cout<<*this<<endl;
+        cout<<endl<<*this<<endl;
         printMenu();
         cout << "Enter a choice: ";
         cin >> choice;
         switch (choice)
         {
         case '1': // Print Board
-            cout << *this << endl;
             break;
         case '2': // Go back
             popFrame();
-            cout << endl << *this << endl;
             break;
         case '3': // Change a Square
             changeSquare();
-            cout << endl << *this << endl;
             break;
         case '4': // Get A Square
             getSquare();
