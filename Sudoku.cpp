@@ -26,6 +26,7 @@ inline void runTests()
     testIllegalInputException();
     testConflictingValueException();
     testFatalException();
+	testGetCluster();
 }
 
 static void gameInit()

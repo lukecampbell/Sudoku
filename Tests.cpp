@@ -16,6 +16,108 @@
 #include "FatalException.hpp"
 
 
+//-----------------------------------------------------------------------------
+// testGetCluster()
+// Unit test for getCluster
+void testGetCluster()
+{
+	Board myBoard;
+	Cluster *cluster;
+	bool passed=true;
+	cout<<"getCluster Unit Test"<<endl;
+   //------------------------------------------
+   // The unit test should succeed if I can 
+   // successfully get a cluster from 
+   // getCluster()
+   //------------------------------------------
+	try {
+		cout<<" - testing accessor method"<<endl;
+		cluster = myBoard.getCluster(CLUSTER_ROW,8);
+	} catch(FatalException &fe) {
+		cout<<"   test failed.";
+		cerr<<"getCluster Unit Test Failed"<<endl
+			<<" - cluster failed to be returned by Board::getCluster()"<<endl;
+		return;
+	}
+	cout<<"   test succeeded."<<endl;
+
+	try {
+		cout<<" - testing accessor out of bounds"<<endl;
+		cluster = myBoard.getCluster(CLUSTER_ROW,10); // out of bounds
+		
+	} catch(FatalException &fe) {
+		cout<<"   test succeeded."<<endl;
+	}
+	cout<<" - testing shooping and accuracy"<<endl;
+   //------------------------------------------
+   // Cluster Box Unit Test
+   //------------------------------------------
+	cout<<"    - testing row"<<endl;
+	myBoard.sub(0,0).mark('1');
+	cluster = myBoard.getCluster(CLUSTER_ROW,0);
+	for(int k=1;k<9;k++)
+	{
+		Square *square = cluster->getSquare(k);
+		if(square->isPossible('1'))
+		{
+			
+			cout<<"      test failed."<<endl;
+			cerr<<"getCluster Test Failed"<<endl
+				<<"  - The accuracy of the shoop failed"<<endl;
+			passed = false;
+		}
+	}
+	if(passed)
+	{
+		cout<<"      test succeeded."<<endl;
+	}
+   else
+      passed=true; // reset
+
+   //------------------------------------------
+   // Cluster Column Unit Test
+   //------------------------------------------
+	cout<<"    - testing column"<<endl;
+	cluster = myBoard.getCluster(CLUSTER_COL,0);  // get the first column
+	for(int k=1;k<9;k++)
+	{
+		Square *square = cluster->getSquare(k);
+		if(square->isPossible('1'))
+		{
+			
+			cout<<"      test failed."<<endl;
+			cerr<<"getCluster Test Failed"<<endl
+				<<"  - The accuracy of the shoop failed"<<endl;
+			passed = false;
+		}
+	}
+	if(passed)
+	{
+		cout<<"      test succeeded."<<endl;
+	}
+
+   //------------------------------------------
+   // Cluster Box Unit Test
+   //------------------------------------------
+	cout<<"    - testing box"<<endl;
+	cluster = myBoard.getCluster(CLUSTER_BOX,0);  // get the first box
+	for(int k=1;k<9;k++)
+	{
+		Square *square = cluster->getSquare(k);
+		if(square->isPossible('1'))
+		{
+			
+			cout<<"      test failed."<<endl;
+			cerr<<"getCluster Test Failed"<<endl
+				<<"  - The accuracy of the shoop failed"<<endl;
+			passed = false;
+		}
+	}
+	if(passed)
+	{
+		cout<<"      test succeeded."<<endl;
+	}
+}
 
 //-----------------------------------------------------------------------------
 // testFatal()

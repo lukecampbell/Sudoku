@@ -56,7 +56,7 @@ public:
     void restoreState(Frame *);
     // Returns a desired cluster
     // for box type the ordering goes left to right
-    Cluster& getCluster(ClusterType type, int num);
+    Cluster* getCluster(ClusterType type, int num);
 
 };
 inline ostream& operator<<(ostream& out, Board& b)

@@ -18,6 +18,7 @@
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
+void testGetCluster();
 void testFatal();
 void testFatalException();
 void testConflictingValueException();

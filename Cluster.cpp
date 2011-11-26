@@ -128,3 +128,14 @@ ostream& Cluster::print(ostream &out)
     out << endl;
     return out;
 }
+
+Square* Cluster::getSquare(int index)
+{
+	if(index<0 || index>8)
+	{
+		string s = "Cluster::getSquare() index out of bounds ";
+		s+=index;
+		throw FatalException(s);
+	}
+	return cluster_group[index];
+}

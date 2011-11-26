@@ -242,7 +242,7 @@ void Game::printGameSubMenu()
 //-----------------------------------------------------------------------------
 // selectCluster()
 // Allows the user to select a cluster in the game
-void selectCluster()
+void Game::selectCluster()
 {
    char choice;
    cout<<"\t\\__ (1) Row Cluster"<<endl;

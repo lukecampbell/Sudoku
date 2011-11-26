@@ -39,6 +39,7 @@ public:
     ostream& print(ostream &out);                   // prints Cluster info
     void shoop(Square *s, char val);                // shoops a given square
     void unshoop(Square *s, char val);
+	Square* getSquare(int index);
 };
 inline ostream& operator<<(ostream& out,Cluster &c)
 {

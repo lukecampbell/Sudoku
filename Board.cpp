@@ -310,8 +310,14 @@ void Board::restoreState(Frame *frame)
         // using setState results in unpredictable behavior
     }
 }
-
-Cluster& Board::getCluster(ClusterType type, int num)
+//-----------------------------------------------------------------------------
+// getCluster()
+// returns a cluster given the type and an integer 0-8
+Cluster* Board::getCluster(ClusterType type, int num)
 {
-   
+	int offset = ((int) type) * 9 + num;
+	if(num<0 || num>8)
+		throw FatalException("Board::getCluster() number is out of bounds");
+	
+	return board_clusters[offset];
 }
