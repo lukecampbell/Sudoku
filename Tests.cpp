@@ -363,6 +363,10 @@ void testSquare()
     Square fourth(0xFFFFFFFF + 1, 0xFFFFFFFF + 1);
     cout << fourth << endl;
 }
+//-----------------------------------------------------------------------------
+// testBoard()
+// Performs an array of tests on the Board class
+// no arguments
 void testBoard()
 {
 
@@ -396,90 +400,12 @@ void testBoard()
 
 
 }
-//-----------------------------------------------------------------------------
-// testBoard()
-// Performs an array of tests on the Board class
-// no arguments
-//// no return
-//void testBoard()
-//{
-//    Square *buf; // buffer variable for testing
-//    // First test, attempt to load a bad filename
-//
-//    //    cout<<"-------------------------------------------"<<endl<<endl;
-//    //    cout<<"    Error Test"<<endl;
-//    //    cout<<" Various error testing (commented)"<<endl<<endl;;
-//    //    cout<<"-------------------------------------------"<<endl;
-//
-//    // Bad input filename
-//    //Board error("BADFILE");
-//
-//    // Bad subscript
-//    //  Board error("INPUT");
-//    // Bad first index
-//    //  error.sub(9,4);
-//    // Bad second index
-//    //  error.sub(4,9);
-//    // Negative index
-//    //     error.sub(-1,9);
-//
-//    // Bad marking on a Square
-//    //     Square badsquare(0,0);
-//    // mark a non numeric value
-//    //     cout<<"mark 'a'"<<endl;
-//    //     badsquare.mark('a');
-//    //     cout<<badsquare<<endl;
-//    // turn off something outside 1-9
-//    //     badsquare.turnOff(0);
-//    //     cout<<"turnOff 0"<<endl;
-//    //     cout<<badsquare<<endl;
-//    //     cout<<"turnOff 11"<<endl;
-//    //     badsquare.turnOff(11);
-//    //     cout<<badsquare<<endl;
-//
-//
-//    // Second actually make a Board and test various subscripts
-//    Board second("INPUT");
-//
-//    cout << "-------------------------------------------" << endl << endl;
-//    cout << "    Second Test" << endl;
-//    cout << " Subscript testing" << endl << endl;
-//    ;
-//    cout << "-------------------------------------------" << endl;
-//
-//    cout << "First square is [0,0]: " << second.sub(0, 0) << endl;
-//    // Now try changing the value of that square
-//    buf = &second.sub(0, 0);
-//    buf->mark('1');
-//    buf->turnOff(1);
-//    cout << "First square is now changed: " << *buf << endl;
-//    cout << "Requested subsequent square: " << second.sub(0, 0) << endl;
-//
-//    // Now change the subscript [4,4]
-//    cout << "Changing Square[4,4] to a 5" << endl;
-//    buf = &second.sub(4, 4);
-//    buf->mark('5');
-//    buf->turnOff(5);
-//    cout << *buf << endl;
-//
-//    // Now change the last subscript Square[8,8]
-//    cout << "Changing Square[8,8] to a 9" << endl;
-//    buf = &second.sub(8, 8);
-//    buf->mark('9');
-//    buf->turnOff(9);
-//    cout << *buf << endl;
-//
-//    cout << "-------------------------------------------" << endl << endl;
-//    cout << "    Third Test" << endl;
-//    cout << " Printing the board" << endl << endl;
-//    cout << "-------------------------------------------" << endl;
-//    cout << " This is the board from the second test:" << endl;
-//    cout << second << endl;
-//}
+
 
 void testCluster()
 {
     cout<<"Testing cluster controller"<<endl;
+    bool referenceFailed=false; // used to track reference unit tests
     Board main;
     cout<<"board created"<<endl;
     Square *row[9];
@@ -523,6 +449,38 @@ void testCluster()
     else
        cout<<"  - unsoop test failed."<<endl;
     
+    // I should be able to determine that a square is referencing
+    // a possibility
+
+    cout<<"Testing cluster references"<<endl;
+    cout<<"  - testing row"<<endl;
+    // check the entire row
+    for(int k=0;k<9;k++)
+    {
+    	if(!main.sub(3,k).isReferenced(1))
+    	{
+    		cout<<"    test failed"<<endl;
+    		referenceFailed = true;
+    		break;
+    	}
+    }
+    if(!referenceFailed)
+    	cout<<"    test succeeded."<<endl;
+    referenceFailed=false;
+    //check the entire column
+    cout<<"  - testing column"<<endl;
+    for(int k=0;k<9;k++)
+    {
+    	if(!main.sub(k,5).isReferenced(1))
+    	{
+    		cout<<"    test failed."<<endl;
+    		referenceFailed = true;
+    		break;
+    	}
+    }
+    if(!referenceFailed)
+    	cout<<"    test succeeded."<<endl;
+
 
     //---------------------------------------------
     // Fault tolerant tests

@@ -95,6 +95,7 @@ bool Square::mark(char value)
     //------------------------------------------------
     if(ret && (val!='-'))
     {
+
         vector<Cluster *>::iterator it;
         for(it = square_clusters.begin();it<square_clusters.end();it++)
         {
@@ -171,3 +172,11 @@ void Square::setState(SquareState &state)
     SquareState::operator=(state);
 }
 
+bool Square::isReferenced(int n)
+{
+	vector<Cluster *>::iterator it;
+	for(it=square_clusters.begin();it!=square_clusters.end();it++)
+		if((*it)->isReferenced(n))
+			return true;
+	return false;
+}

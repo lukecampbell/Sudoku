@@ -113,7 +113,8 @@ void Cluster::unshoop(Square *s, char val)
         {
             if(s==cluster_group[k])
                 continue;
-            cluster_group[k]->turnOn(val-'0');
+            if(!cluster_group[k]->isReferenced(val-'0'))
+            	cluster_group[k]->turnOn(val-'0');
         }
     }
 }
@@ -131,7 +132,9 @@ ostream& Cluster::print(ostream &out)
     out << endl;
     return out;
 }
-
+//-----------------------------------------------------------------------------
+// getSquare()
+// returns the square at the specified index
 Square* Cluster::getSquare(int index)
 {
 	if(index<0 || index>8)
@@ -141,4 +144,19 @@ Square* Cluster::getSquare(int index)
 		throw FatalException(s);
 	}
 	return cluster_group[index];
+}
+
+//-----------------------------------------------------------------------------
+// isReferenced()
+// returns true if the cluster references the specified value
+bool Cluster::isReferenced(int n)
+{
+	// I use a fatal exception because
+	// this method should never be called
+	// outside the scope of Marking a value
+	if(n<1 || n>9)
+		throw FatalException("Cluster::isReferenced() illegal reference");
+	if(references[n-1]>0)
+		return true;
+	return false;
 }

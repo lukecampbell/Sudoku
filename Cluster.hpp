@@ -44,6 +44,8 @@ public:
     void unshoop(Square *s, char val);
     // Returns a square in the group
     Square* getSquare(int index);
+    // returns true if the value is referenced by this cluster
+    bool isReferenced(int n);
 };
 inline ostream& operator<<(ostream& out,Cluster &c)
 {

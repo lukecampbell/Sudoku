@@ -41,6 +41,7 @@ private:
     unsigned int square_row; // The current row and column for which
     // this
     unsigned int square_col; // square resides
+
 public:
     Square(int row, int col); // Initializes the Square with the specified
     // two values
@@ -62,7 +63,10 @@ public:
     SquareState getState() const; // returns the current state of this square
     void setState(SquareState &state); // sets the state of this square
 
-
+    // returns true if any clusters this square is attached to
+    // is currently referencing this possibility
+    // possibilities are 1-9
+    bool isReferenced(int n);
 };
 inline ostream& operator<<(ostream & out, Square &square)
 {
