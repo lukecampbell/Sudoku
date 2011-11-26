@@ -122,9 +122,7 @@ void Square::addCluster(Cluster *cluster)
 {
     if (!cluster)
     {
-        //TODO: Throw an error here for null pointer
-        char errmsg[] = "Null pointer\n";
-        fatal(errmsg);
+        throw FatalException("Square::addCluster() null pointer");
     }
     square_clusters.push_back(cluster);
 }
