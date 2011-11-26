@@ -20,6 +20,7 @@ SquareState::SquareState()
     state_value = '-';
     state_bitmap = 0x3FE;
     state_count = 9;
+    constFlag = false;
     registerCallback(&doNothing);
 }
 
@@ -31,6 +32,7 @@ SquareState::SquareState(const SquareState &copy)
     state_value = copy.state_value;
     state_bitmap = copy.state_bitmap;
     state_count = copy.state_count;
+    constFlag = copy.constFlag;
     registerCallback(&doNothing);
 }
 
@@ -46,6 +48,12 @@ SquareState::~SquareState()
 // Marks a value into the square
 bool SquareState::mark(char value)
 {
+    //------------------------------------------------
+    // check to make sure that the square is not const
+    //------------------------------------------------
+    if(constFlag)
+       throw ConflictingValue(0,0,value,
+             "SquareState::mark() attempted to mark a const square");
     if (value == '-' || value == '0' || value==' ')
     {
         if(state_value!='-')
@@ -196,6 +204,17 @@ bool SquareState::isPossible(char value) const
 		return true;
 	return false;
 }
+
+
+//-----------------------------------------------------------------------------
+// forceMark()
+// forces a mark regardless of const
+void SquareState::forceMark(char value)
+{
+   constFlag=false;
+   mark(value);
+}
+
 //-----------------------------------------------------------------------------
 // registerCallback()
 // Registers an event handler for when this square's state changes

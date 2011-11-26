@@ -85,7 +85,9 @@ void Game::loadGame(const string& filename)
         char c;
         input >> c;
         try {
-        	frame->states[k].mark(c);
+        	frame->states[k].forceMark(c);
+         if(c>='1' && c<='9')
+            frame->states[k].setConst();
         } catch(BadMove &b) {
         	cerr<<b<<endl;
         }
@@ -118,7 +120,9 @@ void Game::loadGame2(const string& filename)
         {
             char c = line[y];
             try {
-            	frame->states[x*9 + y].mark(c);
+            	frame->states[x*9 + y].forceMark(c);
+               if(c>='1' && c<='9')
+                  frame->states[x*9 + y].setConst();
             } catch(BadMove &b) {
             	cerr<<b<<endl;
             }

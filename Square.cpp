@@ -73,6 +73,12 @@ bool Square::mark(char value)
 {
     char val = state_value;
 
+    //------------------------------------------------
+    // if it's a const throw a conflicting val exception
+    //------------------------------------------------
+    if(constFlag)
+       throw ConflictingValue(square_row,square_col,value,
+             "Square::mark() attempted to mark a constant square");
     // Exceptions testing
     if(!isValidInput(value))
     {

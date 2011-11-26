@@ -302,7 +302,9 @@ void Board::restoreState(Frame *frame)
     for (int k = 0; k < 81; k++)
     {
     	try {
-    		sub(k / 9, k % 9).mark(frame->states[k].getValue());
+    		sub(k / 9, k % 9).forceMark(frame->states[k].getValue());
+         if(frame->states[k].isConst())
+            sub(k/9,k%9).setConst();
     	} catch (BadMove &b) {
     		cerr<<b<<endl;
     	}

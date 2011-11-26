@@ -190,6 +190,7 @@ void testFatalException()
 void testConflictingValueException()
 {
 	ConflictingValue bad;
+   bool constPass=false;
 	cout<<"Conflicting Value Exception test"<<endl;
 	// it should successfully be thrown and caught
 	cout<<" - testing throw/catch"<<endl;
@@ -228,7 +229,24 @@ void testConflictingValueException()
 			<<"  - Square class failed to throw an exception for marking"
 			<<"    an impossible value"<<endl;
 	}
-
+   // a conflicting value exception should be thrown if you try to mark a const square
+   cout<<"Const Square Mark Test"<<endl;
+   Square constSquare;
+   constSquare.mark('1');
+   constSquare.setConst();
+   try {
+      constSquare.mark('2');
+   } catch(ConflictingValue &cv) {
+      constPass=true;
+      cout<<"  - test succeeded"<<endl;
+      cout<<cv<<endl;
+   } catch(...) {
+      cout<<"  - test failed"<<endl;
+   }
+   if(!constPass)
+   {
+      cout<<"  - test failed"<<endl;
+   }
 }
 //-----------------------------------------------------------------------------
 // testIllegalInputException()

@@ -30,6 +30,7 @@ protected:
     short int state_count;
     unsigned short int state_bitmap;
     eventHandler state_callback;
+    bool constFlag;
 
 public:
     // Initializes a generic square state
@@ -82,6 +83,12 @@ public:
 
     // Returns true if the value is possible in this SquareState
     bool isPossible(char value) const;
+    // turns on the Const Flag
+    void setConst() { constFlag = true; }
+
+    // marks the square regardless of const
+    void forceMark(char value);
+    bool isConst() { return constFlag; }
 
 };
 inline ostream& operator<<(ostream &out, SquareState &state)
