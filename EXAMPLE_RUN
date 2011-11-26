@@ -2,7 +2,7 @@
 -------------------------------------------------------------
 	Lucas Campbell
 	CS 626
-	Sat Nov 26 2011	17:10:30
+	Sat Nov 26 2011	18:44:28
 ---------------------------------------------------------------
 
     1 2 3   4 5 6   7 8 9
@@ -69,43 +69,11 @@ Aug 6, 2011
  \__ (5) Game Option
  \__ (6) Select a Cluster
  \__ (7) Quit
-Enter a choice: 	\__ (1) Row Cluster
-	\__ (2) Column Cluster
-	\__ (3) Box Cluster
-Enter a choice: Enter a box: 
+Enter a choice: Enter the row: Enter the column: Square [1,2]: - Possibilities: (3)  2  5  8 
+Enter the value: 
     1 2 3   4 5 6   7 8 9
    _______ _______ _______
-1 | 4 - 6 | - - 7 | - - 3 | 
-2 | - 9 - | 5 - 6 | - 7 - | 
-3 | - - - | - - - | 5 8 - | 
-  |_______|_______|_______|
-4 | - - - | 9 - - | 3 4 - | 
-5 | 3 - - | - - - | - - 8 | 
-6 | - 7 8 | - - 4 | - - - | 
-  |_______|_______|_______|
-7 | - 1 7 | - - - | - - - | 
-8 | - - - | - 2 - | 9 - 6 | 
-9 | 9 - - | 7 - - | 8 - - | 
-  |_______|_______|_______|
-
-Cluster is of type: Box
-1: Square [7,1]: - Possibilities: (4)  2  56 8 
-2: Square [7,2]: 1 Possibilities: (7) 123456 8 
-3: Square [7,3]: 7 Possibilities: (5)  2345 7  
-4: Square [8,1]: - Possibilities: (2)     5  8 
-5: Square [8,2]: - Possibilities: (4)   345  8 
-6: Square [8,3]: - Possibilities: (3)   345    
-7: Square [9,1]: 9 Possibilities: (4)  2  56  9
-8: Square [9,2]: - Possibilities: (5)  23456   
-9: Square [9,3]: - Possibilities: (4)  2345    
-
-
-(1): Change a square
-(2): Go back
-Enter a choice: 
-    1 2 3   4 5 6   7 8 9
-   _______ _______ _______
-1 | 4 - 6 | - - 7 | - - 3 | 
+1 | 4 2 6 | - - 7 | - - 3 | 
 2 | - 9 - | 5 - 6 | - 7 - | 
 3 | - - - | - - - | 5 8 - | 
   |_______|_______|_______|
@@ -126,7 +94,64 @@ Enter a choice:
  \__ (5) Game Option
  \__ (6) Select a Cluster
  \__ (7) Quit
-Enter a choice: Enter the row: Enter the column: Square [7,3]: 7 Possibilities: (5)  2345 7  
+Enter a choice: 	\__ (1) Row Cluster
+	\__ (2) Column Cluster
+	\__ (3) Box Cluster
+Enter a choice: Enter a box: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 2 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | 9 - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - 4 | - - - | 
+  |_______|_______|_______|
+7 | - 1 7 | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+Cluster is of type: Box
+1: Square [4,1]: - Possibilities: (4) 12  56   
+2: Square [4,2]: - Possibilities: (2)     56   
+3: Square [4,3]: - Possibilities: (3) 12  5    
+4: Square [5,1]: 3 Possibilities: (5) 123 56   
+5: Square [5,2]: - Possibilities: (3)    456   
+6: Square [5,3]: - Possibilities: (5) 12 45   9
+7: Square [6,1]: - Possibilities: (4) 12  56   
+8: Square [6,2]: 7 Possibilities: (3)     567  
+9: Square [6,3]: 8 Possibilities: (5) 12  5  89
+
+
+(1): Change a square
+(2): Go back
+Enter a choice: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 2 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | 9 - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - 4 | - - - | 
+  |_______|_______|_______|
+7 | - 1 7 | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: Enter the row: Enter the column: Square [1,2]: 2 Possibilities: (3)  2  5  8 
 Enter the value: 
     1 2 3   4 5 6   7 8 9
    _______ _______ _______
@@ -138,7 +163,7 @@ Enter the value:
 5 | 3 - - | - - - | - - 8 | 
 6 | - 7 8 | - - 4 | - - - | 
   |_______|_______|_______|
-7 | - 1 - | - - - | - - - | 
+7 | - 1 7 | - - - | - - - | 
 8 | - - - | - 2 - | 9 - 6 | 
 9 | 9 - - | 7 - - | 8 - - | 
   |_______|_______|_______|
@@ -165,21 +190,21 @@ Enter a choice: Enter a box:
 5 | 3 - - | - - - | - - 8 | 
 6 | - 7 8 | - - 4 | - - - | 
   |_______|_______|_______|
-7 | - 1 - | - - - | - - - | 
+7 | - 1 7 | - - - | - - - | 
 8 | - - - | - 2 - | 9 - 6 | 
 9 | 9 - - | 7 - - | 8 - - | 
   |_______|_______|_______|
 
 Cluster is of type: Box
-1: Square [7,1]: - Possibilities: (5)  2  5678 
-2: Square [7,2]: 1 Possibilities: (7) 123456 8 
-3: Square [7,3]: - Possibilities: (6)  2345 7  
-4: Square [8,1]: - Possibilities: (3)     5 78 
-5: Square [8,2]: - Possibilities: (4)   345  8 
-6: Square [8,3]: - Possibilities: (4)   345 7  
-7: Square [9,1]: 9 Possibilities: (4)  2  56  9
-8: Square [9,2]: - Possibilities: (5)  23456   
-9: Square [9,3]: - Possibilities: (4)  2345    
+1: Square [4,1]: - Possibilities: (4) 12  56   
+2: Square [4,2]: - Possibilities: (3)  2  56   
+3: Square [4,3]: - Possibilities: (3) 12  5    
+4: Square [5,1]: 3 Possibilities: (5) 123 56   
+5: Square [5,2]: - Possibilities: (4)  2 456   
+6: Square [5,3]: - Possibilities: (5) 12 45   9
+7: Square [6,1]: - Possibilities: (4) 12  56   
+8: Square [6,2]: 7 Possibilities: (4)  2  567  
+9: Square [6,3]: 8 Possibilities: (5) 12  5  89
 
 
 (1): Change a square
@@ -195,7 +220,57 @@ Enter a choice:
 5 | 3 - - | - - - | - - 8 | 
 6 | - 7 8 | - - 4 | - - - | 
   |_______|_______|_______|
-7 | - 1 - | - - - | - - - | 
+7 | - 1 7 | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: Enter the row: Enter the column: Square [1,1]: 4 Possibilities: (5) 12 45  8 
+Enter the value: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | 9 - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - 4 | - - - | 
+  |_______|_______|_______|
+7 | - 1 7 | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: Enter the row: Enter the column: Square [1,2]: - Possibilities: (4)  2  5  8 
+Enter the value: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | 9 - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - 4 | - - - | 
+  |_______|_______|_______|
+7 | - 1 7 | - - - | - - - | 
 8 | - - - | - 2 - | 9 - 6 | 
 9 | 9 - - | 7 - - | 8 - - | 
   |_______|_______|_______|
@@ -232,10 +307,7 @@ Enter a choice:
  \__ (5) Game Option
  \__ (6) Select a Cluster
  \__ (7) Quit
-Enter a choice: 	\__ (1) Row Cluster
-	\__ (2) Column Cluster
-	\__ (3) Box Cluster
-Enter a choice: Enter a box: 
+Enter a choice: 
     1 2 3   4 5 6   7 8 9
    _______ _______ _______
 1 | 4 - 6 | - - 7 | - - 3 | 
@@ -251,24 +323,18 @@ Enter a choice: Enter a box:
 9 | 9 - - | 7 - - | 8 - - | 
   |_______|_______|_______|
 
-Cluster is of type: Box
-1: Square [7,1]: - Possibilities: (4)  2  56 8 
-2: Square [7,2]: 1 Possibilities: (8) 123456 8 
-3: Square [7,3]: 7 Possibilities: (6)  2345 7  
-4: Square [8,1]: - Possibilities: (2)     5  8 
-5: Square [8,2]: - Possibilities: (4)   345  8 
-6: Square [8,3]: - Possibilities: (3)   345    
-7: Square [9,1]: 9 Possibilities: (5)  2  56  9
-8: Square [9,2]: - Possibilities: (5)  23456   
-9: Square [9,3]: - Possibilities: (4)  2345    
-
-
-(1): Change a square
-(2): Go back
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
 Enter a choice: 
     1 2 3   4 5 6   7 8 9
    _______ _______ _______
-1 | 4 - 6 | - - 7 | - - 3 | 
+1 | 4 2 6 | - - 7 | - - 3 | 
 2 | - 9 - | 5 - 6 | - 7 - | 
 3 | - - - | - - - | 5 8 - | 
   |_______|_______|_______|

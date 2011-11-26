@@ -47,6 +47,8 @@ public:
 
 
     // Loads a game from the specified file
+    // Depracated supports old file type
+    // and the filetype used in Sudokumm
     void loadGame(const string&);
 
     // Support for alternative file types
