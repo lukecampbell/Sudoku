@@ -31,6 +31,7 @@ private:
     void printMenu();
     void printGameSubMenu();
     void selectCluster();
+    void handleCluster(Cluster *);
 
 public:
     // Builds a blank game

@@ -217,7 +217,6 @@ void Game::printGameSubMenu()
     case '1': // New Game
         newGame();
         cout<<"New game"<<endl;
-        cout<<*this<<endl;
         break;
     case '2': // Save Game
         cout<<"Save Game"<<endl;
@@ -225,7 +224,6 @@ void Game::printGameSubMenu()
         cin.get(); // clears newline in buffer
         getline(cin,buffer);
         saveGame(buffer);
-        cout<<*this<<endl;
         break;
     case '3':  // Load Game
         cout<<"Load Game"<<endl;
@@ -233,7 +231,6 @@ void Game::printGameSubMenu()
         cin.get(); // clears the newline
         getline(cin,buffer);
         loadGame2(buffer);
-        cout<<*this<<endl;
         break;
     default: // Go back
         return;
@@ -252,6 +249,12 @@ void Game::selectCluster()
 
    cout<<"Enter a choice: ";
    cin>>choice;
+   //-------------------------------------------
+   // I deliberately did not use a switch case
+   // because of all the code between each case
+   // I don't like using try/catch and object
+   // manipulation in switch cases.
+   //-------------------------------------------
    if(choice == '1')
    {
       cout<<"Enter a row: ";
@@ -290,9 +293,68 @@ void Game::selectCluster()
       cout<<"Invalid Selection"<<endl;
       return;
    }
+   handleCluster(cluster);
+   return;
+
+}
+//-----------------------------------------------------------------------------
+// handleCluster()
+// Provides the interface between the user and the cluster
+// This method is really convoluted because of the nested
+// interfaces to the user
+void Game::handleCluster(Cluster *cluster)
+{
+   char choice=0;
+   Square *square = NULL;
+   if(!cluster)
+      throw FatalException("Game::handleCluster() null pointer\n");
    cout<<endl<<*this<<endl;
    cout<<*cluster<<endl;
-   return;
+   cout<<"(1): Change a square"<<endl
+       <<"(2): Go back"<<endl;
+   cout<<"Enter a choice: ";
+   cin>>choice;
+   //--------------------------------
+   // Handle a square selection
+   //--------------------------------
+   if(choice=='1')
+   {
+      cout<<"Select a square: ";
+      cin>>choice;
+      if(choice>='1' && choice<='9')
+      {
+         try {
+            square = cluster->getSquare(choice-'1');
+         } catch (FatalException &fe) {
+            cout<<"Error has occurred: "<<fe<<endl;
+            return;
+         }
+         cout<<*square<<endl;
+         cout<<"Enter a value: ";
+         cin>>choice;
+         //--------------------------------
+         // mark the square
+         //--------------------------------
+         try {
+            pushFrame();
+            square->mark(choice);
+         } catch(BadMove &bm) {
+            cout<<bm<<endl;
+            return;
+         } catch(FatalException &fe) {
+            cerr<<"Something has gone wrong."<<endl;
+            cerr<<fe<<endl;
+            return;
+         }
+
+
+      }
+      else
+      {
+         cout<<"Invalid Selection"<<endl;
+         return;
+      }
+   }
 
 }
 //-----------------------------------------------------------------------------
@@ -302,9 +364,9 @@ void Game::selectCluster()
 void Game::run()
 {
     char choice;
-    cout<<*this<<endl;
     do
     {
+        cout<<*this<<endl;
         printMenu();
         cout << "Enter a choice: ";
         cin >> choice;

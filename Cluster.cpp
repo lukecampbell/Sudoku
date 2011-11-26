@@ -124,7 +124,7 @@ ostream& Cluster::print(ostream &out)
     int k = 0;
     out << "Cluster is of type: " << cluster_type_string[cluster_type] << endl;
     for (k = 0; k < 9; k++)
-        out << *cluster_group[k] << endl;
+        out <<k+1<<": "<< *cluster_group[k] << endl;
     out << endl;
     return out;
 }

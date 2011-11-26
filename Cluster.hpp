@@ -37,9 +37,13 @@ public:
     Cluster(ClusterType type, Square *squares[9]);  //
     ~Cluster();                                     // destructor
     ostream& print(ostream &out);                   // prints Cluster info
-    void shoop(Square *s, char val);                // shoops a given square
+
+    // shoops a given square
+    void shoop(Square *s, char val);                
+    // unshoops a given square
     void unshoop(Square *s, char val);
-	Square* getSquare(int index);
+    // Returns a square in the group
+    Square* getSquare(int index);
 };
 inline ostream& operator<<(ostream& out,Cluster &c)
 {
