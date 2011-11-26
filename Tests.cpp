@@ -41,9 +41,13 @@ void testGetCluster()
 	}
 	cout<<"   test succeeded."<<endl;
 
+   //------------------------------------------
+   // it should fail if I try to get a cluster
+   // out of bounds (0-8)
+   //------------------------------------------
 	try {
 		cout<<" - testing accessor out of bounds"<<endl;
-		cluster = myBoard.getCluster(CLUSTER_ROW,10); // out of bounds
+		cluster = myBoard.getCluster(CLUSTER_ROW,9); // out of bounds
 		
 	} catch(FatalException &fe) {
 		cout<<"   test succeeded."<<endl;

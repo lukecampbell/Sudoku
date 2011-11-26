@@ -244,6 +244,7 @@ void Game::printGameSubMenu()
 // Allows the user to select a cluster in the game
 void Game::selectCluster()
 {
+   Cluster *cluster;
    char choice;
    cout<<"\t\\__ (1) Row Cluster"<<endl;
    cout<<"\t\\__ (2) Column Cluster"<<endl;
@@ -251,20 +252,47 @@ void Game::selectCluster()
 
    cout<<"Enter a choice: ";
    cin>>choice;
-   switch(choice)
+   if(choice == '1')
    {
-     case '1':
-        cout<<"Row cluster"<<endl;
-        break;
-     case '2':
-        cout<<"Column cluster"<<endl;
-        break;
-     case '3':
-        cout<<"Box cluster"<<endl;
-        break;
-     default:
-        break;
+      cout<<"Enter a row: ";
+      cin>>choice;
+      try {
+         cluster = board.getCluster(CLUSTER_ROW,choice-'1');
+      } catch(FatalException &fe) {
+         cerr<<"Bad Selection"<<endl;
+         return;
+      }
    }
+   else if(choice == '2')
+   {
+      cout<<"Enter a column: ";
+      cin>>choice;
+      try {
+         cluster = board.getCluster(CLUSTER_COL,choice-'1');
+      } catch(FatalException &fe) {
+         cerr<<"Bad Selection"<<endl;
+         return;
+      }
+   }
+   else if(choice == '3')
+   {
+      cout<<"Enter a box: ";
+      cin>>choice;
+      try {
+         cluster = board.getCluster(CLUSTER_BOX,choice-'1');
+      } catch(FatalException &fe) {
+         cerr<<"Bad Selection"<<endl;
+         return;
+      }
+   }
+   else 
+   {
+      cout<<"Invalid Selection"<<endl;
+      return;
+   }
+   cout<<endl<<*this<<endl;
+   cout<<*cluster<<endl;
+   return;
 
 }
 //-----------------------------------------------------------------------------
