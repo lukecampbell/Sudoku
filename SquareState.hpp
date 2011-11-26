@@ -11,6 +11,7 @@
 #include "BadMove.hpp"
 #include "IllegalInput.hpp"
 #include "ConflictingValue.hpp"
+#include "FatalException.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -26,10 +27,10 @@ typedef void (*eventHandler)(void *);
 class SquareState
 {
 protected:
-    char state_value;
-    short int state_count;
-    unsigned short int state_bitmap;
-    eventHandler state_callback;
+    char stateValue;
+    short int stateCount;
+    unsigned short int stateBitmap;
+    eventHandler stateCallback;
     bool constFlag;
 
 public:

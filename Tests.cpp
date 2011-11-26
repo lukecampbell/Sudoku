@@ -361,25 +361,60 @@ void testGameRun()
 void testSquare()
 {
     cout << "Begining testing of Square..." << endl;
-    // Test basic initialization
-    Square first(0, 0);
+    cout<<"  - test construction"<<endl;
 
-    // Test basic output of this square
-    cout << first << endl;
+    Square test;
+    // it should successfully be constructed
+    cout<<"    test succeeded."<<endl;
 
-    // Test initialization with NEGATIVE values for row and col
-    // since I declared row and col as unsigned, it should be
-    // extremely large numbers (two's complement)
-    Square second(-30, -90);
-    cout << second << endl;
 
-    // Test initialization with sufficiently large integers
-    Square third(0xFFFFFFFF, 0xFFFFFFFF);
-    cout << third << endl;
+    //------------------------------------
+    // it should be able to mark a square
+    //------------------------------------
+    cout<<"  - testing mark"<<endl;
+    try {
+    	if(! test.mark('1'))
+    	{
+    		cout<<"    test failed."<<endl;
+    		return;
+    	}
+    } catch (BadMove &bm) {
+    	cout<<"    test failed."<<endl;
+    	cerr<<bm<<endl;
+    	return;
+    } catch (FatalException &fe) {
+    	cout<<"    test failed."<<endl;
+    	cerr<<fe<<endl;
+    	return;
+    }
+    cout<<"    test succeeded."<<endl;
 
-    // Try to overflow the class
-    Square fourth(0xFFFFFFFF + 1, 0xFFFFFFFF + 1);
-    cout << fourth << endl;
+    //-----------------------------------------------
+    // it should be able to turn off a possibility
+    //-----------------------------------------------
+
+    cout<<"  - testing turnOff"<<endl;
+    test.turnOff(9);
+
+    if(test.isPossible('9'))
+    {
+    	cout<<"    test failed."<<endl;
+    	return;
+    }
+    cout<<"    test succeeded."<<endl;
+    //-----------------------------------------------
+    // it should be able to turn on a possibility
+    //-----------------------------------------------
+    cout<<"  - testing turnOn"<<endl;
+    test.turnOn(9);
+    if(!test.isPossible('9'))
+    {
+    	cout<<"    test failed."<<endl;
+    	return;
+    }
+    cout<<"    test succeeded."<<endl;
+
+
 }
 //-----------------------------------------------------------------------------
 // testBoard()
@@ -392,16 +427,20 @@ void testBoard()
    cout<<"Testing Board"<<endl;
    // it should generate a Board with the default constructor
    // it should allow a mark in any square within the boards bounds
+   cout<<"  - testing construction"<<endl;
    try {
       board.sub(8,8).mark('1');
    } catch (BadMove &b) {
-      cout<<"  - test failed."<<endl;
+      cout<<"    test failed."<<endl;
       cerr<<"Board Test Failed"<<endl
-          <<"  - it should allow a mark in any square"<<endl;
+          <<"    it should allow a mark in any square"<<endl;
       return;
    }
-   cout<<"  - test succeeded."<<endl;
+   cout<<"    test succeeded."<<endl;
    
+   //------------------------------------
+   // test marking
+   //------------------------------------
 
    // it should work with a file in accordance with specs
    Board boardFile("INPUT");

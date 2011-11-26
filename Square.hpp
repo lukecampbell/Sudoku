@@ -37,10 +37,10 @@ class Square: public SquareState
 {
 
 private:
-    vector<Cluster *> square_clusters; // The cluster that the square belongs to
-    unsigned int square_row; // The current row and column for which
+    vector<Cluster *> squareClusters; // The cluster that the square belongs to
+    unsigned int squareRow; // The current row and column for which
     // this
-    unsigned int square_col; // square resides
+    unsigned int squareCol; // square resides
 
 public:
     Square(int row, int col); // Initializes the Square with the specified

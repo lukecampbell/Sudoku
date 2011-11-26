@@ -15,8 +15,8 @@
 Square::Square(int row, int col) :
     SquareState()
 {
-    square_row = row;
-    square_col = col;
+    squareRow = row;
+    squareCol = col;
 }
 
 //-----------------------------------------------------------------------------
@@ -25,8 +25,8 @@ Square::Square(int row, int col) :
 Square::Square() :
     SquareState()
 {
-    square_row = 0;
-    square_col = 0;
+    squareRow = 0;
+    squareCol = 0;
 
 }
 //-----------------------------------------------------------------------------
@@ -35,9 +35,9 @@ Square::Square() :
 Square::Square(const Square& copy) :
     SquareState(copy)
 {
-    square_row = copy.square_row;
-    square_col = copy.square_col;
-    square_clusters = copy.square_clusters; // deep copy
+    squareRow = copy.squareRow;
+    squareCol = copy.squareCol;
+    squareClusters = copy.squareClusters; // deep copy
 }
 
 //-----------------------------------------------------------------------------
@@ -59,8 +59,8 @@ ostream&
 Square::print(ostream& out) const
 {
 
-    out << "Square [" << square_row + 1 << "," << square_col + 1 << "]: "
-            << state_value << " Possibilities: (" << state_count << ") "
+    out << "Square [" << squareRow + 1 << "," << squareCol + 1 << "]: "
+            << stateValue << " Possibilities: (" << stateCount << ") "
             << possibilitiesString();
     return out;
 }
@@ -71,18 +71,18 @@ Square::print(ostream& out) const
 // no return
 bool Square::mark(char value)
 {
-    char val = state_value;
+    char val = stateValue;
 
     //------------------------------------------------
     // if it's a const throw a conflicting val exception
     //------------------------------------------------
     if(constFlag)
-       throw ConflictingValue(square_row,square_col,value,
+       throw ConflictingValue(squareRow,squareCol,value,
              "Square::mark() attempted to mark a constant square");
     // Exceptions testing
     if(!isValidInput(value))
     {
-    	throw IllegalInput(square_row,square_col,value,"invalid input");
+    	throw IllegalInput(squareRow,squareCol,value,"invalid input");
     }
     if(value>='1' && value<='9')
 		if(!isPossible(value))
@@ -92,7 +92,7 @@ bool Square::mark(char value)
 					<<"this square."<<endl;
 			message<<*this<<endl;
 
-			throw ConflictingValue(square_row, square_col, value,
+			throw ConflictingValue(squareRow, squareCol, value,
 					message.str());
 		}
     bool ret = SquareState::mark(value);
@@ -103,7 +103,7 @@ bool Square::mark(char value)
     {
 
         vector<Cluster *>::iterator it;
-        for(it = square_clusters.begin();it<square_clusters.end();it++)
+        for(it = squareClusters.begin();it<squareClusters.end();it++)
         {
             (*it)->unshoop(this,val);
         }
@@ -114,7 +114,7 @@ bool Square::mark(char value)
     if (ret)
     {
         vector<Cluster *>::iterator it;
-        for (it = square_clusters.begin(); it < square_clusters.end(); it++)
+        for (it = squareClusters.begin(); it < squareClusters.end(); it++)
             (*it)->shoop(this, value);
     }
     return ret;
@@ -131,7 +131,7 @@ void Square::addCluster(Cluster *cluster)
     {
         throw FatalException("Square::addCluster() null pointer");
     }
-    square_clusters.push_back(cluster);
+    squareClusters.push_back(cluster);
 }
 
 //-----------------------------------------------------------------------------
@@ -140,10 +140,10 @@ void Square::addCluster(Cluster *cluster)
 void Square::operator =(const Square& copy)
 {
     SquareState::operator=(copy);
-    square_row = copy.square_row;
-    square_col = copy.square_col;
+    squareRow = copy.squareRow;
+    squareCol = copy.squareCol;
 
-    square_clusters = copy.square_clusters; // deep copy
+    squareClusters = copy.squareClusters; // deep copy
 
 }
 
@@ -152,14 +152,14 @@ void Square::operator =(const Square& copy)
 // Returns the row of the current square
 int Square::getRow() const
 {
-    return square_row;
+    return squareRow;
 }
 //-----------------------------------------------------------------------------
 // getCol()
 // Returns the column of the current square
 int Square::getCol() const
 {
-    return square_col;
+    return squareCol;
 }
 
 //-----------------------------------------------------------------------------
@@ -181,7 +181,7 @@ void Square::setState(SquareState &state)
 bool Square::isReferenced(int n)
 {
 	vector<Cluster *>::iterator it;
-	for(it=square_clusters.begin();it!=square_clusters.end();it++)
+	for(it=squareClusters.begin();it!=squareClusters.end();it++)
 		if((*it)->isReferenced(n))
 			return true;
 	return false;

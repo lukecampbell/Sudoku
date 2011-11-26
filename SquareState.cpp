@@ -17,9 +17,9 @@ static void doNothing(void *)
 //
 SquareState::SquareState()
 {
-    state_value = '-';
-    state_bitmap = 0x3FE;
-    state_count = 9;
+    stateValue = '-';
+    stateBitmap = 0x3FE;
+    stateCount = 9;
     constFlag = false;
     registerCallback(&doNothing);
 }
@@ -29,9 +29,9 @@ SquareState::SquareState()
 //
 SquareState::SquareState(const SquareState &copy)
 {
-    state_value = copy.state_value;
-    state_bitmap = copy.state_bitmap;
-    state_count = copy.state_count;
+    stateValue = copy.stateValue;
+    stateBitmap = copy.stateBitmap;
+    stateCount = copy.stateCount;
     constFlag = copy.constFlag;
     registerCallback(&doNothing);
 }
@@ -56,10 +56,10 @@ bool SquareState::mark(char value)
              "SquareState::mark() attempted to mark a const square");
     if (value == '-' || value == '0' || value==' ')
     {
-        if(state_value!='-')
-           turnOn(state_value-'0');
-        state_value = '-';
-        state_callback(this);
+        if(stateValue!='-')
+           turnOn(stateValue-'0');
+        stateValue = '-';
+        stateCallback(this);
         
         return true; //non value
     }
@@ -69,17 +69,17 @@ bool SquareState::mark(char value)
     else if (value >= '1' && value <= '9')
     {
         unsigned short int mask = 0x01 << (value - '0');
-        if ((state_bitmap & mask) == 0)
+        if ((stateBitmap & mask) == 0)
         {
         	//TODO: Refactor this to support exceptions
             cerr << "Attempted to set an illegal value (" << value << ")"
                     << endl << *this << endl;
             return false;
         }
-        if(state_value != '-')
-            turnOn(state_value-'0');
-        state_value = value;
-        state_callback(this);
+        if(stateValue != '-')
+            turnOn(stateValue-'0');
+        stateValue = value;
+        stateCallback(this);
 
     } else
     {
@@ -103,14 +103,15 @@ void SquareState::turnOff(int n)
     // Check bounds
     //------------------------------------------------
     if (n < 1 || n > 9) // TODO throw exception
-        return; // the value is not acceptable
+        throw FatalException(
+         "SquareState::turnOff() attempted to turn off an invalid input");
     mask = 0x01 << n;
-    if ((mask & state_bitmap) != 0)
+    if ((mask & stateBitmap) != 0)
     {
-        state_bitmap = state_bitmap & ~mask;
+        stateBitmap = stateBitmap & ~mask;
 
-        if (state_count > 0)
-            state_count--;
+        if (stateCount > 0)
+            stateCount--;
     }
 
 }
@@ -120,9 +121,9 @@ void SquareState::turnOn(int n)
     if(n<1 || n>9)
         return;
     mask = 0x01 <<n;
-    state_bitmap = state_bitmap | mask;
-    if(state_count<9)
-        state_count++;
+    stateBitmap = stateBitmap | mask;
+    if(stateCount<9)
+        stateCount++;
 }
 
 
@@ -134,7 +135,7 @@ string SquareState::possibilitiesString() const
     string possibilities;
     for (int k = 1; k <= 9; k++)
     {
-        unsigned short int bit = (state_bitmap >> k) & 0x01;
+        unsigned short int bit = (stateBitmap >> k) & 0x01;
         if (bit == 0)
             possibilities += ' ';
         else
@@ -147,7 +148,7 @@ string SquareState::possibilitiesString() const
 // Prints the state of this square
 ostream& SquareState::print(ostream &out) const
 {
-    out << "SquareState: " << state_value << " (" << state_count << ")"
+    out << "SquareState: " << stateValue << " (" << stateCount << ")"
             << possibilitiesString() << endl;
 
     return out;
@@ -157,23 +158,23 @@ ostream& SquareState::print(ostream &out) const
 // Copies the state of (copy) into this square
 void SquareState::operator=(const SquareState &copy)
 {
-    state_value = copy.state_value;
-    state_bitmap = copy.state_bitmap;
-    state_count = copy.state_count;
+    stateValue = copy.stateValue;
+    stateBitmap = copy.stateBitmap;
+    stateCount = copy.stateCount;
 }
 //-----------------------------------------------------------------------------
 // getValue()
 // Returns the current character value of this square
 char SquareState::getValue() const
 {
-    return state_value;
+    return stateValue;
 }
 //-----------------------------------------------------------------------------
 // getCount()
 // Returns the remaining possibilities for this square
 int SquareState::getCount() const
 {
-    return state_count;
+    return stateCount;
 }
 //-----------------------------------------------------------------------------
 // isValidInput()
@@ -200,7 +201,7 @@ bool SquareState::isPossible(char value) const
 	}
 	mask = value - '0';
 	mask = 0x01 << mask;
-	if((state_bitmap & mask) != 0)
+	if((stateBitmap & mask) != 0)
 		return true;
 	return false;
 }
@@ -220,5 +221,5 @@ void SquareState::forceMark(char value)
 // Registers an event handler for when this square's state changes
 void SquareState::registerCallback(eventHandler callback)
 {
-    state_callback = callback;
+    stateCallback = callback;
 }
