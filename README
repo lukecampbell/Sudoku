@@ -28,31 +28,43 @@ You should not receive any errors during make
 Running: 
   $ ./Sudoku
 
+Running the unit tests:
+  $ ./Sudoku --test
+
 List of effective pages:
+      BadMove.cpp
+      BadMove.hpp
       Board.cpp
       Board.hpp
       CHANGES
       Cluster.cpp
       Cluster.hpp
-      disable-debug.sh
-      enable-debug.sh
+      ConflictingValue.cpp
+      ConflictingValue.hpp
+      EXAMPLE_RUN
+      FatalException.cpp
+      FatalException.hpp
       Game.cpp
       Game.hpp
-      INFILE
       INPUT
+      IllegalInput.cpp
+      IllegalInput.hpp
       Makefile
-      NOTES
       README
-      saved.sudoku
       Square.cpp
       Square.hpp
       SquareState.cpp
       SquareState.hpp
       Sudoku.cpp
       Sudoku.hpp
-      TEST.out1
-      TESTPLAN
-      Tests.cpp
+      SudokuStack.hpp
+      TESTS
       TODO
+      Tests.cpp
+      disable-debug.sh
+      enable-debug.sh
+      puz1.txt
+      saved.sudoku
+      tags
       tools.cpp
       tools.hpp

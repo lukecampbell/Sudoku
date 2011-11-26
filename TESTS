@@ -1,0 +1,70 @@
+--test
+
+-------------------------------------------------------------
+	Lucas Campbell
+	CS 626
+	Sat Nov 26 2011	17:08:29
+---------------------------------------------------------------
+Begining testing of Square...
+Square [1,1]: - Possibilities: (9) 123456789
+Square [4294967267,4294967207]: - Possibilities: (9) 123456789
+Square [0,0]: - Possibilities: (9) 123456789
+Square [1,1]: - Possibilities: (9) 123456789
+Testing Board
+  - test succeeded.
+Testing Board with input file: INPUT
+  - test succeeded.
+Testing cluster controller
+board created
+creating square groups
+squares created
+Clusters created
+  - shoop test succeeded.
+Testing unshoop...
+  - unshoop test succeeded.
+Testing cluster references
+  - testing row
+    test succeeded.
+  - testing column
+    test succeeded.
+Functionality and Shoop Tests completed satisfactory
+Testing throwing faults
+  - test successful.
+Cluster::Cluster() null pointer in parameter
+Bad Move Exception
+ - testing throw/catch
+   test satisfactory
+ - testing print()
+   test succeeded
+Illegal Input Exception test
+ - testing throw/catch
+   test successful.
+ - testing Illegal Square::mark
+ - test successful.
+Illegal Input [1,1] (a): invalid input
+Conflicting Value Exception test
+ - testing throw/catch
+   test successful.
+ - testing Square::mark()
+   test successful.
+Conflicting Value [1,1] (3): The value is not a value that is possible for this square.
+Square [1,1]: - Possibilities: (8) 12 456789
+
+Fatal Exception test
+ - test throw/catch
+   test successful.
+(message: Unit Test)
+ - test load board without good file
+   test successful.
+getCluster Unit Test
+ - testing accessor method
+   test succeeded.
+ - testing accessor out of bounds
+   test succeeded.
+ - testing shooping and accuracy
+    - testing row
+      test succeeded.
+    - testing column
+      test succeeded.
+    - testing box
+      test succeeded.
