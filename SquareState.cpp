@@ -71,10 +71,9 @@ bool SquareState::mark(char value)
         unsigned short int mask = 0x01 << (value - '0');
         if ((stateBitmap & mask) == 0)
         {
-        	//TODO: Refactor this to support exceptions
-            cerr << "Attempted to set an illegal value (" << value << ")"
-                    << endl << *this << endl;
-            return false;
+
+            throw IllegalValue(0,0,value,
+            		"SquareState::mark() Attempted to set an illegal value.");
         }
         if(stateValue != '-')
             turnOn(stateValue-'0');
@@ -83,12 +82,9 @@ bool SquareState::mark(char value)
 
     } else
     {
-    	// TODO: Refactor this to support exception
-        cerr << " Attempted to set an illegal value ("<< value << ")" << endl;
-        return false;
+        throw IllegalValue(0,0,value,
+        		"SquareState::mark() attempted to set an illegal value");
     }
-    // TODO: Throw an exception for illegal mark
-
 
     return true;
 
@@ -102,7 +98,7 @@ void SquareState::turnOff(int n)
     //------------------------------------------------
     // Check bounds
     //------------------------------------------------
-    if (n < 1 || n > 9) // TODO throw exception
+    if (n < 1 || n > 9)
         throw FatalException(
          "SquareState::turnOff() attempted to turn off an invalid input");
     mask = 0x01 << n;
