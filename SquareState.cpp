@@ -72,7 +72,7 @@ bool SquareState::mark(char value)
         if ((stateBitmap & mask) == 0)
         {
 
-            throw IllegalValue(0,0,value,
+            throw IllegalInput(0,0,value,
             		"SquareState::mark() Attempted to set an illegal value.");
         }
         if(stateValue != '-')
@@ -82,7 +82,7 @@ bool SquareState::mark(char value)
 
     } else
     {
-        throw IllegalValue(0,0,value,
+        throw IllegalInput(0,0,value,
         		"SquareState::mark() attempted to set an illegal value");
     }
 
