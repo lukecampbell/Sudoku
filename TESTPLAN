@@ -1,0 +1,71 @@
+All of the unit tests have been compiled into a testing platform contained within the main binary.
+
+To run the unit tests on your system use
+ $ ./Sudoku --test
+
+A sample output of the unit tests is provided in the project under TESTS.  The TESTS were run
+on an i686_x64 Mac and compiled with gcc4.2_llvm.  The tests have also been run on the
+following platforms successfully:
+  MacBook Pro Mac OS X 10.7 (Lion) i686_x64
+   Darwin Lukes-MacBook-Pro.local 11.2.0 Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64 x86_64
+  Ubuntu 11.10 i686_x64
+   Linux vbox-ubuntu 3.0.0-13-generic #22-Ubuntu SMP Wed Nov 2 13:27:26 UTC 2011 x86_64 x86_64 x86_64 GNU/Linux
+  (Linux) Ubuntu 11.10 i686
+  (Linux) Fedora 13 i686
+  (Linux) Ubuntu 10.06
+   Linux btfs 2.6.32-33-generic #72-Ubuntu SMP Fri Jul 29 21:08:37 UTC 2011 i686 GNU/Linux
+
+
+The following is an in-depth description of the tests being performed
+
+testGetCluster()
+  Tests the getCluster() method for accuracy, dangling pointers and
+  out of bounds referencing.
+
+testFatal() -- Note: not run normally in test battery because of the program termination
+  Tests the application of FatalException and passing params to fatal()
+
+testFatalException()
+  Tests throwing and catching of a FatalException
+  Tests the application internally to the application (board creation)
+
+testConflictingValueException()
+  Tests throwing and catching of a ConflictingValue Exception
+  Tests the application in Square::mark() when attempting to mark
+  an impossible value.
+  Tests the application in Square::mark when you try to mark a square
+  that has the constantFlag turned on.
+
+testIllegalInputException()
+  Tests throwing and catching of an IllegalValue Exception
+  Tests the application in Square::mark() when attempting to mark
+  with a value outside the permitted range.
+
+testBadMoveException()
+  Tests the throwing and catching of a bad move
+  Tests the output to ensure it is correctly typed to ostream&
+  
+testGameRun() -- Note: not run normally in test battery because it is part of the normal execution of the application
+  Tests the user interface
+
+testSquare()
+  Tests the creation of a square
+  Tests the ability to mark a square with a value
+  Tests the ability to turn on and off possibilities successfully
+  Tests the accuracy of the possibility map after a value has been turned off
+
+testBoard()
+  Tests the creation of a board (convoluted)
+  Tests the marking of squares within the board
+
+testCluster()
+  Tests the controller interface between Board and Cluster during the
+  initialization of a Board
+  Tests Shooping and the accurracy of the shoops in various patterns
+  and all possibilities
+  Tests Un-shooping to ensure that the values are correctly referenced
+  and restored in the proper domains.
+  Test rows/columns/boxes for shooping accuracy
+  Tests fault tolerance and exception handling
+
+testTogether() -- Deprecated do not use left in place for future
