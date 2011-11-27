@@ -1,3 +1,35 @@
+commit 4db5ebb60e009653580a3bdbaebe8f77dad73645
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:23:33 2011 -0500
+
+    Changed README
+
+commit 788290e8a0c025bfe7260376f1d15b5a9966f307
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:21:29 2011 -0500
+
+    Fixed the error in SquareState.
+
+commit 8dfc2acfc947cef0ccf52c2d066e27e3d9924614
+Merge: b4baee1 2a133fb
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:19:58 2011 -0500
+
+    Merge branch 'derive' of github.com:lukecampbell/Sudoku into derive
+
+commit b4baee10dec58a7e6bf4e331d6869b539b5fa4de
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:19:21 2011 -0500
+
+    Fixed CHANGES to include commits and TESTPLAN
+    for grammar and spelling mistakes.
+
+commit 2a133fb0c37798f8e678a989e684314310824a24
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:13:22 2011 -0500
+
+    Patched some TODOs and added more ends checking and Exceptions
+
 commit d43f1d8ab6de5c41a8a4738b1eb8d29655c8652b
 Author: Luke Campbell <luke.s.campbell@gmail.com>
 Date:   Sat Nov 26 19:05:28 2011 -0500
