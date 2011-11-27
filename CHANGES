@@ -1,3 +1,227 @@
+commit d43f1d8ab6de5c41a8a4738b1eb8d29655c8652b
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:05:28 2011 -0500
+
+    Updated the TESTPLAN to include a detailed description of the tests
+    performed
+
+commit e181126724397dd8e6e5974dff23e63b564df280
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 18:46:14 2011 -0500
+
+    Updated the TESTS and EXAMPLE_RUN
+
+commit bdf90694676cd8061ba68e20ec5f81845b4d52c1
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 18:43:19 2011 -0500
+
+    Fixed one line in main uneeded debugging info
+
+commit 46e0f4fde23d28c1a6649594cd0de233fa49004b
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 18:34:07 2011 -0500
+
+    Changed the unit tests to reflect the capabilities of a square
+
+commit 9a2671c4616922d6d35e8c23c74b765420330002
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 18:08:36 2011 -0500
+
+    Implemented save game with the new file format
+
+commit 656c4c52efc777dd5cea6269fdfad04b4d3caff0
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 18:03:09 2011 -0500
+
+    Added a constant flag to the square
+    still bug testing...
+
+commit 6f4b30a901f77ba117f7106c7a43fa3d8d99bcb0
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 17:13:18 2011 -0500
+
+    Provided two example files and changed README
+    to include the unit tests
+
+commit 22719cd15e2b9bc4ffb629ae42fb41225d5f9e62
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 17:06:18 2011 -0500
+
+    Improved the user interface and unit tests.
+
+commit 85fcb15a983bae7e8e7b9ebf225a616fca919a9a
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 16:55:50 2011 -0500
+
+    Implemented reference counting and bug fixes!
+    IT WORKS!!!!
+
+commit 5e91d538d6ebcd07267c748034d17696a313ef3d
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 15:44:03 2011 -0500
+
+    I figured it out, I know what needs to change!
+
+commit 2897425f99f58066e585473ba34dc8278f8338a9
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 15:05:59 2011 -0500
+
+    Fixed the null-pointer and segfault bug in unit tests.
+
+commit 2447d345d2a13ddc553b52d61535009a12d9df70
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 14:08:39 2011 -0500
+
+    added handling of cluster interface
+
+commit 67fab489c29fe9e668d32d8997c5644c9f49d736
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 12:55:49 2011 -0500
+
+    Added throwing an exception in Square::addCluster
+
+commit 7bc0ebd820eda239f72663d14c9befec1db3ca20
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 20:54:20 2011 -0500
+
+    Implemented the UI for getting clusters
+
+commit 1305c5c93b7817284204772d18846c5cc0e79364
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 20:37:16 2011 -0500
+
+    Added getCluster() and unit test
+
+commit e5f5fcb2241f13e4c8dba08ecfee134874c2f648
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 17:08:44 2011 -0500
+
+    In progress of adding selectCluster
+
+commit f8bd0a043320922e0004c1acf0722650671bf12e
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 15:52:46 2011 -0500
+
+    skeleton for Select Cluster UI
+
+commit 56788bad5d7b278be9d0064e68c81adba392028d
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 15:22:49 2011 -0500
+
+    Refining and refactoring tests
+
+commit e8332a140ae79d9497c0dc8ad0802fc731bc724b
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 14:42:56 2011 -0500
+
+    more refined unit tests
+
+commit 7eca3694c9027044c6e69c1942c2a3255d6401e7
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 14:12:43 2011 -0500
+
+    Added FatalException to several end cases
+
+commit be6ea25b124e03b98df6a493d6a200b102c19554
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 13:54:27 2011 -0500
+
+    added unit test for FatalException in Board
+
+commit 376cf01468895012be5504daf8bf484361cb7c13
+Merge: 8350fea b6ac566
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 13:43:20 2011 -0500
+
+    Merge branch 'derive' of github.com:lukecampbell/Sudoku into derive
+
+commit 8350feab4398cd130494725b8238da8fa8080d71
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 13:43:12 2011 -0500
+
+    i dunno whats going on
+
+commit b6ac566ad332492bdafece6900c4887d4b1b7892
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Nov 25 07:45:47 2011 -0500
+
+    Added a FatalException to Board::Board() if it can't load the given input
+
+commit 1d5e3b154301901a6102e91ffce4b8e2645f57a7
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 22:44:42 2011 -0500
+
+    Updated the Board interface to meet specs, have to admin it does look a lot better.
+
+commit 500dc7dba95de8b9093b0313196e89541dd5f595
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 18:54:53 2011 -0500
+
+    Added exceptions to Board::sub for bounds checking.
+
+commit 30ccdd1cb57daab8f7c99d2c8d99c23ce485934e
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 18:44:15 2011 -0500
+
+    Got the exception handling implemented in Game class, still needs work.
+
+commit 1f58078eae22ba8ded16ec27388a06ef832e83b7
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 18:02:11 2011 -0500
+
+    Got the exceptions to compile and link successfully
+
+commit 2b57bd243ede60702745c901dde00c347db6fd9a
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 14:47:40 2011 -0500
+
+    Implemented the functionality of the exceptions
+    Refined multiple unit tests and added exception checking
+
+commit b37be5d00163afe287903638f17f98a2308463fe
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 13:20:38 2011 -0500
+
+    Added more unit tests
+
+commit b5eacfc1a314ebc60ff4b02897e09bd8718e21f7
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 13:13:15 2011 -0500
+
+    Added ConflictingValue and more unit tests.
+
+commit 321b48b66940659c25d4600c6c390808f74c8faf
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 12:48:01 2011 -0500
+
+    Added IllegalInput class and unit tests
+
+commit 6af78228c1d48071ca3519a152e1d4a786469ec0
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Thu Nov 24 11:43:06 2011 -0500
+
+    Added BadMove skel
+
+commit d9a8a2b8f008eb38d718c643cb6922476b893f46
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 20 09:05:02 2011 -0500
+
+    everything
+
+commit b3d74cd10e88144f2830eead7c3ab94c634995dc
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Mon Nov 14 19:45:08 2011 -0500
+
+    Added SudokuStack template class
+    Also added support for various file formats in the Game class, it defaults
+    to the fileformat that was mimics the input file provided for this project.
+
+commit 3415d4d8a2950db096506e95a4a33eba395fa265
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 13 15:07:31 2011 -0500
+
+    Changed CHANGES file and added more info to README
+
 commit 1706d6d054b394ad944a086682e4e70a31317870
 Author: Luke Campbell <luke.s.campbell@gmail.com>
 Date:   Sun Nov 13 15:02:21 2011 -0500

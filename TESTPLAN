@@ -23,11 +23,11 @@ testGetCluster()
   out of bounds referencing.
 
 testFatal() -- Note: not run normally in test battery because of the program termination
-  Tests the application of FatalException and passing params to fatal()
+  Tests the application of a FatalException and passing params to fatal()
 
 testFatalException()
   Tests throwing and catching of a FatalException
-  Tests the application internally to the application (board creation)
+  Tests the interface between the application controllers and FatalException (board creation)
 
 testConflictingValueException()
   Tests throwing and catching of a ConflictingValue Exception
