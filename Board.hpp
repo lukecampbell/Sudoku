@@ -31,22 +31,21 @@ struct Frame
 // Models the Sudoku Board
 class Board
 {
-private:
+protected:
     Square *board[81]; // The board
     ifstream board_reader; // reader for data
-    Cluster *board_clusters[29]; // the clusters on the board
-    const bool diagonalSudoku; // true if we're using a diagonal sudoku variation
+    Cluster **board_clusters; // the clusters on the board
 
 
 public:
     // Default Constructor
-    Board(bool diagonal=false);
+    Board(int clusters=27);
     // Loads the board based on the input
     Board(const char *filename);
     // For debugging purposes only as of yet
-    ~Board();
+    virtual ~Board();
     // Subscript for a square member
-    Square& sub(int j, int k);
+    virtual Square& sub(int j, int k);
     // Prints the board (square by square)
     ostream& print(ostream& out); // Prints the board
     // Prints the graphical board
@@ -57,10 +56,7 @@ public:
     void restoreState(Frame *);
     // Returns a desired cluster
     // for box type the ordering goes left to right
-    Cluster* getCluster(ClusterType type, int num);
-
-    // Returns true if the game is of the diagonal variation
-    bool isDiagonal() const;
+    virtual Cluster* getCluster(ClusterType type, int num);
 
 };
 inline ostream& operator<<(ostream& out, Board& b)

@@ -8,6 +8,7 @@
 #include "Sudoku.hpp"
 #include "Square.hpp"
 #include "Board.hpp"
+#include "DiagBoard.hpp"
 #include "Cluster.hpp"
 #include "Game.hpp"
 #include "BadMove.hpp"
@@ -125,14 +126,14 @@ void testGetCluster()
    // Cluster Diagonal Unit Test
    //------------------------------------------
    cout<<"    - testing diagonal clustering"<<endl;
-   Board diagonalBoard(true);
+   Board *diagonalBoard = new DiagBoard();
 
 
    // a diagonal shoop should occur
-   diagonalBoard.sub(0,0).mark('1');
+   diagonalBoard->sub(0,0).mark('1');
    for(int k=1;k<9;k++)
    {
-      if(diagonalBoard.sub(k,k).isPossible('1'))
+      if(diagonalBoard->sub(k,k).isPossible('1'))
       {
          cout<<"      diagonal cluster test failed."<<endl;
          cerr<<"Diagonal Cluster Test Failed"<<endl
@@ -145,10 +146,10 @@ void testGetCluster()
 
    cout<<"    - testing diagonal clustering (other)"<<endl;
    // the other diagonal shoop should occur
-   diagonalBoard.sub(0,8).mark('2');
+   diagonalBoard->sub(0,8).mark('2');
    for(int k=1;k<9;k++)
    {
-      if(diagonalBoard.sub(k,8-k).isPossible('2'))
+      if(diagonalBoard->sub(k,8-k).isPossible('2'))
       {
          cout<<"      diagonal cluster test failed."<<endl;
          cerr<<"Diagonal Cluster Test Failed"<<endl
@@ -159,6 +160,7 @@ void testGetCluster()
       }
    }
    cout<<"      test succeeded."<<endl;
+   delete diagonalBoard;
 }
 
 //-----------------------------------------------------------------------------

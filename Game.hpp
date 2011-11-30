@@ -10,6 +10,7 @@
 #include <stack>
 #include <sstream>
 #include "Board.hpp"
+#include "DiagBoard.hpp"
 #include "SquareState.hpp"
 #include "SudokuStack.hpp"
 #include "BadMove.hpp"
@@ -33,6 +34,7 @@ private:
     void printGameSubMenu();
     void selectCluster();
     void handleCluster(Cluster *);
+    bool diagonalGame;
 
 public:
     // Builds a blank game

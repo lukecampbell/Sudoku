@@ -10,18 +10,19 @@
 //-----------------------------------------------------------------------------
 // Board()
 // Default Cosntructor
-Board::Board(bool diagonal)
-   :diagonalSudoku(diagonal)
+Board::Board(int clusters)
 {
     Square *lineup[9]; // the working set to allocate the clusters
     unsigned short int allocs = 0; // how many clusters we allocate
+    if(clusters<27)
+       throw FatalException("Board::Board() Not enough clusters to initialize the board.");
     //------------------------------------------------
     // Handle the case where we can't allocate enough
     // memory for the clusers
     //------------------------------------------------
     try
     {
-
+        board_clusters = new Cluster*[clusters];
         //------------------------------------------------
         // Initiate the squares in board
         //------------------------------------------------
@@ -73,33 +74,6 @@ Board::Board(bool diagonal)
             board_clusters[k + 18] = new Cluster(CLUSTER_BOX, lineup);
             allocs++; // keep track of how many we alloc
         }
-
-        if(diagonalSudoku)
-        {
-           //------------------------------------------------
-           // Allocate the clusters for the diagonals
-           //------------------------------------------------
-           // upper left to lower right (increment)
-           for(int k=0;k<9;k++)
-           {
-               lineup[k] = board[9 * k + k];
-
-           }
-           board_clusters[27] = new Cluster(CLUSTER_DIAGONAL, lineup);
-           allocs++;
-
-
-           //------------------------------------------------
-           // Allocate the clusters for the diagonals
-           //------------------------------------------------
-           // upper right to lower left
-           for(int k=0;k<9;k++)
-           {
-               lineup[k] = board[9*k + (8-k)];
-           }
-           board_clusters[28] = new Cluster(CLUSTER_DIAGONAL, lineup);
-           allocs++;
-        }
     }
     //------------------------------------------------
     // Handle a failed alloc
@@ -120,9 +94,8 @@ Board::Board(bool diagonal)
 // Constructor that initializes the ifstream
 // const char *filename - The path to the file
 Board::Board(const char *filename)
-   :diagonalSudoku(false)
 {
-
+    board_clusters = new Cluster*[27];
     //------------------------------------------------
     // Handle file input
     //------------------------------------------------
@@ -358,10 +331,3 @@ Cluster* Board::getCluster(ClusterType type, int num)
 	return board_clusters[offset];
 }
 
-//-----------------------------------------------------------------------------
-// isDiagonal()
-// returns true if the Sudoku game is a diagonal variation
-bool Board::isDiagonal() const
-{
-   return diagonalSudoku;
-}

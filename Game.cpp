@@ -12,6 +12,7 @@ using namespace std;
 // Constructs a blank game with a blank board
 Game::Game()
 {
+   diagonalGame = false;
    board = new Board();
 }
 
@@ -20,7 +21,8 @@ Game::Game()
 // Constructs a game and loads a file from filename
 Game::Game(const string &filename)
 {
-    loadGame(filename);
+   diagonalGame = true;
+   loadGame(filename);
 
 }
 //-----------------------------------------------------------------------------
@@ -198,7 +200,11 @@ void Game::newGame(bool diagonal)
     // delete the board because we may have a new
     // variation of the sudoku game
     delete board; 
-    board = new Board(diagonal);
+    if(diagonal)
+       board = new DiagBoard();
+    else
+       board = new Board();
+    diagonalGame = diagonal;
     pushFrame();
     for(int i=0;i<81;i++)
     {
@@ -289,7 +295,7 @@ void Game::selectCluster()
    cout<<"\t\\__ (1) Row Cluster"<<endl;
    cout<<"\t\\__ (2) Column Cluster"<<endl;
    cout<<"\t\\__ (3) Box Cluster"<<endl;
-   if(board->isDiagonal())
+   if(diagonalGame)
       cout<<"\t\\__ (4) Diagonal Cluster"<<endl;
    cout<<"Enter a choice: ";
    cin>>choice;
@@ -332,7 +338,7 @@ void Game::selectCluster()
          return;
       }
    }
-   else if(board->isDiagonal() && choice=='4')
+   else if(diagonalGame && choice=='4')
    {
       cout<<"Enter a diagonal"<<endl;
       cout<<"(1) Upper Left to Lower Right"<<endl;
