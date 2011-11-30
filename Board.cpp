@@ -347,8 +347,21 @@ void Board::restoreState(Frame *frame)
 Cluster* Board::getCluster(ClusterType type, int num)
 {
 	int offset = ((int) type) * 9 + num;
+   if(type == CLUSTER_DIAGONAL)
+   {
+      if(num < 0 || num > 1)
+         throw FatalException("Board::getCluster() number is out of bounds");
+   }
 	if(num<0 || num>8)
 		throw FatalException("Board::getCluster() number is out of bounds");
 	
 	return board_clusters[offset];
+}
+
+//-----------------------------------------------------------------------------
+// isDiagonal()
+// returns true if the Sudoku game is a diagonal variation
+bool Board::isDiagonal() const
+{
+   return diagonalSudoku;
 }

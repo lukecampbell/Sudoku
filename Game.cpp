@@ -245,11 +245,21 @@ void Game::printGameSubMenu()
     switch(input)
     {
     case '1': // New Game
-        newGame();
         cout<<"New game"<<endl;
         cout<<"(T) Tradtional or (D) Diagonal: ";
         cin>>input;
-
+        if(input == 'd' || input == 'D')
+        {
+           newGame(true);
+           cout<<"Diagonal Game"<<endl;
+        }
+        else if(input=='t' || input=='T')
+        {
+           newGame(false);
+           cout<<"Traditional Sudoku"<<endl;
+        }
+        else
+           cerr<<"Invalid choice"<<endl;
         break;
     case '2': // Save Game
         cout<<"Save Game"<<endl;
@@ -279,7 +289,8 @@ void Game::selectCluster()
    cout<<"\t\\__ (1) Row Cluster"<<endl;
    cout<<"\t\\__ (2) Column Cluster"<<endl;
    cout<<"\t\\__ (3) Box Cluster"<<endl;
-
+   if(board->isDiagonal())
+      cout<<"\t\\__ (4) Diagonal Cluster"<<endl;
    cout<<"Enter a choice: ";
    cin>>choice;
    //-------------------------------------------
@@ -316,6 +327,20 @@ void Game::selectCluster()
       cin>>choice;
       try {
          cluster = board->getCluster(CLUSTER_BOX,choice-'1');
+      } catch(FatalException &fe) {
+         cerr<<"Bad Selection"<<endl;
+         return;
+      }
+   }
+   else if(board->isDiagonal() && choice=='4')
+   {
+      cout<<"Enter a diagonal"<<endl;
+      cout<<"(1) Upper Left to Lower Right"<<endl;
+      cout<<"(2) Upper Right to Lower Left"<<endl;
+      cout<<"Enter a choice: ";
+      cin>>choice;
+      try {
+         cluster = board->getCluster(CLUSTER_DIAGONAL,choice-'1');
       } catch(FatalException &fe) {
          cerr<<"Bad Selection"<<endl;
          return;

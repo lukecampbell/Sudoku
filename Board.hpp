@@ -59,6 +59,9 @@ public:
     // for box type the ordering goes left to right
     Cluster* getCluster(ClusterType type, int num);
 
+    // Returns true if the game is of the diagonal variation
+    bool isDiagonal() const;
+
 };
 inline ostream& operator<<(ostream& out, Board& b)
 {
