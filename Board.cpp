@@ -10,7 +10,8 @@
 //-----------------------------------------------------------------------------
 // Board()
 // Default Cosntructor
-Board::Board()
+Board::Board(bool diagonal)
+   :diagonalSudoku(diagonal)
 {
     Square *lineup[9]; // the working set to allocate the clusters
     unsigned short int allocs = 0; // how many clusters we allocate
@@ -72,6 +73,33 @@ Board::Board()
             board_clusters[k + 18] = new Cluster(CLUSTER_BOX, lineup);
             allocs++; // keep track of how many we alloc
         }
+
+        if(diagonal)
+        {
+           //------------------------------------------------
+           // Allocate the clusters for the diagonals
+           //------------------------------------------------
+           // upper left to lower right (increment)
+           for(int k=0;k<9;k++)
+           {
+               lineup[k] = board[9 * k + k];
+
+           }
+           board_clusters[27] = new Cluster(CLUSTER_DIAGONAL, lineup);
+           allocs++;
+
+
+           //------------------------------------------------
+           // Allocate the clusters for the diagonals
+           //------------------------------------------------
+           // upper right to lower left
+           for(int k=0;k<9;k++)
+           {
+               lineup[k] = board[9*k + (8-k)];
+           }
+           board_clusters[28] = new Cluster(CLUSTER_DIAGONAL, lineup);
+           allocs++;
+        }
     }
     //------------------------------------------------
     // Handle a failed alloc
@@ -92,6 +120,7 @@ Board::Board()
 // Constructor that initializes the ifstream
 // const char *filename - The path to the file
 Board::Board(const char *filename)
+   :diagonalSudoku(false)
 {
 
     //------------------------------------------------

@@ -19,7 +19,7 @@
 // CLUSTER_ROW - is an array of nine Squares logically arranged in a Row
 // CLUSTER_COL - is an array of nine Squares logically arranged in a Column
 // CLUSTER_BOX - is an array of nine Squares logically arranged in a Box (3x3)
-enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX };
+enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX, CLUSTER_DIAGONAL};
 
 class Square;
 

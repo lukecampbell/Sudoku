@@ -34,12 +34,13 @@ class Board
 private:
     Square *board[81]; // The board
     ifstream board_reader; // reader for data
-    Cluster *board_clusters[27]; // the clusters on the board
+    Cluster *board_clusters[29]; // the clusters on the board
+    const bool diagonalSudoku; // true if we're using a diagonal sudoku variation
 
 
 public:
     // Default Constructor
-    Board();
+    Board(bool diagonal=false);
     // Loads the board based on the input
     Board(const char *filename);
     // For debugging purposes only as of yet
