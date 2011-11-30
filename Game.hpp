@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stack>
+#include <sstream>
 #include "Board.hpp"
 #include "SquareState.hpp"
 #include "SudokuStack.hpp"
@@ -22,7 +23,7 @@ using namespace std;
 class Game
 {
 private:
-    Board board;
+    Board *board;
     ifstream input; // the file loaded which contains the game
     SudokuStack<Frame *> frames;
     void pushFrame();
@@ -43,7 +44,7 @@ public:
     ~Game();
 
     // Starts a blank new game
-    void newGame();
+    void newGame(bool diagonal=false);
 
 
     // Loads a game from the specified file

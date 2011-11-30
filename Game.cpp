@@ -12,7 +12,7 @@ using namespace std;
 // Constructs a blank game with a blank board
 Game::Game()
 {
-
+   board = new Board();
 }
 
 //-----------------------------------------------------------------------------
@@ -36,6 +36,7 @@ Game::~Game()
         if (ptr)
             delete ptr;
     }
+    delete board;
 }
 //-----------------------------------------------------------------------------
 // pushFrame()
@@ -43,7 +44,7 @@ Game::~Game()
 void Game::pushFrame()
 {
     Frame *frame = new Frame;
-    board.saveState(frame);
+    board->saveState(frame);
     frames.push(frame);
 }
 //-----------------------------------------------------------------------------
@@ -59,7 +60,7 @@ void Game::popFrame()
     }
     frame = frames.top();
     frames.pop();
-    board.restoreState(frame);
+    board->restoreState(frame);
     delete frame;
 }
 
@@ -92,7 +93,7 @@ void Game::loadGame(const string& filename)
         	cerr<<b<<endl;
         }
     }
-    board.restoreState(frame);
+    board->restoreState(frame);
 
     frames.push(frame);
 }
@@ -101,6 +102,8 @@ void Game::loadGame(const string& filename)
 // Loads a file of an alternative type
 void Game::loadGame2(const string& filename)
 {
+    char diagonalFlag;
+    string line;
     if(input.is_open())
         input.close();
     input.open(filename.c_str(), ifstream::in);
@@ -110,11 +113,26 @@ void Game::loadGame2(const string& filename)
         cerr<<"Load failed"<<endl;
         return;
     }
-    newGame();
+    input>>diagonalFlag;
+    getline(input,line);
+    if(diagonalFlag == 't' || diagonalFlag == 'T')
+    {
+       newGame(); //Traditional Game
+       cout<<"Traditional Game"<<endl;
+    }
+    else if(diagonalFlag == 'd' || diagonalFlag =='D')
+    {
+       newGame(true); // supports diagonal
+       cout<<"Diagonal Game"<<endl;
+    }
+    else
+    {
+       throw FatalException("Game::loadGame2(): Improperly formatted file.");
+    }
     Frame *frame = new Frame;
     for(int x=0;x<9 && !input.eof();x++)
     {
-        string line;
+        stringstream errlines;
         getline(input,line);
         for(int y=0;y<9;y++)
         {
@@ -124,10 +142,11 @@ void Game::loadGame2(const string& filename)
                if(c>='1' && c<='9')
                   frame->states[x*9 + y].setConst();
             } catch(BadMove &b) {
-            	cerr<<b<<endl;
+            	errlines<<b<<endl;
             }
         }
         cout<<line<<endl;
+        cerr<<errlines.str();
     }
     if(!input.eof())
     {
@@ -139,7 +158,7 @@ void Game::loadGame2(const string& filename)
         }
     }
     cout<<"----File Loaded------"<<endl;
-    board.restoreState(frame);
+    board->restoreState(frame);
     frames.push(frame);
 }
 //-----------------------------------------------------------------------------
@@ -168,19 +187,23 @@ void Game::saveGame(const string &filename)
 // Prints the current graphical board
 ostream& Game::print(ostream &out)
 {
-    board.printGUI(out);
+    board->printGUI(out);
     return out;
 }
 //-----------------------------------------------------------------------------
 // newGame()
 // Pushes the current frame then clears the board
-void Game::newGame()
+void Game::newGame(bool diagonal)
 {
+    // delete the board because we may have a new
+    // variation of the sudoku game
+    delete board; 
+    board = new Board(diagonal);
     pushFrame();
     for(int i=0;i<81;i++)
     {
     	try {
-    		board.sub(i/9,i%9).mark('-');
+    		board->sub(i/9,i%9).mark('-');
     	} catch ( BadMove &b) {
     		cerr<<b<<endl;
     	}
@@ -224,6 +247,9 @@ void Game::printGameSubMenu()
     case '1': // New Game
         newGame();
         cout<<"New game"<<endl;
+        cout<<"(T) Tradtional or (D) Diagonal: ";
+        cin>>input;
+
         break;
     case '2': // Save Game
         cout<<"Save Game"<<endl;
@@ -267,7 +293,7 @@ void Game::selectCluster()
       cout<<"Enter a row: ";
       cin>>choice;
       try {
-         cluster = board.getCluster(CLUSTER_ROW,choice-'1');
+         cluster = board->getCluster(CLUSTER_ROW,choice-'1');
       } catch(FatalException &fe) {
          cerr<<"Bad Selection"<<endl;
          return;
@@ -278,7 +304,7 @@ void Game::selectCluster()
       cout<<"Enter a column: ";
       cin>>choice;
       try {
-         cluster = board.getCluster(CLUSTER_COL,choice-'1');
+         cluster = board->getCluster(CLUSTER_COL,choice-'1');
       } catch(FatalException &fe) {
          cerr<<"Bad Selection"<<endl;
          return;
@@ -289,7 +315,7 @@ void Game::selectCluster()
       cout<<"Enter a box: ";
       cin>>choice;
       try {
-         cluster = board.getCluster(CLUSTER_BOX,choice-'1');
+         cluster = board->getCluster(CLUSTER_BOX,choice-'1');
       } catch(FatalException &fe) {
          cerr<<"Bad Selection"<<endl;
          return;
@@ -422,7 +448,7 @@ void Game::getSquare()
         cerr << "Invalid entry" << endl;
         return;
     }
-    cout << board.sub(r - '1', c - '1') << endl;
+    cout << board->sub(r - '1', c - '1') << endl;
 
 }
 //-----------------------------------------------------------------------------
@@ -446,7 +472,7 @@ void Game::changeSquare()
         cerr << "Invalid entry" << endl;
         return;
     }
-    cout<<board.sub(r-'1',c-'1')<<endl;
+    cout<<board->sub(r-'1',c-'1')<<endl;
     cout << "Enter the value: ";
     cin >> val;
 
@@ -454,7 +480,7 @@ void Game::changeSquare()
 
     pushFrame();
     try {
-		if (!board.sub(r - '1', c - '1').mark(val))
+		if (!board->sub(r - '1', c - '1').mark(val))
 			// the Mark is illegal and so we go back
 			popFrame();
     } catch(BadMove &b) {
