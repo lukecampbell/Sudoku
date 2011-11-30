@@ -5,7 +5,7 @@
 
 #include "Cluster.hpp"
 #include "Square.hpp"
-const char *Cluster::cluster_type_string[] = { "Row", "Column", "Box" };
+const char *Cluster::cluster_type_string[] = { "Row", "Column", "Box", "Diagonal" };
 
 //-----------------------------------------------------------------------------
 // Cluster()

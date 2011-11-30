@@ -74,7 +74,7 @@ Board::Board(bool diagonal)
             allocs++; // keep track of how many we alloc
         }
 
-        if(diagonal)
+        if(diagonalSudoku)
         {
            //------------------------------------------------
            // Allocate the clusters for the diagonals

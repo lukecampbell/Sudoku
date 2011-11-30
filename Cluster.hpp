@@ -26,7 +26,7 @@ class Square;
 class Cluster
 {
 private:
-    static const char *cluster_type_string[3];    // for the string enumeration
+    static const char *cluster_type_string[4];    // for the string enumeration
     ClusterType cluster_type;          // The type of the cluster
     Square *cluster_group[9];        // Squares in the cluster
     int references[9];              // keep track of what numbers are used
