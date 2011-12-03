@@ -14,7 +14,7 @@ Board::Board(int clusters)
 {
     Square *lineup[9]; // the working set to allocate the clusters
     unsigned short int allocs = 0; // how many clusters we allocate
-    if(clusters<27)
+    if(clusters<MIN_CLUSTERS)
        throw FatalException("Board::Board() Not enough clusters to initialize the board.");
     //------------------------------------------------
     // Handle the case where we can't allocate enough
@@ -95,7 +95,7 @@ Board::Board(int clusters)
 // const char *filename - The path to the file
 Board::Board(const char *filename)
 {
-    board_clusters = new Cluster*[27];
+    board_clusters = new Cluster*[MIN_CLUSTERS];
     //------------------------------------------------
     // Handle file input
     //------------------------------------------------
@@ -189,9 +189,9 @@ Board::~Board()
     //------------------------------------------------
     // free each of the allocated Cluster objects
     //------------------------------------------------
-    for (int k = 0; k < 27; k++)
+    for (int k = 0; k < MIN_CLUSTERS; k++)
         delete board_clusters[k];
-    for (int k = 0; k < 81; k++)
+    for (int k = 0; k < MAX_SQUARES; k++)
         delete board[k];
     // below is commented out for flow reasons
     //cout << "Board is destroyed" << endl;
@@ -230,6 +230,15 @@ Square& Board::sub(int j, int k)
 }
 
 //-----------------------------------------------------------------------------
+// operator[]
+// Returns a square at the specified index
+const Square& Board::operator[](int index)
+{
+   if(index>=MAX_SQUARES)
+      throw FatalException("Board::operator[] index is out of bounds");
+   return *board[index];
+}
+//-----------------------------------------------------------------------------
 // print()
 // A function to display the Board
 // ostream& - The ostream object to be printed to
@@ -239,18 +248,14 @@ ostream& Board::print(ostream& out)
     //------------------------------------------------
     // Print the squares
     //------------------------------------------------
-    for (int j = 0; j < 9; j++)
+    for(int k=0;k<81;k++)
     {
-        for (int k = 0; k < 9; k++)
-        {
-            out << *board[j * 9 + k] << endl;
-        }
-        out << endl;
+       cout<<sub((k / 9) , (k % 9))<<endl;
     }
     //------------------------------------------------
     // Print the clusters
     //------------------------------------------------
-    for (int k = 0; k < 27; k++)
+    for (int k = 0; k < MIN_CLUSTERS; k++)
     {
         out << "----------------------------------------------" << endl
                 << "Cluster: " << k << endl << *board_clusters[k]
@@ -291,7 +296,7 @@ ostream& Board::printGUI(ostream& out)
 // Saves the current frame
 void Board::saveState(Frame *frame)
 {
-    for (int k = 0; k < 81; k++)
+    for (int k = 0; k < MAX_SQUARES; k++)
     {
         frame->states[k] = sub(k / 9, k % 9).getState();
     }
@@ -301,7 +306,7 @@ void Board::saveState(Frame *frame)
 // sets the current state to frame
 void Board::restoreState(Frame *frame)
 {
-    for (int k = 0; k < 81; k++)
+    for (int k = 0; k < MAX_SQUARES; k++)
     {
     	try {
     		sub(k / 9, k % 9).forceMark(frame->states[k].getValue());

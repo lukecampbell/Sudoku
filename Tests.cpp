@@ -496,6 +496,29 @@ void testBoard()
    }
    cout<<"  - test succeeded."<<endl;
 
+   //------------------------------------
+   // test the [] operator
+   //------------------------------------
+   
+   cout<<"Testing the [] operator with Board"<<endl;
+   try {
+      boardFile.sub(8,8).mark('1');
+   } catch ( BadMove &b) {
+      cout<<" - test failed."<<endl;
+      cerr<<"Board Test Failed"<<endl
+          <<"  - subsequent marking failed"<<endl;
+      return;
+   }
+
+   if(board[80].getValue()!='1')
+   {
+      cout<<" - test failed."<<endl;
+      cerr<<"Board Test Failed"<<endl
+          <<"  - board[] failed to access square"<<endl;
+      return;
+   }
+  
+   cout<<"  - test succeeded."<<endl;
 
 }
 

@@ -18,6 +18,9 @@
 #include <string>
 #include <iostream>
 using namespace std;
+
+const int MAX_SQUARES=81;
+
 // END INCLUDES AND MACROS //
 
 // A structure to hold the 81 Square's states
@@ -32,20 +35,26 @@ struct Frame
 class Board
 {
 protected:
-    Square *board[81]; // The board
+    Square *board[MAX_SQUARES]; // The board
     ifstream board_reader; // reader for data
     Cluster **board_clusters; // the clusters on the board
 
 
 public:
+
+    static const int MIN_CLUSTERS=27;
+
     // Default Constructor
-    Board(int clusters=27);
+    Board(int clusters=MIN_CLUSTERS);
     // Loads the board based on the input
     Board(const char *filename);
     // For debugging purposes only as of yet
     virtual ~Board();
     // Subscript for a square member
     virtual Square& sub(int j, int k);
+
+    // Returns a square at the specified index
+    virtual const Square& operator[](int index);
     // Prints the board (square by square)
     ostream& print(ostream& out); // Prints the board
     // Prints the graphical board

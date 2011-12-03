@@ -16,11 +16,11 @@ static void doNothing(void *)
 // SquareState()
 //
 SquareState::SquareState()
+   :stateValue('-'),
+    stateCount(9),
+    stateBitmap(0x3FE),
+    constFlag(false)
 {
-    stateValue = '-';
-    stateBitmap = 0x3FE;
-    stateCount = 9;
-    constFlag = false;
     registerCallback(&doNothing);
 }
 

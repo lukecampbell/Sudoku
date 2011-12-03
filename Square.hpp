@@ -60,7 +60,7 @@ public:
     int getRow() const; // returns the row of this Square
     int getCol() const; // returns the column of this Square
 
-    SquareState getState() const; // returns the current state of this square
+    const SquareState& getState() const; // returns the current state of this square
     void setState(SquareState &state); // sets the state of this square
 
     // returns true if any clusters this square is attached to

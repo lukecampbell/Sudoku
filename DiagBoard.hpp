@@ -13,6 +13,7 @@
 class DiagBoard : public Board
 {
  public:
+    static int const MIN_CLUSTERS=29;
     DiagBoard();
     virtual ~DiagBoard();
     virtual Cluster* getCluster(ClusterType type, int cluster);

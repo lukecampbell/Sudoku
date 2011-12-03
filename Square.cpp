@@ -165,7 +165,7 @@ int Square::getCol() const
 //-----------------------------------------------------------------------------
 // getState()
 // Returns the current state of this square
-SquareState Square::getState() const
+const SquareState& Square::getState() const
 {
     return *this;
 }

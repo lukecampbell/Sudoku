@@ -5,7 +5,7 @@
 #include "DiagBoard.hpp"
 
 DiagBoard::DiagBoard()
-   :Board(29)
+   :Board(MIN_CLUSTERS)
 {
    int allocs=0;
    try {
