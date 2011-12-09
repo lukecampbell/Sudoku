@@ -35,8 +35,6 @@ struct Frame
 // Models the Sudoku Board
 class Board : public MemoryManagement
 {
-private:
-    static int referenceCount;
 protected:
     Square *board[MAX_SQUARES]; // The board
     ifstream board_reader; // reader for data
@@ -56,8 +54,6 @@ public:
     // Subscript for a square member
     virtual Square& sub(int j, int k);
 
-    // Returns the reference count of this class
-    static int refCount() { return referenceCount; }
     // Returns a square at the specified index
     virtual const Square& operator[](int index);
     // Prints the board (square by square)
