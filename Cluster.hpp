@@ -10,6 +10,7 @@
 #include "Square.hpp"
 #include "IllegalInput.hpp"
 #include "FatalException.hpp"
+#include "MemoryManagement.hpp"
 
 
 // END INCLUDES AND MACROS
@@ -23,10 +24,11 @@ enum ClusterType { CLUSTER_ROW, CLUSTER_COL, CLUSTER_BOX, CLUSTER_DIAGONAL};
 
 class Square;
 
-class Cluster
+class Cluster : public MemoryManagement
 {
 private:
     static const char *cluster_type_string[4];    // for the string enumeration
+    static int referenceCount;
     ClusterType cluster_type;          // The type of the cluster
     Square *cluster_group[9];        // Squares in the cluster
     int references[9];              // keep track of what numbers are used
@@ -36,8 +38,11 @@ public:
     Cluster();                                      // default constructor (n/a)
     Cluster(ClusterType type, Square *squares[9]);  //
     ~Cluster();                                     // destructor
+
     ostream& print(ostream &out);                   // prints Cluster info
 
+    // Returns the reference count of this class
+    static int refCount() { return referenceCount; }
     // shoops a given square
     void shoop(Square *s, char val);                
     // unshoops a given square

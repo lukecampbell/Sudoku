@@ -12,6 +12,7 @@
 #include "IllegalInput.hpp"
 #include "ConflictingValue.hpp"
 #include "FatalException.hpp"
+#include "MemoryManagement.hpp"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -24,8 +25,10 @@ typedef void (*eventHandler)(void *);
 // Maintains a bitmap of possibilities for the remaining numbers that could be
 // assigned to this square.  Also maintains a current value for the square and
 // the number of possibilities remaining.
-class SquareState
+class SquareState : public MemoryManagement
 {
+private:
+    static int referenceCount;
 protected:
     char stateValue;
     short int stateCount;
@@ -42,6 +45,10 @@ public:
     // Copy constructor that copies the state from the paramter
     // to this square
     SquareState(const SquareState &copy);
+
+    // Returns the reference count of this class
+    static int refCount() { return referenceCount; }
+
 
     // Destructor
     virtual ~SquareState();

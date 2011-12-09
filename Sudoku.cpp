@@ -11,7 +11,7 @@
 #include "SquareState.hpp"
 #include "BadMove.hpp"
 #include "Game.hpp"
-
+#include "MemoryManagement.hpp"
 #include <sys/types.h>
 #include <regex.h>
 #include <stdio.h>
@@ -26,7 +26,9 @@ inline void runTests()
     testIllegalInputException();
     testConflictingValueException();
     testFatalException();
-	testGetCluster();
+	 testGetCluster();
+    testRefCount();
+
 }
 
 static void gameInit()
@@ -61,6 +63,9 @@ int main(int argc, char *argv[])
 
     banner();
     gameInit();
+#ifdef _MEMCHECK_
+    cout<<"Reference Count: " << MemoryManagement::refCount() << endl;
+#endif
     bye();
     return 0;
 }

@@ -13,12 +13,14 @@
 
 using namespace std;
 
-class FatalException
+class FatalException 
 {
 protected:
    string information;
 public:
    FatalException(string message="Error");
+
+
    virtual ~FatalException();
    virtual const char *what();
    virtual ostream& print(ostream&);

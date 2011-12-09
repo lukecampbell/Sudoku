@@ -11,15 +11,16 @@ To view the changes and logs for this repo
 https://github.com/lukecampbell/Sudoku/
 
 
-To compile with debugging trace and debugging information enabled use
-  $ ./enable-debug.sh
-
-To turn off debugging
-  $ ./disable-debug.sh
-
 Compiling:
   $ make
 
+Compile with reference counting enabled:
+  $ make CPPFLAGS='-g -ggdb -Wall -O0 -D_MEMCHECK_'
+
+Reference Counting Explained:
+  If you enable reference counting, every non-exception object is referenced
+  and the sum of their references and dereferences is displayed before 
+  application exit.
 
 Debugging is disabled by default
 

@@ -1,0 +1,269 @@
+luke@ubuntu-bt:~/workspace/Sudoku$ ./Sudoku 
+
+-------------------------------------------------------------
+	Lucas Campbell
+	CS 626
+	Fri Dec  9 2011	10:57:51
+---------------------------------------------------------------
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | - - - | - - - | - - - | 
+2 | - - - | - - - | - - - | 
+3 | - - - | - - - | - - - | 
+  |_______|_______|_______|
+4 | - - - | - - - | - - - | 
+5 | - - - | - - - | - - - | 
+6 | - - - | - - - | - - - | 
+  |_______|_______|_______|
+7 | - - - | - - - | - - - | 
+8 | - - - | - - - | - - - | 
+9 | - - - | - - - | - - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 5
+	\__ (1) New Game
+	\__ (2) Save Game
+	\__ (3) Load Game 
+	\__ (4) Go Back
+Enter a choice: 3
+Load Game
+Enter filename: puz1.txt
+Diagonal Game
+4 6  7  3
+ 9 5 6 7 
+      58 
+   9  34 
+3       8
+ 78  4   
+ 17      
+  8 2 9 6
+9  7  84
+Illegal Input [1,1] (
+
+Aug 6, 2011
+
+----File Loaded------
+Conflicting Value [4,4] (9): The value is not a value that is possible for this square.
+Square [4,4]: - Possibilities: (6) 123  678 
+
+Conflicting Value [6,6] (4): The value is not a value that is possible for this square.
+Square [6,6]: - Possibilities: (4) 123 5    
+
+Conflicting Value [7,3] (7): The value is not a value that is possible for this square.
+Square [7,3]: - Possibilities: (3)  2 4    9
+
+Conflicting Value [8,3] (8): The value is not a value that is possible for this square.
+Square [8,3]: - Possibilities: (6)  2345 7 9
+
+Conflicting Value [9,8] (4): The value is not a value that is possible for this square.
+Square [9,8]: - Possibilities: (4) 123 5    
+
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 4
+Enter the row: 92
+Enter the column: Square [9,2]: - Possibilities: (5)  23456   
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 - - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 3922
+Enter the row: Enter the column: Square [9,2]: - Possibilities: (5)  23456   
+Enter the value: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 2 - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 499
+Enter the row: Enter the column: Square [9,9]: - Possibilities: (2) 1   5    
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 2 - | 7 - - | 8 - - | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 3991
+Enter the row: Enter the column: Square [9,9]: - Possibilities: (2) 1   5    
+Enter the value: 
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 2 - | 7 - - | 8 - 1 | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 6
+	\__ (1) Row Cluster
+	\__ (2) Column Cluster
+	\__ (3) Box Cluster
+	\__ (4) Diagonal Cluster
+Enter a choice: 4
+Enter a diagonal
+(1) Upper Left to Lower Right
+(2) Upper Right to Lower Left
+Enter a choice: 1
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 2 - | 7 - - | 8 - 1 | 
+  |_______|_______|_______|
+
+Cluster is of type: Diagonal
+1: Square [1,1]: 4 Possibilities: (4)  2 45  8 
+2: Square [2,2]: 9 Possibilities: (3)   3    89
+3: Square [3,3]: - Possibilities: (3)  23   7  
+4: Square [4,4]: - Possibilities: (3)  2   6 8 
+5: Square [5,5]: - Possibilities: (1)      6   
+6: Square [6,6]: - Possibilities: (3)  23 5    
+7: Square [7,7]: - Possibilities: (2)  2    7  
+8: Square [8,8]: - Possibilities: (2)   3 5    
+9: Square [9,9]: 1 Possibilities: (2) 1   5    
+
+
+(1): Change a square
+(2): Go back
+Enter a choice: .
+
+    1 2 3   4 5 6   7 8 9
+   _______ _______ _______
+1 | 4 - 6 | - - 7 | - - 3 | 
+2 | - 9 - | 5 - 6 | - 7 - | 
+3 | - - - | - - - | 5 8 - | 
+  |_______|_______|_______|
+4 | - - - | - - - | 3 4 - | 
+5 | 3 - - | - - - | - - 8 | 
+6 | - 7 8 | - - - | - - - | 
+  |_______|_______|_______|
+7 | - 1 - | - - - | - - - | 
+8 | - - - | - 2 - | 9 - 6 | 
+9 | 9 2 - | 7 - - | 8 - 1 | 
+  |_______|_______|_______|
+
+ Game Menu 
+ \__ (1) Print Board
+ \__ (2) Go Back
+ \__ (3) Change a Square
+ \__ (4) Get Square
+ \__ (5) Game Option
+ \__ (6) Select a Cluster
+ \__ (7) Quit
+Enter a choice: 7
+Reference Count: 0
+
+
+Normal termination.
+

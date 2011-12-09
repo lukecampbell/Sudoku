@@ -27,7 +27,6 @@ public:
 	virtual const char *what() const;
 
 	virtual ostream &print(ostream &out); // TODO: make const
-
 	void setRow(unsigned short int row);
 	void setCol(unsigned short int col);
 	void setValue(char value);

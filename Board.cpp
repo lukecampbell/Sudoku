@@ -4,7 +4,7 @@
 // Implementation for Board Class
 
 #include "Board.hpp"
-
+int Board::referenceCount(0);
 
 
 //-----------------------------------------------------------------------------
@@ -23,6 +23,7 @@ Board::Board(int clusters)
     try
     {
         board_clusters = new Cluster*[clusters];
+        referenceCount++;
         //------------------------------------------------
         // Initiate the squares in board
         //------------------------------------------------
@@ -114,6 +115,7 @@ Board::Board(const char *filename)
     try
     {
 
+          referenceCount++;
         //------------------------------------------------
         // Initiate the squares in board
         //------------------------------------------------
@@ -199,6 +201,7 @@ Board::~Board()
 #ifdef __DEBUG__
     DEBUG_CALL(Board::~Board(),__LINE__);
 #endif //__DEBUG__
+    referenceCount--;
 }
 
 //-----------------------------------------------------------------------------

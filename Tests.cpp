@@ -15,7 +15,36 @@
 #include "IllegalInput.hpp"
 #include "ConflictingValue.hpp"
 #include "FatalException.hpp"
+#include "MemoryManagement.hpp"
 
+void testRefCount()
+{
+   Board *board = new Board();
+   cout<<"Reference Counting Unit Test"<<endl;
+   
+   // I allocated a board so the reference count should NOT be 0
+   cout<<"  - Testing Reference Counting (Incrementing)"<<endl;
+   if(MemoryManagement::refCount()==0)
+   {
+      cout<<"    - test failed."<<endl;
+      cerr<<"Reference Counting Failed"<<endl
+          <<"  - References failed to count"<<endl;
+      return;
+   }
+   cout<<"    - test succeeded (RefCount: "<< MemoryManagement::refCount() << ")" <<endl;
+   cout<<"  - Testing Dereferencing"<<endl;
+
+   delete board;
+
+   if(MemoryManagement::refCount()!=0)
+   {
+      cout<<"    - test failed."<<endl;
+      cerr<<"Reference Counting Failed"<<endl
+          <<"  - Failed to dereference (Mem Leak)"<<endl;
+      return;
+   }
+   cout<<"    - test succeeded (RefCount: " << MemoryManagement::refCount() <<")"<<endl;
+}
 
 //-----------------------------------------------------------------------------
 // testGetCluster()

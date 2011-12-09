@@ -7,6 +7,7 @@
 
 #include "BadMove.hpp"
 
+
 // initializes to values that indicate they were never initialized
 
 BadMove::BadMove(unsigned short int row, unsigned short int col,
@@ -17,7 +18,6 @@ BadMove::BadMove(unsigned short int row, unsigned short int col,
 }
 BadMove::~BadMove()
 {
-
 }
 
 const char *BadMove::what() const

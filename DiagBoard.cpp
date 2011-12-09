@@ -53,5 +53,7 @@ Cluster* DiagBoard::getCluster(ClusterType type, int clusterNum)
 
 DiagBoard::~DiagBoard()
 {
+   delete board_clusters[27];
+   delete board_clusters[28];
    
 }

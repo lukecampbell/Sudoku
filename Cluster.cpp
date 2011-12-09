@@ -6,6 +6,7 @@
 #include "Cluster.hpp"
 #include "Square.hpp"
 const char *Cluster::cluster_type_string[] = { "Row", "Column", "Box", "Diagonal" };
+int Cluster::referenceCount(0);
 
 //-----------------------------------------------------------------------------
 // Cluster()
@@ -15,6 +16,7 @@ Cluster::Cluster()
     for (int k = 0; k < 9; k++)
         references[k] = 0; //tracks what numbers are used
 
+    referenceCount++;
 }
 
 //-----------------------------------------------------------------------------
@@ -23,9 +25,10 @@ Cluster::Cluster()
 Cluster::~Cluster()
 {
 #ifdef __DEBUG__
-    DEBUG_CALL(~Cluster(),__LINE__);
-    cerr<<"Cluster: "<<this<<" destroyed"<<endl;
+//    DEBUG_CALL(~Cluster(),__LINE__);
+//    cerr<<"Cluster: "<<this<<" destroyed"<<endl;
 #endif // __DEBUG__
+    referenceCount--;
 }
 
 //-----------------------------------------------------------------------------
@@ -61,6 +64,7 @@ Cluster::Cluster(ClusterType type, Square *squares[9])
     }
     for (k = 0; k < 9; k++)
         cluster_group[k]->addCluster(this);
+    referenceCount++;
 }
 //-----------------------------------------------------------------------------
 // Shoop()

@@ -18,6 +18,8 @@
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
+
+void testRefCount();
 void testGetCluster();
 void testFatal();
 void testFatalException();

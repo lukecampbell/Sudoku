@@ -7,6 +7,10 @@
 #include "Game.hpp"
 
 using namespace std;
+
+int Game::referenceCount(0);
+
+
 //-----------------------------------------------------------------------------
 // Game()
 // Constructs a blank game with a blank board
@@ -14,6 +18,7 @@ Game::Game()
 {
    diagonalGame = false;
    board = new Board();
+   referenceCount++;
 }
 
 //-----------------------------------------------------------------------------
@@ -23,6 +28,7 @@ Game::Game(const string &filename)
 {
    diagonalGame = true;
    loadGame(filename);
+   referenceCount++;
 
 }
 //-----------------------------------------------------------------------------
@@ -39,6 +45,7 @@ Game::~Game()
             delete ptr;
     }
     delete board;
+    referenceCount--;
 }
 //-----------------------------------------------------------------------------
 // pushFrame()

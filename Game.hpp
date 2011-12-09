@@ -14,6 +14,7 @@
 #include "SquareState.hpp"
 #include "SudokuStack.hpp"
 #include "BadMove.hpp"
+#include "MemoryManagement.hpp"
 
 using namespace std;
 
@@ -21,11 +22,14 @@ using namespace std;
 // A class to model the and encapsulate the sudoku objects into an
 // interactive game with the ability to save and restore game states
 // and go backward to previous states.
-class Game
+class Game : public MemoryManagement
 {
 private:
+    static int referenceCount;
+protected:
     Board *board;
     ifstream input; // the file loaded which contains the game
+
     SudokuStack<Frame *> frames;
     void pushFrame();
     void popFrame();
@@ -47,6 +51,9 @@ public:
 
     // Starts a blank new game
     void newGame(bool diagonal=false);
+
+    // Returns the reference count of this class
+    static int refCount() { return referenceCount; }
 
 
     // Loads a game from the specified file
