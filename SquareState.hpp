@@ -27,8 +27,6 @@ typedef void (*eventHandler)(void *);
 // the number of possibilities remaining.
 class SquareState : public MemoryManagement
 {
-private:
-    static int referenceCount;
 protected:
     char stateValue;
     short int stateCount;
@@ -46,8 +44,6 @@ public:
     // to this square
     SquareState(const SquareState &copy);
 
-    // Returns the reference count of this class
-    static int refCount() { return referenceCount; }
 
 
     // Destructor

@@ -5,7 +5,6 @@
 
 #include "SquareState.hpp"
 
-int SquareState::referenceCount(0);
 
 //-----------------------------------------------------------------------------
 // doNothing()
@@ -25,7 +24,6 @@ SquareState::SquareState()
     constFlag(false)
 {
     registerCallback(&doNothing);
-    referenceCount++;
 }
 
 //-----------------------------------------------------------------------------
@@ -38,7 +36,6 @@ SquareState::SquareState(const SquareState &copy)
     stateCount = copy.stateCount;
     constFlag = copy.constFlag;
     registerCallback(&doNothing);
-    referenceCount++;
 }
 
 //-----------------------------------------------------------------------------
@@ -46,7 +43,6 @@ SquareState::SquareState(const SquareState &copy)
 // Destructor
 SquareState::~SquareState()
 {
-   referenceCount--;
 
 }
 //-----------------------------------------------------------------------------
