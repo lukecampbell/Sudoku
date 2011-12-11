@@ -32,40 +32,5 @@ Running:
 Running the unit tests:
   $ ./Sudoku --test
 
-List of effective pages:
-      BadMove.cpp
-      BadMove.hpp
-      Board.cpp
-      Board.hpp
-      CHANGES
-      Cluster.cpp
-      Cluster.hpp
-      ConflictingValue.cpp
-      ConflictingValue.hpp
-      EXAMPLE_RUN
-      FatalException.cpp
-      FatalException.hpp
-      Game.cpp
-      Game.hpp
-      INPUT
-      IllegalInput.cpp
-      IllegalInput.hpp
-      Makefile
-      README
-      Square.cpp
-      Square.hpp
-      SquareState.cpp
-      SquareState.hpp
-      Sudoku.cpp
-      Sudoku.hpp
-      SudokuStack.hpp
-      TESTS
-      TODO
-      Tests.cpp
-      disable-debug.sh
-      enable-debug.sh
-      puz1.txt
-      saved.sudoku
-      tags
-      tools.cpp
-      tools.hpp
+See the LOEP for a list of the associated files and their
+responsibilities.
