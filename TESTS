@@ -2,7 +2,7 @@
 -------------------------------------------------------------
 	Lucas Campbell
 	CS 626
-	Sat Nov 26 2011	18:44:12
+	Sun Dec 11 2011	13:16:04
 ---------------------------------------------------------------
 Begining testing of Square...
   - test construction
@@ -17,6 +17,8 @@ Testing Board
   - testing construction
     test succeeded.
 Testing Board with input file: INPUT
+  - test succeeded.
+Testing the [] operator with Board
   - test succeeded.
 Testing cluster controller
 board created
@@ -75,3 +77,15 @@ getCluster Unit Test
       test succeeded.
     - testing box
       test succeeded.
+    - testing diagonal clustering
+      test succeeded.
+    - testing diagonal clustering (other)
+      test succeeded.
+Reference Counting Unit Test
+  - Testing Reference Counting (Incrementing)
+    - test succeeded (RefCount: 109)
+  - Testing Dereferencing
+    - test succeeded (RefCount: 0)
+
+
+Normal termination.
