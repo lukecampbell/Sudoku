@@ -108,3 +108,5 @@ TODO                   Contains the list of TODO's in the program source.
 puz1.txt               An example puzzle.
 puz2.txt               A second example puzzle supporting diagonal sudoku
 tags                   A tags file for vim
+UML_Board.png          A UML Diagram for the Board and DiagBoard Classes
+UML_Sudoku.png         A UML Diagram depicting the relationship between the various classes
