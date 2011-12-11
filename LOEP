@@ -1,0 +1,110 @@
+Source                     Header
+-------------------------------------------------------
+BadMove.cpp                BadMove.hpp
+-------------------------------------------------------
+BadMove: An exception class for handling the events
+of a bad move executed in the game.  The interhiting
+classes are ConflictingValue and IllegalInput.
+-------------------------------------------------------
+Board.cpp                  Board.hpp
+-------------------------------------------------------
+Board: A class for handling the controller and modeling
+of a sudoku board, it maintains the squares, initiates
+the clusters and provides an interface to other classes
+to access the associated squares.
+-------------------------------------------------------
+Cluster.cpp                Cluster.hpp
+-------------------------------------------------------
+Cluster: a class that maintains a group of typically
+nine squares and allows operations to synchronize among
+the nine squares in the associated relation of the
+cluster. 
+-------------------------------------------------------
+ConflictingValue.cpp       ConflictingValue.hpp
+-------------------------------------------------------
+ConflictingValue: An exception class that is a subclass
+of BadMove, it is used explicitly when a Square's state
+is being modified with bad input such as a value that 
+is impossible because of the possibility bitmap or 
+another adjacent square in the cluster forbids it.
+-------------------------------------------------------
+DiagBoard.cpp              DiagBoard.hpp
+-------------------------------------------------------
+DiagBoard: A deriving class that models an alternative
+Sudoku game in which the diagnoals of the board are 
+included in the exclusion principles of the game.
+-------------------------------------------------------
+FatalException.cpp         FatalException.hpp
+-------------------------------------------------------
+FatalException: An exception class that is thrown when
+there is a fatal runtime error.
+-------------------------------------------------------
+Game.cpp                   Game.hpp
+-------------------------------------------------------
+Game: The main controller/view for the Sudoku Game;
+It provides the interface to the user as well as 
+handling the controlling actions of the classes and
+objects in the game.
+-------------------------------------------------------
+IllegalInput.cpp           IllegalInput.hpp
+-------------------------------------------------------
+IllegalInput: An exception class that handles the case
+where an input is illegal i.e. a character in lieu of
+an integer or an integer that is out of bounds in 
+changing the state of a square.
+-------------------------------------------------------
+MemoryManagement.cpp       MemoryManagement.hpp
+-------------------------------------------------------
+MemoryManagement: The main super class for tracking
+the object references, all non-exception classes 
+inherit from this class.
+-------------------------------------------------------
+Square.cpp                 Square.hpp
+-------------------------------------------------------
+Square: A class that models a sudoku square and
+provides an interface between the state of a square and
+the many interacting classes that they would interact
+with.
+-------------------------------------------------------
+SquareState.cpp            SquareState.hpp
+-------------------------------------------------------
+SquareState: A class that is the basic model for the 
+state of a Square: value, possibilities etc.
+-------------------------------------------------------
+Sudoku.cpp                 Sudoku.hpp
+-------------------------------------------------------
+These files contain the application layer and 
+declarations.
+-------------------------------------------------------
+                           SudokuStack.hpp
+-------------------------------------------------------
+SudokuStack: A class template for a stack for this
+sudoku game.
+-------------------------------------------------------
+Tests.cpp
+-------------------------------------------------------
+A collection of Unit Tests to ensure accuracy among
+all components of the application.
+-------------------------------------------------------
+tools.cpp                  tools.hpp
+-------------------------------------------------------
+A set of tools for the application provided.
+-------------------------------------------------------
+
+
+
+Supporting Files
+-------------------------------------------------------
+CHANGES                A log of changes
+EXAMPLE_RUN            The output of a program run. 
+INPUT                  An empty file for depracated support
+LOEP                   This file containing the list of effective pages.
+Makefile               A standard gnumake Makefile
+OUTPUT_REF_COUNT       An output file showing the reference counts (no leaks)
+README                 Standard README file providing instructions.
+TESTPLAN               Description of the unit test battery.
+TESTS                  Output of the unit test battery.
+TODO                   Contains the list of TODO's in the program source.
+puz1.txt               An example puzzle.
+puz2.txt               A second example puzzle supporting diagonal sudoku
+tags                   A tags file for vim
