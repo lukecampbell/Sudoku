@@ -1,3 +1,101 @@
+commit a2dd8c1dd429f0b9b169e16f63544c7b190d25f1
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Dec 11 15:15:44 2011 -0500
+
+    LOEP update
+
+commit c29e1df4f93499d87fe053a74b44c2b232bd26f6
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Dec 11 15:14:31 2011 -0500
+
+    Added UML
+
+commit 13fb2a6e2b21473ad29322bb264d0ccc45a01da7
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Dec 11 14:15:05 2011 -0500
+
+    Added REQUIREMENTS and a local const variable
+
+commit 9c7fc774f6fd132302108c689ffb364973082e54
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Dec 11 13:34:40 2011 -0500
+
+    LOEP fix
+
+commit 91c3fcd416c4c336c44212d636728e947b8c0705
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Dec 11 13:19:17 2011 -0500
+
+    LOEP and cleaned up depracated files
+
+commit 8dda5e3f609ca796bd67c63f1476dc2f0aaadddc
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Dec 9 12:59:27 2011 -0500
+
+    Fixed some more stuff
+
+commit e015e29d96206655e333353f28006f9ca44dc1e8
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Dec 9 11:26:12 2011 -0500
+
+    Removed internal reference counting from Board
+
+commit 850b2b83f221bff7af859a3d0495df774855566b
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Fri Dec 9 11:22:36 2011 -0500
+
+    Implemented Reference Counting
+
+commit 46ca666ec3da2c336090b8df52e2f86326473aba
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Dec 3 18:19:29 2011 -0500
+
+    Meeting project specs
+
+commit 6a46dd7962b850a8e1aaa58c62c9972d1ac6ab74
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Wed Nov 30 09:12:20 2011 -0500
+
+    Added the derivation DiagBoard to support the Diagonal Variation
+
+commit c0d4740afc50005265fff3b1eb5c0a03b83c39df
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Wed Nov 30 07:37:30 2011 -0500
+
+    Implemented the U/I controller for diagonal variation support
+
+commit a1a13a15be97515f2b7db29bf86daf108b243351
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Tue Nov 29 21:04:37 2011 -0500
+
+    In progress of refactoring a new game interface
+
+commit 5ff85355615f8072d0d32ab0a3efa5763aee0967
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Tue Nov 29 20:33:15 2011 -0500
+
+    Implemented the Unit tests for diagonal sudoku
+
+commit fa4b385508430fb14c51d30208758d90eb2cb07f
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Tue Nov 29 19:58:24 2011 -0500
+
+    Implemented framework for Diagonal Sudoku Variation
+    
+    Updated board class to implement clustering in the diagonal
+
+commit c5f9b530f185f71f65293fb4d7463a4741a40cbb
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sun Nov 27 01:40:19 2011 -0500
+
+    Made sure that the EXAMPLE_RUN file shows user input
+
+commit 61e64760a0b42738f50067b36edd4d594f20221c
+Author: Luke Campbell <luke.s.campbell@gmail.com>
+Date:   Sat Nov 26 19:27:19 2011 -0500
+
+    updated CHANGES file in master branch
+
 commit 4db5ebb60e009653580a3bdbaebe8f77dad73645
 Author: Luke Campbell <luke.s.campbell@gmail.com>
 Date:   Sat Nov 26 19:23:33 2011 -0500
