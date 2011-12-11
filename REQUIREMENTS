@@ -1,0 +1,73 @@
+1. Use a static class variable.
+Declaration: MemoryManagement.hpp:15
+Class: MemoryManagement
+Implementation: MemoryManagement.cpp:9,13,17
+Description: Used to maintain a reference count of all objects that inherit from this class.
+
+2. Use ctors in some of the optional places.
+Class: SquareState
+Implementation: SquareState.cpp:21-24
+Description: Initializes a SquareState's state to the specified parameters.
+
+
+3. Use default parameters.
+Declaration: Board.hpp:49
+Class: Board
+Implementation:Board.cpp:12
+Description: I take advantage of the default parameters in the constructors
+to quickly implement a Board that supports more than just the 27 clusters AND
+still supports "legacy" code. 
+
+4. Use const wherever you can in your program. (Const parameters, const this, const local variables, const return type, const global information.)
+ - Const Parameters:
+   Declaration: SquareState.hpp:45
+   Class: SquareState
+   Form: SquareState(const SquareState&);
+   Implementation: SquareState.cpp:32
+   Description: Copy Constructor 
+
+ - Const this
+   Declaration: SquareState.hpp:64
+   Class: SquareState
+   Form: string possibilitiesString() const;
+   Implementation: SquareState.cpp:131
+   Description: Returns a string representing the possibilities map. 
+   It does not alter the state of a SquareState object therefore is const.
+   
+
+ - Const local variables
+   Declaration: Test.cpp:433,434
+   Function: void testSquare()
+   Implementation: Test.cpp:433
+   Description: Used to represent the testing parameters '9' and 9
+ 
+
+ - const return type
+   Declaration: Square.hpp:63
+   Class: Square
+   Form: const SquareState& getState() const;
+   Implementation: Square.cpp:168
+   Description: It returns a const Square (through dynamic casting of this) 
+   to be used for saving a state (Board.cpp:300). 
+
+ - const global information
+   Declaration: Board.hpp:23
+   Form:  const int MAX_SQUARES=81;
+   Description: global constant that determines the maximum squares in a sudoku game.
+
+
+5. Use an stl class.
+Declaration: Square.hpp:40
+Form: vector<Cluster *> squareClusters; 
+Class: Square
+Description: Used to maintain and establish the relationship between a group of clusters and 'this'
+
+
+
+6. Define an extension in at least one class to at least one operator OTHER THAN << or >>. If you can’t find a really good reason to use an operator extension, rename one of the functions you already have. Be sure to USE your operator extension, not just define it.
+
+Declaration: Board.cpp:58
+Form: virtual const Square& operator[](int)
+Class: Board
+Description: Returns a square at the specified index (0..80)
+Usage: Tests.cpp:544 (Unit Tests for Board)

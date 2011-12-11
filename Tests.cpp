@@ -430,6 +430,8 @@ void testGameRun()
 // no return
 void testSquare()
 {
+    const int testVal=9;
+    const char testCharVal='9';
     cout << "Begining testing of Square..." << endl;
     cout<<"  - test construction"<<endl;
 
@@ -464,9 +466,9 @@ void testSquare()
     //-----------------------------------------------
 
     cout<<"  - testing turnOff"<<endl;
-    test.turnOff(9);
+    test.turnOff(testVal);
 
-    if(test.isPossible('9'))
+    if(test.isPossible(testCharVal))
     {
     	cout<<"    test failed."<<endl;
     	return;
@@ -476,8 +478,8 @@ void testSquare()
     // it should be able to turn on a possibility
     //-----------------------------------------------
     cout<<"  - testing turnOn"<<endl;
-    test.turnOn(9);
-    if(!test.isPossible('9'))
+    test.turnOn(testVal);
+    if(!test.isPossible(testCharVal))
     {
     	cout<<"    test failed."<<endl;
     	return;
